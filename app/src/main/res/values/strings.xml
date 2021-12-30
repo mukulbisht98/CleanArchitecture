@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Notes</string>
+    <string name="network_error">THere is some error in Network, please check...</string>
+    <string name="loading">Loading...</string>
+    <string name="enter_email_address">enter email address</string>
+    <string name="enter_email_password">enter email password</string>
+    <string name="login">Login</string>
+</resources>
