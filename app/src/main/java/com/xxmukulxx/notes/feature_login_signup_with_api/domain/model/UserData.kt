@@ -1,4 +1,4 @@
-package com.xxmukulxx.notes.feature_login.domain.model
+package com.xxmukulxx.notes.feature_login_signup_with_api.domain.model
 
 import androidx.room.Embedded
 import androidx.room.Entity
@@ -17,7 +17,16 @@ class InvalidUserException(message: String) : Exception(message)
 //    var id: String
 //)
 
-data class UserReq(
+data class LoginReq(
+    @SerializedName("email")
+    var email: String = "",
+    @SerializedName("password")
+    var password: String = "",
+)
+
+data class SignUpReq(
+    @SerializedName("name")
+    var name: String = "",
     @SerializedName("email")
     var email: String = "",
     @SerializedName("password")
@@ -42,6 +51,11 @@ data class User(
     @SerializedName("_id")
     var id: String = "",
     @SerializedName("name")
+    var name: String = ""
+)
+
+data class SignUpResponse(
+    @SerializedName("message")
     var name: String = ""
 )
 

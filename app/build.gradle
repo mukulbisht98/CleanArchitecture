@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -90,4 +91,10 @@ dependencies {
 
     // lottie files
     implementation 'com.airbnb.android:lottie:3.4.0'
+
+    //dimension
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    implementation 'com.intuit.ssp:ssp-android:1.0.6'
+
+
 }

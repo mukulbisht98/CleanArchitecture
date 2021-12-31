@@ -1,9 +1,17 @@
 package com.xxmukulxx.notes.util
 
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.TextPaint
+import android.text.method.LinkMovementMethod
+import android.text.style.ClickableSpan
 import android.view.View
+import android.widget.TextView
 import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
+import com.xxmukulxx.notes.MyApplication
+import com.xxmukulxx.notes.R
 
 fun View.navigateWithId(id: Int, bundle: Bundle? = null) = try {
     this.findNavController().navigate(id, bundle)
@@ -19,6 +27,22 @@ fun View.navigateWithAction(action: NavDirections) = try {
 
 fun View.navigateBack() = try {
     this.findNavController().navigateUp()
+} catch (e: Exception) {
+    e.printStackTrace()
+}
+
+fun TextView.spannableString(stringId : Int,startPos:Int,endPos:Int,handleClick : () -> Unit) = try {
+    val ss = SpannableString(MyApplication.context.getString(stringId))
+    val span1: ClickableSpan = object : ClickableSpan() {
+        override fun onClick(textView: View) {
+            handleClick()
+        }
+    }
+    ss.setSpan(span1, startPos, endPos, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+    this.apply {
+        text =ss
+        movementMethod =  LinkMovementMethod.getInstance()
+    }
 } catch (e: Exception) {
     e.printStackTrace()
 }

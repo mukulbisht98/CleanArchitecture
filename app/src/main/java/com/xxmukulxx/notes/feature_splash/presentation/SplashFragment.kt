@@ -4,7 +4,7 @@ import android.animation.Animator
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseFragment
 import com.xxmukulxx.notes.databinding.SplashLayoutBinding
-import com.xxmukulxx.notes.feature_login.domain.use_cases.UserUseCases
+import com.xxmukulxx.notes.feature_login_signup_with_api.domain.use_cases.UserUseCases
 import com.xxmukulxx.notes.util.navigateWithId
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -18,14 +18,14 @@ class SplashFragment : BaseFragment() {
     lateinit var userUseCases: UserUseCases
     var count = 0
 
-    override fun getLayoutID(): Int {
-        return R.layout.splash_layout
-    }
+    override val layoutResId: Int
+        get() = R.layout.splash_layout
 
     override fun onCreateView() {
         initBindingsAndViewModel()
         initAnimation()
     }
+
 
     private fun initBindingsAndViewModel() {
         b = getBinding() as SplashLayoutBinding

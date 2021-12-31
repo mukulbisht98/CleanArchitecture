@@ -17,12 +17,14 @@ abstract class BaseFragment : Fragment() {
     /**
      * Called from onCreateView () Function
      */
-    public abstract fun getLayoutID(): Int
+//    public abstract fun getLayoutID(): Int
 
     /**
      * Called from onViewCreated () Function
      */
     public abstract fun onCreateView();
+
+    abstract val layoutResId: Int
 
     protected fun getBinding(): ViewDataBinding {
         return binding
@@ -49,7 +51,7 @@ abstract class BaseFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, getLayoutID(), container, false)
+        binding = DataBindingUtil.inflate(inflater, layoutResId, container, false)
         return binding.root
     }
 

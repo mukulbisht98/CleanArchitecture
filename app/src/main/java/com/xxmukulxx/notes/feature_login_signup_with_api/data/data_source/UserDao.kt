@@ -1,9 +1,7 @@
-package com.xxmukulxx.notes.feature_login.data.data_source
+package com.xxmukulxx.notes.feature_login_signup_with_api.data.data_source
 
 import androidx.room.*
-import com.xxmukulxx.notes.feature_login.domain.model.UserData
-import com.xxmukulxx.notes.feature_note.domain.model.Note
-import kotlinx.coroutines.flow.Flow
+import com.xxmukulxx.notes.feature_login_signup_with_api.domain.model.UserData
 
 @Dao
 interface UserDao {

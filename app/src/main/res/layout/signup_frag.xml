@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="android.view.View" />
         <variable
             name="viewModel"
             type="com.xxmukulxx.notes.feature_login_signup_with_api.presentation.LoginSignUpViewModel" />
@@ -19,12 +18,13 @@
         tools:context=".feature_login_signup_with_api.presentation.LoginActivity">
 
         <TextView
-            android:id="@+id/tvLogin"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvSign_up"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:gravity="center"
             android:fontFamily="@font/licorice_regular"
-            android:text="@string/login"
+            android:text="@string/signup"
             android:textColor="@color/teal_700"
             android:textSize="60sp"
             android:textStyle="bold"
@@ -39,10 +39,23 @@
             app:layout_constraintBottom_toTopOf="@id/etEmail"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvLogin"
+            app:layout_constraintTop_toBottomOf="@id/tvSign_up"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/splash_monkey" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_name"
+            android:importantForAutofill="no"
+            android:maxLines="1"
+            android:onTextChanged="@{viewModel::onNameChanged}"
+            android:layout_marginTop="@dimen/_30sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvSign_up" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/etEmail"
@@ -51,14 +64,13 @@
             android:hint="@string/enter_email_address"
             android:importantForAutofill="no"
             android:inputType="textEmailAddress"
+            android:layout_marginTop="@dimen/_15sdp"
             android:maxLines="1"
             android:onTextChanged="@{viewModel::onEmailChanged}"
-            app:layout_constraintBottom_toTopOf="@id/etPassword"
+            app:layout_constraintTop_toBottomOf="@id/etName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed"
-            tools:layout_editor_absoluteX="30dp" />
+             />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/etPassword"
@@ -69,47 +81,21 @@
             android:inputType="textPassword"
             android:maxLines="1"
             android:onTextChanged="@{viewModel::onPasswordChanged}"
-            app:layout_constraintBottom_toTopOf="@id/bnLogin"
+            android:layout_marginTop="@dimen/_15sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/etEmail" />
 
         <Button
-            android:id="@+id/bnLogin"
+            android:id="@+id/bnSignup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="@{viewModel::handleClick}"
-            android:text="@string/login"
-            android:layout_marginTop="@dimen/_10sdp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@string/signup"
+            android:layout_marginTop="@dimen/_20sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/etPassword" />
-        <TextView
-            android:id="@+id/tvSignUp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:fontFamily="@font/licorice_regular"
-            android:text="@string/don_t_have_account_signup_here"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_15ssp"
-            android:textStyle="bold"
-            android:onClick="@{viewModel::handleClick}"
-            app:layout_constraintTop_toBottomOf="@id/bnLogin"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            />
-<!--        <Button-->
-<!--            android:id="@+id/bnSignUp"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:onClick="@{viewModel.handleClick}"-->
-<!--            android:text="@string/signup"-->
-<!--            android:layout_marginTop="@dimen/_10sdp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/tvOr" />-->
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

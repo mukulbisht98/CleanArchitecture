@@ -1,8 +1,8 @@
-package com.xxmukulxx.notes.feature_login.domain.use_cases
+package com.xxmukulxx.notes.feature_login_signup_with_api.domain.use_cases
 
-import com.xxmukulxx.notes.feature_login.domain.model.InvalidUserException
-import com.xxmukulxx.notes.feature_login.domain.model.UserData
-import com.xxmukulxx.notes.feature_login.domain.repository.UserDataRepository
+import com.xxmukulxx.notes.feature_login_signup_with_api.domain.model.InvalidUserException
+import com.xxmukulxx.notes.feature_login_signup_with_api.domain.model.UserData
+import com.xxmukulxx.notes.feature_login_signup_with_api.domain.repository.UserDataRepository
 
 class InsertUser(private val repository: UserDataRepository) {
 

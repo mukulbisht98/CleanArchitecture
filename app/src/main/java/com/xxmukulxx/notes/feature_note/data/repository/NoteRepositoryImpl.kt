@@ -2,7 +2,6 @@ package com.xxmukulxx.notes.feature_note.data.repository
 
 import com.xxmukulxx.notes.feature_note.data.data_source.NoteDao
 import com.xxmukulxx.notes.feature_note.domain.model.Note
-import com.xxmukulxx.notes.feature_login.domain.repository.UserDataRepository
 import com.xxmukulxx.notes.feature_note.domain.repository.NoteRepository
 import kotlinx.coroutines.flow.Flow
 

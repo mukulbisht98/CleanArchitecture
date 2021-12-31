@@ -4,20 +4,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/splashFragment">
-
-
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.xxmukulxx.notes.feature_login.presentation.fragments.LoginFragment"
-        android:label="LoginFragment"
-        tools:layout="@layout/login_frag" />
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.xxmukulxx.notes.feature_splash.presentation.SplashFragment"
         android:label="SplashFragment"
+
         tools:layout="@layout/splash_layout">
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.xxmukulxx.notes.feature_login_signup_with_api.presentation.fragments.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/login_frag">
+        <argument
+            android:name="email"
+            app:argType="string"
+            android:defaultValue=""
+            />
+        <argument
+            android:name="pass"
+            app:argType="string"
+            android:defaultValue=""
+            />
+        <action
+            android:id="@+id/action_loginFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.xxmukulxx.notes.feature_login_signup_with_api.presentation.fragments.SignUpFragment"
+        android:label="SignUpFragment" >
+        <action
+            android:id="@+id/action_signUpFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/signUpFragment"
+            app:popUpToInclusive="true"
+            />
     </fragment>
 </navigation>

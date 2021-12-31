@@ -1,6 +1,7 @@
 package com.xxmukulxx.notes.di
 
 import android.app.Application
+import com.xxmukulxx.notes.BuildConfig
 import com.xxmukulxx.notes.MyApplication
 import dagger.Module
 import dagger.Provides
@@ -14,11 +15,6 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideBaseURL() = MyApplication.BASE_URL
+    fun provideBaseURL() = BuildConfig.BASE_URL
 
-    @Singleton
-    @Provides
-    fun provideAppContext(app: Application): MyApplication {
-        return app as MyApplication
-    }
 }
