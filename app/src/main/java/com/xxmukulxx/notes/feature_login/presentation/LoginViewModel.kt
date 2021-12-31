@@ -51,8 +51,6 @@ class LoginViewModel @Inject constructor(
                     Log.e("API RES --->", response.value.toString())
                     showToast("API RES ---> ${response.value}")
                     userUseCases.insertUser(response.value)
-
-
                 }
                 is ApiResponseWrapper.GenericError -> {
                     isLoading.postValue(false)
