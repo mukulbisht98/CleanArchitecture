@@ -39,8 +39,12 @@ class LoginSignUpViewModel @Inject constructor(
             email.postValue(s.trim().toString())
     }
 
-   private fun getEmail(): LiveData<String> {
+    private fun getEmail(): LiveData<String> {
         return email
+    }
+
+     fun setEmail(email: String) {
+        this.email.postValue(email)
     }
 
     fun onPasswordChanged(s: CharSequence, start: Int, before: Int, count: Int) {
@@ -48,8 +52,12 @@ class LoginSignUpViewModel @Inject constructor(
             password.postValue(s.toString())
     }
 
-     private  fun getPassword(): LiveData<String> {
+    private fun getPassword(): LiveData<String> {
         return password
+    }
+
+     fun setPass(pass: String) {
+        password.postValue(pass)
     }
 
     fun onNameChanged(s: CharSequence, start: Int, before: Int, count: Int) {
@@ -123,7 +131,10 @@ class LoginSignUpViewModel @Inject constructor(
                     isLoading.postValue(false)
                     Log.e("API RES --->", response.value.toString())
                     showToast("SignUp Successfully. Please Login Now.")
-                    val action = SignUpFragmentDirections.actionSignUpFragmentToLoginFragment(getEmail().value.toString(), getPassword().value.toString())
+                    val action = SignUpFragmentDirections.actionSignUpFragmentToLoginFragment(
+                        getEmail().value.toString(),
+                        getPassword().value.toString()
+                    )
                     view.navigateWithAction(action)
                 }
                 is ApiResponseWrapper.GenericError -> {

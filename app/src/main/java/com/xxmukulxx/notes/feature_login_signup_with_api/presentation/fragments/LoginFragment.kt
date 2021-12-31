@@ -40,6 +40,8 @@ class LoginFragment : BaseFragment() {
         args.let {
             binding.etEmail.setText(it.email)
             binding.etPassword.setText(it.pass)
+            viewModel.setEmail(it.email)
+            viewModel.setPass(it.pass)
         }
 
     }
