@@ -15,6 +15,8 @@
             app:destination="@id/loginFragment"
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true"
+            app:enterAnim="@anim/back_pop_exit"
+            app:exitAnim="@anim/login_pop_back"
             />
     </fragment>
 
@@ -35,7 +37,10 @@
             />
         <action
             android:id="@+id/action_loginFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
+            app:destination="@id/signUpFragment"
+            app:enterAnim="@anim/back_pop_exit"
+            app:exitAnim="@anim/login_pop_back"
+            />
     </fragment>
 
     <fragment

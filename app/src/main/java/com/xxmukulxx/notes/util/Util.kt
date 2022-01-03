@@ -15,13 +15,13 @@ import com.xxmukulxx.notes.R
 
 
 fun View.navigateWithId(id: Int, bundle: Bundle? = null) = try {
-    this.findNavController().navigate(id, bundle, getNavOptions())
+    this.findNavController().navigate(id, bundle)
 } catch (e: Exception) {
     e.printStackTrace()
 }
 
 fun View.navigateWithAction(action: NavDirections) = try {
-    this.findNavController().navigate(action, getNavOptions())
+    this.findNavController().navigate(action)
 } catch (e: Exception) {
     e.printStackTrace()
 }
@@ -34,10 +34,8 @@ fun View.navigateBack() = try {
 
 fun getNavOptions(): NavOptions {
     return NavOptions.Builder()
-        .setEnterAnim(R.anim.login_enter)
-        .setExitAnim(R.anim.login_pop_enter)
-        .setPopExitAnim(R.anim.back_exit)
-        .setPopEnterAnim(R.anim.back_pop_exit)
+        .setEnterAnim(R.anim.back_pop_exit)
+        .setExitAnim(R.anim.login_pop_back)
         .build()
 }
 
