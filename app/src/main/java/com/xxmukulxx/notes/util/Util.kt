@@ -44,10 +44,8 @@ fun View.navigateBack() = try {
 
 fun getNavOptions(): NavOptions {
     return NavOptions.Builder()
-        .setEnterAnim(R.anim.login_enter)
-        .setExitAnim(R.anim.login_pop_enter)
-        .setPopExitAnim(R.anim.back_exit)
-        .setPopEnterAnim(R.anim.back_pop_exit)
+        .setEnterAnim(R.anim.back_pop_exit)
+        .setExitAnim(R.anim.login_pop_back)
         .build()
 }
 

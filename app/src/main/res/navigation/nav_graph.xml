@@ -6,7 +6,7 @@
     app:startDestination="@id/splashFragment">
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.xxmukulxx.notes.feature_splash.presentation.fragments.SplashFragment"
+        android:name="com.xxmukulxx.notes.feature_splash.presentation.SplashFragment"
         android:label="SplashFragment"
 
         tools:layout="@layout/splash_layout">
