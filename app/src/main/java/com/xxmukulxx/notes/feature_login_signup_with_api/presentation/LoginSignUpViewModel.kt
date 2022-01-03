@@ -15,6 +15,7 @@ import com.xxmukulxx.notes.feature_login_signup_with_api.presentation.fragments.
 import com.xxmukulxx.notes.feature_networking.repository.NetworkRepository
 import com.xxmukulxx.notes.feature_networking.util.ApiResponseWrapper
 import com.xxmukulxx.notes.util.navigateWithAction
+import com.xxmukulxx.notes.util.navigateWithId
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -75,7 +76,7 @@ class LoginSignUpViewModel @Inject constructor(
             R.id.bnLogin -> {
                 if (checkValidation(MyApplication.context)) {
                     isLoading.postValue(true)
-                    performLogin()
+                    performLogin(view)
                 }
 
             }
@@ -104,7 +105,7 @@ class LoginSignUpViewModel @Inject constructor(
         return validation.isValid()
     }
 
-    private fun performLogin() {
+    private fun performLogin(view: View) {
         viewModelScope.launch {
             when (val response = networkRepository.callLoginApi(
                 getEmail().value.toString(),
@@ -113,8 +114,9 @@ class LoginSignUpViewModel @Inject constructor(
                 is ApiResponseWrapper.Success -> {
                     isLoading.postValue(false)
                     Log.e("API RES --->", response.value.toString())
-                    showToast("API RES ---> ${response.value}")
+                    showToast("Logged in Successfully...")
                     userUseCases.insertUser(response.value)
+                    view.navigateWithId(R.id.action_loginFragment_to_mainFragment)
                 }
                 is ApiResponseWrapper.GenericError -> {
                     isLoading.postValue(false)

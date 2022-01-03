@@ -42,7 +42,6 @@ class LoginFragment : BaseFragment() {
             viewModel.setEmail(it.email)
             viewModel.setPass(it.pass)
         }
-
     }
 
     private fun observer() {

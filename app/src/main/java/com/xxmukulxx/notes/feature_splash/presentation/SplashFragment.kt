@@ -38,21 +38,15 @@ class SplashFragment : BaseFragment() {
             override fun onAnimationEnd(p0: Animator?) {
                 val user = userUseCases.getUser()
                 user?.run {
-                    showToast("HOME! COMING SOON!")
+                    b.root.navigateWithId(R.id.action_splashFragment_to_mainFragment)
                 } ?: run {
                     b.root.navigateWithId(R.id.action_splashFragment_to_loginFragment)
                 }
-
             }
 
             override fun onAnimationCancel(p0: Animator?) {}
 
-            override fun onAnimationRepeat(p0: Animator?) {
-//                if (++count > 0) {
-//                    count = 0
-//
-//                }
-            }
+            override fun onAnimationRepeat(p0: Animator?) {}
         })
     }
 }

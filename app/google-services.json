@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "575528566859",
+    "project_id": "cleanarchitecture-4affe",
+    "storage_bucket": "cleanarchitecture-4affe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:575528566859:android:781495295ec5d260874dce",
+        "android_client_info": {
+          "package_name": "com.xxmukulxx.notes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "575528566859-1qgt2rfh8e5bmhh86iequfmq9uakl012.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmNVFdg_p03VaV3j-RE6kl86iZGlKeQvo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "575528566859-1qgt2rfh8e5bmhh86iequfmq9uakl012.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
