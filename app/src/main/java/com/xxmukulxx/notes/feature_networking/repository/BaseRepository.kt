@@ -28,7 +28,7 @@ abstract class BaseRepository {
                                 ApiResponseWrapper.UnauthorizedError
                             }
                             NOT_PROCESSABLE_ENTITY -> {
-                                Log.e("MUKUL res --> ", throwable.response()?.body().toString())
+                                Log.e("RES --> ", throwable.response()?.body().toString())
                                 val errorResponse =
                                     "Email or Password is invalid."
                                 ApiResponseWrapper.UserInvalid(code, errorResponse)
