@@ -1,9 +1,13 @@
 package com.xxmukulxx.notes.common.presentation
 
+import android.view.View
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseActivity
 import com.xxmukulxx.notes.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity() {
