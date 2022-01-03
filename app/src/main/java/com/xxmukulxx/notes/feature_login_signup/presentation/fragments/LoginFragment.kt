@@ -1,12 +1,12 @@
-package com.xxmukulxx.notes.feature_login_signup_with_api.presentation.fragments
+package com.xxmukulxx.notes.feature_login_signup.presentation.fragments
 
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseFragment
 import com.xxmukulxx.notes.databinding.LoginFragBinding
-import com.xxmukulxx.notes.feature_login_signup_with_api.domain.use_cases.UserUseCases
-import com.xxmukulxx.notes.feature_login_signup_with_api.presentation.LoginSignUpViewModel
+import com.xxmukulxx.notes.feature_login_signup.domain.use_cases.UserUseCases
+import com.xxmukulxx.notes.feature_login_signup.presentation.LoginSignUpViewModel
 import com.xxmukulxx.notes.util.navigateWithId
 import com.xxmukulxx.notes.util.spannableString
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,6 +27,7 @@ class LoginFragment : BaseFragment() {
         initBindingsAndViewModel()
         observer()
         init()
+        viewModel.initAppBarLogin(binding.layoutAppBar)
     }
 
     private fun init() {

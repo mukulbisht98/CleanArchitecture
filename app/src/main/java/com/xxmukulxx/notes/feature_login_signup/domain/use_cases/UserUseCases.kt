@@ -1,4 +1,4 @@
-package com.xxmukulxx.notes.feature_login_signup_with_api.domain.use_cases
+package com.xxmukulxx.notes.feature_login_signup.domain.use_cases
 
 data class UserUseCases(
     val getUser: GetUser,

@@ -2,13 +2,13 @@ package com.xxmukulxx.notes.di
 
 import android.app.Application
 import androidx.room.Room
-import com.xxmukulxx.notes.feature_login_signup_with_api.data.data_source.UserDatabase
-import com.xxmukulxx.notes.feature_login_signup_with_api.data.repository.UserDataRepositoryImpl
-import com.xxmukulxx.notes.feature_login_signup_with_api.domain.repository.UserDataRepository
-import com.xxmukulxx.notes.feature_login_signup_with_api.domain.use_cases.DeleteUser
-import com.xxmukulxx.notes.feature_login_signup_with_api.domain.use_cases.GetUser
-import com.xxmukulxx.notes.feature_login_signup_with_api.domain.use_cases.InsertUser
-import com.xxmukulxx.notes.feature_login_signup_with_api.domain.use_cases.UserUseCases
+import com.xxmukulxx.notes.feature_login_signup.data.data_source.UserDatabase
+import com.xxmukulxx.notes.feature_login_signup.data.repository.UserDataRepositoryImpl
+import com.xxmukulxx.notes.feature_login_signup.domain.repository.UserDataRepository
+import com.xxmukulxx.notes.feature_login_signup.domain.use_cases.DeleteUser
+import com.xxmukulxx.notes.feature_login_signup.domain.use_cases.GetUser
+import com.xxmukulxx.notes.feature_login_signup.domain.use_cases.InsertUser
+import com.xxmukulxx.notes.feature_login_signup.domain.use_cases.UserUseCases
 import com.xxmukulxx.notes.feature_note.data.data_source.NoteDatabase
 import com.xxmukulxx.notes.feature_note.data.repository.NoteRepositoryImpl
 import com.xxmukulxx.notes.feature_note.domain.repository.NoteRepository

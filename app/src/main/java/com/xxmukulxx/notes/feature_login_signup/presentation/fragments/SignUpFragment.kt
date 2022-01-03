@@ -1,16 +1,16 @@
-package com.xxmukulxx.notes.feature_login_signup_with_api.presentation.fragments
+package com.xxmukulxx.notes.feature_login_signup.presentation.fragments
 
 import androidx.fragment.app.viewModels
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseFragment
 import com.xxmukulxx.notes.databinding.SignupFragBinding
-import com.xxmukulxx.notes.feature_login_signup_with_api.presentation.LoginSignUpViewModel
+import com.xxmukulxx.notes.feature_login_signup.presentation.LoginSignUpViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SignUpFragment : BaseFragment() {
 
-    private val signUpViewModel: LoginSignUpViewModel by viewModels()
+    private val viewModel: LoginSignUpViewModel by viewModels()
     private lateinit var binding: SignupFragBinding
 
     override val layoutResId: Int
@@ -19,10 +19,11 @@ class SignUpFragment : BaseFragment() {
     override fun onCreateView() {
         initBindingsAndViewModel()
         observer()
+        viewModel.initAppBarSignUp(binding.layoutAppBar)
     }
 
     private fun observer() {
-        signUpViewModel.getIsLoadingLiveData().observe(viewLifecycleOwner, {
+        viewModel.getIsLoadingLiveData().observe(viewLifecycleOwner, {
             if (it) {
                 showLoading()
             } else {
@@ -33,8 +34,7 @@ class SignUpFragment : BaseFragment() {
 
     private fun initBindingsAndViewModel() {
         binding = getBinding() as SignupFragBinding
-        binding.viewModel = signUpViewModel
+        binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
     }
-
 }
