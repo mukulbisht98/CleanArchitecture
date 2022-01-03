@@ -2,7 +2,7 @@ package com.xxmukulxx.notes.feature_main.presentation
 
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseFragment
 import com.xxmukulxx.notes.databinding.MainFragBinding
@@ -23,11 +23,10 @@ class MainFragment(override val layoutResId: Int = R.layout.main_frag) : BaseFra
     }
 
     private fun setUpHomeNavigation() {
-        val navHostFragment = requireActivity().supportFragmentManager
-            .findFragmentById(R.id.nav_home_fragment) as NavHostFragment?
-        NavigationUI.setupWithNavController(
-            binding.bottomNav,
-            navHostFragment!!.navController
+        val navHostFragment =
+            childFragmentManager.findFragmentById(R.id.nav_home_fragment) as NavHostFragment
+        binding.bottomNav.setupWithNavController(
+            navHostFragment.navController
         )
     }
 }

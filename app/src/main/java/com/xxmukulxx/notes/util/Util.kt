@@ -7,9 +7,11 @@ import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.view.View
 import android.widget.TextView
+import androidx.fragment.app.findFragment
 import androidx.navigation.NavDirections
 import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import com.xxmukulxx.notes.MyApplication
 import com.xxmukulxx.notes.R
 
@@ -22,6 +24,12 @@ fun View.navigateWithId(id: Int, bundle: Bundle? = null) = try {
 
 fun View.navigateWithAction(action: NavDirections) = try {
     this.findNavController().navigate(action, getNavOptions())
+} catch (e: Exception) {
+    e.printStackTrace()
+}
+
+fun View.navigateWithViewModel(id:Int)= try {
+    NavHostFragment.findNavController(this.findFragment()).navigate(id)
 } catch (e: Exception) {
     e.printStackTrace()
 }

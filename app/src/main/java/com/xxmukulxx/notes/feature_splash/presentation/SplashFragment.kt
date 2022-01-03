@@ -1,6 +1,7 @@
 package com.xxmukulxx.notes.feature_splash.presentation
 
 import android.animation.Animator
+import androidx.navigation.fragment.findNavController
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseFragment
 import com.xxmukulxx.notes.databinding.SplashLayoutBinding
