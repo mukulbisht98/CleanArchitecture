@@ -15,14 +15,9 @@ abstract class BaseFragment : Fragment() {
     private var activity: BaseActivity? = null
 
     /**
-     * Called from onCreateView () Function
-     */
-//    public abstract fun getLayoutID(): Int
-
-    /**
      * Called from onViewCreated () Function
      */
-    public abstract fun onCreateView();
+     abstract fun onCreateView();
 
     abstract val layoutResId: Int
 

@@ -27,7 +27,6 @@ class LoginFragment : BaseFragment() {
         initBindingsAndViewModel()
         observer()
         init()
-
     }
 
     private fun init() {
@@ -46,7 +45,6 @@ class LoginFragment : BaseFragment() {
 
     }
 
-
     private fun observer() {
         viewModel.getIsLoadingLiveData().observe(viewLifecycleOwner, {
             if (it) {
@@ -55,8 +53,6 @@ class LoginFragment : BaseFragment() {
                 hideLoading()
             }
         })
-
-
     }
 
     private fun initBindingsAndViewModel() {
@@ -64,6 +60,5 @@ class LoginFragment : BaseFragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
     }
-
 
 }

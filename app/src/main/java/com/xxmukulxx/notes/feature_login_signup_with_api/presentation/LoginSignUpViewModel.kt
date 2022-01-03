@@ -1,19 +1,20 @@
 package com.xxmukulxx.notes.feature_login_signup_with_api.presentation
 
+import android.content.Context
 import android.util.Log
 import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.template.validations.Validation
+import com.xxmukulxx.notes.MyApplication
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseViewModel
 import com.xxmukulxx.notes.feature_login_signup_with_api.domain.use_cases.UserUseCases
-import com.xxmukulxx.notes.feature_login_signup_with_api.presentation.fragments.LoginFragment
 import com.xxmukulxx.notes.feature_login_signup_with_api.presentation.fragments.SignUpFragmentDirections
 import com.xxmukulxx.notes.feature_networking.repository.NetworkRepository
 import com.xxmukulxx.notes.feature_networking.util.ApiResponseWrapper
 import com.xxmukulxx.notes.util.navigateWithAction
-import com.xxmukulxx.notes.util.navigateWithId
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -43,7 +44,7 @@ class LoginSignUpViewModel @Inject constructor(
         return email
     }
 
-     fun setEmail(email: String) {
+    fun setEmail(email: String) {
         this.email.postValue(email)
     }
 
@@ -56,7 +57,7 @@ class LoginSignUpViewModel @Inject constructor(
         return password
     }
 
-     fun setPass(pass: String) {
+    fun setPass(pass: String) {
         password.postValue(pass)
     }
 
@@ -72,16 +73,35 @@ class LoginSignUpViewModel @Inject constructor(
     fun handleClick(view: View) {
         when (view.id) {
             R.id.bnLogin -> {
-                isLoading.postValue(true)
-                performLogin()
+                if (checkValidation(MyApplication.context)) {
+                    isLoading.postValue(true)
+                    performLogin()
+                }
 
             }
             R.id.bnSignup -> {
-                isLoading.postValue(true)
-                performSignUp(view)
+                if (checkValidation(MyApplication.context, true)) {
+                    isLoading.postValue(true)
+                    performSignUp(view)
+                }
 
             }
         }
+    }
+
+    private fun checkValidation(context: Context, isFromSignUpScreen: Boolean = false): Boolean {
+        val validation = Validation().apply {
+            if (isFromSignUpScreen) {
+                isEmpty(name.value, context.getString(R.string.enter_your_name))
+            }
+            isEmpty(email.value, context.getString(R.string.enter_email_add))
+            isEmailValid(email.value, context.getString(R.string.enter_valid_email))
+            isEmpty(password.value, context.getString(R.string.enter_your_pass))
+            /*~~~~~~~~~~future use~~~~~~~~~~~~~~~~~*/
+            //isValidPassword(password.value, context.getString(R.string.enter_valid_pass))
+        }
+
+        return validation.isValid()
     }
 
     private fun performLogin() {

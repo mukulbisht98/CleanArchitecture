@@ -80,7 +80,7 @@ abstract class BaseActivity : AppCompatActivity() {
      }
  */
     fun displayInfoDialog(title: Int, message: Int, buttonText: Int) {
-        var builder: AlertDialog.Builder = AlertDialog.Builder(this)
+        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
         builder.setTitle(title)
         builder.setMessage(message)
         builder.setPositiveButton(

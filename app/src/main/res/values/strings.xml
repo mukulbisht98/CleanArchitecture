@@ -9,4 +9,9 @@
     <string name="signup">Sign Up</string>
     <string name="enter_name">Enter name</string>
     <string name="don_t_have_account_signup_here">Don\'t have account? <font color='blue'><u>Signup here</u></font></string>
+    <string name="enter_email_add">Please enter your email.</string>
+    <string name="enter_your_pass">Please enter your password.</string>
+    <string name="enter_valid_email">Please enter valid email address.</string>
+    <string name="enter_valid_pass">Please enter valid password with special characters.</string>
+    <string name="enter_your_name">Please enter your name.</string>
 </resources>

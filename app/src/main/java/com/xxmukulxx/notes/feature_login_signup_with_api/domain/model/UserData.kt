@@ -7,15 +7,6 @@ import com.google.gson.annotations.SerializedName
 
 
 class InvalidUserException(message: String) : Exception(message)
-//
-//@Entity
-//data class UserData(
-//    var token: String,
-//    var email: String,
-//    var username: String,
-//    @PrimaryKey
-//    var id: String
-//)
 
 data class LoginReq(
     @SerializedName("email")
@@ -59,17 +50,3 @@ data class SignUpResponse(
     var name: String = ""
 )
 
-//object UserDataMapper {
-//    fun fromUserResToUserData(res: UserData?): UserData? {
-//        return res?.user?.let {
-//            UserData(
-//                token = res.token,
-//                username = it.name,
-//                email = it.email,
-//                id = it.id
-//            )
-//        } ?: run {
-//            null
-//        }
-//    }
-//}

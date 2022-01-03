@@ -3,7 +3,6 @@ package com.xxmukulxx.notes.feature_login_signup_with_api.presentation.fragments
 import androidx.fragment.app.viewModels
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseFragment
-import com.xxmukulxx.notes.databinding.LoginFragBinding
 import com.xxmukulxx.notes.databinding.SignupFragBinding
 import com.xxmukulxx.notes.feature_login_signup_with_api.presentation.LoginSignUpViewModel
 import dagger.hilt.android.AndroidEntryPoint
