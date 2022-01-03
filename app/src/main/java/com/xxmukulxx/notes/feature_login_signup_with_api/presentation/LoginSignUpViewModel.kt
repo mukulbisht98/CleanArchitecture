@@ -15,7 +15,7 @@ import com.xxmukulxx.notes.feature_login_signup_with_api.presentation.fragments.
 import com.xxmukulxx.notes.feature_networking.repository.NetworkRepository
 import com.xxmukulxx.notes.feature_networking.util.ApiResponseWrapper
 import com.xxmukulxx.notes.util.navigateWithAction
-import com.xxmukulxx.notes.util.navigateWithId
+import com.xxmukulxx.notes.util.navigateWithViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -116,7 +116,7 @@ class LoginSignUpViewModel @Inject constructor(
                     Log.e("API RES --->", response.value.toString())
                     showToast("Logged in Successfully...")
                     userUseCases.insertUser(response.value)
-                    view.navigateWithId(R.id.action_loginFragment_to_mainFragment)
+                    view.navigateWithViewModel(R.id.action_loginFragment_to_mainFragment)
                 }
                 is ApiResponseWrapper.GenericError -> {
                     isLoading.postValue(false)
