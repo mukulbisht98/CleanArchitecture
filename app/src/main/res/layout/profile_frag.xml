@@ -14,9 +14,11 @@
         android:layout_height="match_parent">
 
         <TextView
+            style="@style/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/profile"
+            android:textSize="@dimen/_20ssp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

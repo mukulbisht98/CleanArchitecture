@@ -1,23 +1,30 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.Notes" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/yellow_700</item>
+        <item name="colorPrimaryVariant">@color/yellow_200</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
+        <item name="colorSecondary">@color/yellow_700</item>
+        <item name="colorSecondaryVariant">@color/yellow_200</item>
         <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+
+        <item name="android:statusBarColor">@color/yellow_700</item>
     </style>
 
-    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:windowBackground">@drawable/splash_background</item>
-        <item name="colorPrimary">@color/teal_200</item>
-        <item name="colorPrimaryVariant">@color/teal_700</item>
-        <item name="colorOnPrimary">@color/white</item>
+    <style name="textView" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/yellow_700</item>
+    </style>
+
+    <style name="appBarButton" parent="Theme.Notes">
+        <item name="tint">@color/yellow_700</item>
+        <item name="android:background">@drawable/ripple_bg_night</item>
+    </style>
+
+    <style name="button" parent="Theme.Notes">
+        <item name="android:backgroundTint">@color/yellow_700</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 </resources>

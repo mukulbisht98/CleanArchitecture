@@ -1,8 +1,6 @@
 package com.xxmukulxx.notes.di
 
-import android.app.Application
 import com.xxmukulxx.notes.BuildConfig
-import com.xxmukulxx.notes.MyApplication
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

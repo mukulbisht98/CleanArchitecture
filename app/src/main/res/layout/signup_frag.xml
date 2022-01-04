@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
-            type="com.xxmukulxx.notes.feature_login_signup_with_api.presentation.LoginSignUpViewModel" />
+            type="com.xxmukulxx.notes.feature_login_signup.presentation.LoginSignUpViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,85 +15,65 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        android:paddingHorizontal="30dp"
-        tools:context=".feature_login_signup_with_api.presentation.LoginActivity">
+        tools:context=".feature_login_signup.presentation.LoginActivity">
 
-        <TextView
-            android:id="@+id/tvSign_up"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:fontFamily="@font/licorice_regular"
-            android:text="@string/signup"
-            android:textColor="@color/teal_700"
-            android:textSize="60sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.airbnb.lottie.LottieAnimationView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@id/etEmail"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvSign_up"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"
-            app:lottie_rawRes="@raw/splash_monkey" />
+        <include
+            android:id="@+id/layout_appBar"
+            layout="@layout/app_bar" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/etName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_18sdp"
+            android:layout_marginTop="@dimen/_30sdp"
             android:hint="@string/enter_name"
             android:importantForAutofill="no"
             android:maxLines="1"
             android:onTextChanged="@{viewModel::onNameChanged}"
-            android:layout_marginTop="@dimen/_30sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvSign_up" />
+            app:layout_constraintTop_toBottomOf="@id/layout_appBar" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_18sdp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:hint="@string/enter_email_address"
             android:importantForAutofill="no"
             android:inputType="textEmailAddress"
-            android:layout_marginTop="@dimen/_15sdp"
             android:maxLines="1"
             android:onTextChanged="@{viewModel::onEmailChanged}"
-            app:layout_constraintTop_toBottomOf="@id/etName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-             />
+            app:layout_constraintTop_toBottomOf="@id/etName" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_18sdp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:hint="@string/enter_email_password"
             android:importantForAutofill="no"
             android:inputType="textPassword"
             android:maxLines="1"
             android:onTextChanged="@{viewModel::onPasswordChanged}"
-            android:layout_marginTop="@dimen/_15sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/etEmail" />
 
         <Button
             android:id="@+id/bnSignup"
+            style="@style/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_18sdp"
+            android:layout_marginTop="@dimen/_20sdp"
             android:onClick="@{viewModel::handleClick}"
             android:text="@string/signup"
-            android:layout_marginTop="@dimen/_20sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/etPassword" />

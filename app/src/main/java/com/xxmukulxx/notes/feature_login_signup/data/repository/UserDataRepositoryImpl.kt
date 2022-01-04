@@ -1,8 +1,8 @@
-package com.xxmukulxx.notes.feature_login_signup_with_api.data.repository
+package com.xxmukulxx.notes.feature_login_signup.data.repository
 
-import com.xxmukulxx.notes.feature_login_signup_with_api.data.data_source.UserDao
-import com.xxmukulxx.notes.feature_login_signup_with_api.domain.model.UserData
-import com.xxmukulxx.notes.feature_login_signup_with_api.domain.repository.UserDataRepository
+import com.xxmukulxx.notes.feature_login_signup.data.data_source.UserDao
+import com.xxmukulxx.notes.feature_login_signup.domain.model.UserData
+import com.xxmukulxx.notes.feature_login_signup.domain.repository.UserDataRepository
 
 class UserDataRepositoryImpl(private val userDao: UserDao) : UserDataRepository {
     override fun getUser(): UserData? {

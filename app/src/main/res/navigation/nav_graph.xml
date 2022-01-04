@@ -14,49 +14,49 @@
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/loginFragment"
             app:popUpTo="@id/splashFragment"
-            app:popUpToInclusive="true"
             app:enterAnim="@anim/back_pop_exit"
-            app:exitAnim="@anim/login_pop_back"
-            />
+            app:exitAnim="@anim/login_pop_enter"
+            app:launchSingleTop="true"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_splashFragment_to_mainFragment"
             app:destination="@id/mainFragment"
             app:launchSingleTop="true"
-            app:popUpTo="@id/splashFragment"
-            app:popUpToInclusive="false" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.xxmukulxx.notes.feature_login_signup_with_api.presentation.fragments.LoginFragment"
-        android:label="LoginFragment"
-        tools:layout="@layout/login_frag">
-        <argument
-            android:name="email"
-            app:argType="string"
-            android:defaultValue=""
-            />
-        <argument
-            android:name="pass"
-            app:argType="string"
-            android:defaultValue=""
-            />
-        <action
-            android:id="@+id/action_loginFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment"
             app:enterAnim="@anim/back_pop_exit"
-            app:exitAnim="@anim/login_pop_back"
-            />
-        <action
-            android:id="@+id/action_loginFragment_to_mainFragment"
-            app:destination="@id/mainFragment"
-            app:popUpTo="@id/loginFragment"
+            app:exitAnim="@anim/login_pop_enter"
+            app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.xxmukulxx.notes.feature_login_signup.presentation.fragments.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/login_frag">
+        <argument
+            android:name="email"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="pass"
+            android:defaultValue=""
+            app:argType="string" />
+        <action
+            android:id="@+id/action_loginFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/back_pop_exit"
+            app:exitAnim="@anim/login_pop_enter"
+            />
+    </fragment>
+
+    <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.xxmukulxx.notes.feature_login_signup_with_api.presentation.fragments.SignUpFragment"
+        android:name="com.xxmukulxx.notes.feature_login_signup.presentation.fragments.SignUpFragment"
         android:label="SignUpFragment"
         tools:layout="@layout/signup_frag">
         <action

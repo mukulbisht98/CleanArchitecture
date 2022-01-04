@@ -1,4 +1,4 @@
-package com.xxmukulxx.notes.feature_login_signup_with_api.domain.model
+package com.xxmukulxx.notes.feature_login_signup.domain.model
 
 import androidx.room.Embedded
 import androidx.room.Entity

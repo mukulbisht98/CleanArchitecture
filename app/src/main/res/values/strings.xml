@@ -8,7 +8,7 @@
     <string name="or">OR</string>
     <string name="signup">Sign Up</string>
     <string name="enter_name">Enter name</string>
-    <string name="don_t_have_account_signup_here">Don\'t have account? <font color='blue'><u>Signup here</u></font></string>
+    <string name="don_t_have_account_signup_here">Don\'t have account? Signup here</string>
     <string name="profile">Profile</string>
     <string name="cart">Cart</string>
     <string name="home">Home</string>
@@ -17,4 +17,5 @@
     <string name="enter_valid_email">Please enter valid email address.</string>
     <string name="enter_valid_pass">Please enter valid password with special characters.</string>
     <string name="enter_your_name">Please enter your name.</string>
+    <string name="app_bar_button">appBarButton</string>
 </resources>

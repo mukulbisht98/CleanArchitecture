@@ -1,4 +1,4 @@
-package com.xxmukulxx.notes.feature_login_signup_with_api.presentation
+package com.xxmukulxx.notes.feature_login_signup.presentation
 
 import android.content.Context
 import android.util.Log
@@ -10,10 +10,13 @@ import com.template.validations.Validation
 import com.xxmukulxx.notes.MyApplication
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseViewModel
-import com.xxmukulxx.notes.feature_login_signup_with_api.domain.use_cases.UserUseCases
-import com.xxmukulxx.notes.feature_login_signup_with_api.presentation.fragments.SignUpFragmentDirections
+import com.xxmukulxx.notes.databinding.AppBarBinding
+import com.xxmukulxx.notes.feature_login_signup.domain.use_cases.UserUseCases
+import com.xxmukulxx.notes.feature_login_signup.presentation.fragments.SignUpFragmentDirections
 import com.xxmukulxx.notes.feature_networking.repository.NetworkRepository
 import com.xxmukulxx.notes.feature_networking.util.ApiResponseWrapper
+import com.xxmukulxx.notes.util.getString
+import com.xxmukulxx.notes.util.navigateBack
 import com.xxmukulxx.notes.util.navigateWithAction
 import com.xxmukulxx.notes.util.navigateWithViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -35,6 +38,18 @@ class LoginSignUpViewModel @Inject constructor(
     private val name: MutableLiveData<String> =
         MutableLiveData("")
 
+
+    fun initAppBarSignUp(layoutAppBar: AppBarBinding) {
+        layoutAppBar.tvTitle.text = getString(R.string.signup)
+        layoutAppBar.ivBack.setOnClickListener { handleClick(it) }
+        layoutAppBar.ivInfo.setOnClickListener { handleClick(it) }
+    }
+
+    fun initAppBarLogin(layoutAppBar: AppBarBinding) {
+        layoutAppBar.tvTitle.text = getString(R.string.login)
+        layoutAppBar.ivBack.visibility = View.GONE
+        layoutAppBar.ivInfo.visibility = View.GONE
+    }
 
     fun onEmailChanged(s: CharSequence, start: Int, before: Int, count: Int) {
         if (s.toString().isNotBlank())
@@ -85,6 +100,11 @@ class LoginSignUpViewModel @Inject constructor(
                     isLoading.postValue(true)
                     performSignUp(view)
                 }
+            }
+            R.id.ivBack -> {
+                view.navigateBack()
+            }
+            R.id.ivInfo -> {
 
             }
         }
