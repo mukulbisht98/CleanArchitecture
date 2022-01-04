@@ -1,5 +1,6 @@
 package com.xxmukulxx.notes
 
+import android.annotation.SuppressLint
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 
@@ -12,6 +13,12 @@ class MyApplication : Application() {
 
     init {
         context = this
+    }
+
+    @SuppressLint("WrongConstant")
+    override fun onCreate() {
+        super.onCreate()
+
     }
 
 }

@@ -1,7 +1,6 @@
 package com.xxmukulxx.notes.feature_splash.presentation
 
 import android.animation.Animator
-import androidx.navigation.fragment.findNavController
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseFragment
 import com.xxmukulxx.notes.databinding.SplashLayoutBinding
@@ -14,10 +13,8 @@ import javax.inject.Inject
 class SplashFragment : BaseFragment() {
 
     private lateinit var b: SplashLayoutBinding
-
     @Inject
     lateinit var userUseCases: UserUseCases
-    var count = 0
 
     override val layoutResId: Int
         get() = R.layout.splash_layout
@@ -27,7 +24,6 @@ class SplashFragment : BaseFragment() {
         initAnimation()
     }
 
-
     private fun initBindingsAndViewModel() {
         b = getBinding() as SplashLayoutBinding
     }
@@ -35,7 +31,6 @@ class SplashFragment : BaseFragment() {
     private fun initAnimation() {
         b.anim.addAnimatorListener(object : Animator.AnimatorListener {
             override fun onAnimationStart(p0: Animator?) {}
-
             override fun onAnimationEnd(p0: Animator?) {
                 val user = userUseCases.getUser()
                 user?.run {
@@ -44,9 +39,7 @@ class SplashFragment : BaseFragment() {
                     b.root.navigateWithId(R.id.action_splashFragment_to_loginFragment)
                 }
             }
-
             override fun onAnimationCancel(p0: Animator?) {}
-
             override fun onAnimationRepeat(p0: Animator?) {}
         })
     }
