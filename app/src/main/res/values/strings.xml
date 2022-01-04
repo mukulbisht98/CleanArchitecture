@@ -18,4 +18,5 @@
     <string name="enter_valid_pass">Please enter valid password with special characters.</string>
     <string name="enter_your_name">Please enter your name.</string>
     <string name="app_bar_button">appBarButton</string>
+    <string name="logout">logout</string>
 </resources>

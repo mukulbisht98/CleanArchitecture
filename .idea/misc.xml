@@ -3,11 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/drawable/button_cut_edge.xml" value="0.2521172638436482" />
+        <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/drawable/ic_add_a_photo.xml" value="0.2521172638436482" />
         <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/drawable/ripple_bg_day.xml" value="0.2523026315789474" />
         <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/drawable/ripple_bg_night.xml" value="0.2523026315789474" />
         <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/drawable/splash_background.xml" value="0.403125" />
         <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/layout/activity_login.xml" value="0.34993270524899056" />
-        <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/layout/activity_main.xml" value="0.3729166666666667" />
+        <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/layout/activity_main.xml" value="0.2292768959435626" />
         <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/layout/activity_notes.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/layout/app_bar.xml" value="0.2444078947368421" />
         <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/layout/cart_frag.xml" value="0.2444078947368421" />

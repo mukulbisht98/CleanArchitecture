@@ -17,7 +17,7 @@ abstract class BaseFragment : Fragment() {
     /**
      * Called from onViewCreated () Function
      */
-     abstract fun onCreateView();
+    abstract fun onCreateView()
 
     abstract val layoutResId: Int
 
