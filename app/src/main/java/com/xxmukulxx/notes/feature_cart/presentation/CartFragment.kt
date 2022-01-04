@@ -4,7 +4,9 @@ import androidx.fragment.app.viewModels
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseFragment
 import com.xxmukulxx.notes.databinding.CartFragBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CartFragment(override val layoutResId: Int = R.layout.cart_frag) : BaseFragment() {
     private val viewModel: CartViewModel by viewModels()
     private lateinit var binding: CartFragBinding

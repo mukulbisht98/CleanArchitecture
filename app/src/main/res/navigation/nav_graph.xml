@@ -6,24 +6,24 @@
     app:startDestination="@id/splashFragment">
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.xxmukulxx.notes.feature_splash.presentation.SplashFragment"
+        android:name="com.xxmukulxx.notes.feature_splash.presentation.fragments.SplashFragment"
         android:label="SplashFragment"
 
         tools:layout="@layout/splash_layout">
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/loginFragment"
-            app:popUpTo="@id/splashFragment"
             app:enterAnim="@anim/back_pop_exit"
             app:exitAnim="@anim/login_pop_enter"
             app:launchSingleTop="true"
+            app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_splashFragment_to_mainFragment"
             app:destination="@id/mainFragment"
-            app:launchSingleTop="true"
             app:enterAnim="@anim/back_pop_exit"
             app:exitAnim="@anim/login_pop_enter"
+            app:launchSingleTop="true"
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -47,11 +47,10 @@
         <action
             android:id="@+id/action_loginFragment_to_mainFragment"
             app:destination="@id/mainFragment"
-            app:popUpTo="@id/loginFragment"
-            app:popUpToInclusive="true"
             app:enterAnim="@anim/back_pop_exit"
             app:exitAnim="@anim/login_pop_enter"
-            />
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment

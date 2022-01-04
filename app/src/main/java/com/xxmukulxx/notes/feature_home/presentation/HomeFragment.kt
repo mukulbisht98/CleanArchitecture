@@ -4,7 +4,9 @@ import androidx.fragment.app.viewModels
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseFragment
 import com.xxmukulxx.notes.databinding.HomeFragBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment(override val layoutResId: Int = R.layout.home_frag) : BaseFragment() {
 
     private val viewModel: HomeViewModel by viewModels()

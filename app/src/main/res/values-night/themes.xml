@@ -12,6 +12,8 @@
         <!-- Customize your theme here. -->
 
         <item name="android:statusBarColor">@color/yellow_700</item>
+
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.SmallComponent</item>
     </style>
 
     <style name="textView" parent="Widget.AppCompat.TextView">
@@ -26,5 +28,15 @@
     <style name="button" parent="Theme.Notes">
         <item name="android:backgroundTint">@color/yellow_700</item>
         <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">4dp</item>
+    </style>
+
+    <style name="card" parent="CardView">
+        <item name="android:backgroundTint">@color/card_night</item>
+        <item name="cardCornerRadius">@dimen/_16sdp</item>
     </style>
 </resources>
