@@ -6,11 +6,14 @@ import androidx.navigation.ui.setupWithNavController
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseFragment
 import com.xxmukulxx.notes.databinding.MainFragBinding
+import com.xxmukulxx.notes.util.hide
 
 class MainFragment(override val layoutResId: Int = R.layout.main_frag) : BaseFragment() {
 
-    private val viewModel: MainViewModel by viewModels()
     private lateinit var binding: MainFragBinding
+
+    private val viewModel: MainViewModel by viewModels()
+
     override fun onCreateView() {
         initBindingsAndViewModel()
         setUpHomeNavigation()
@@ -28,5 +31,11 @@ class MainFragment(override val layoutResId: Int = R.layout.main_frag) : BaseFra
         binding.bottomNav.setupWithNavController(
             navHostFragment.navController
         )
+    }
+
+    fun setAppBar(title: String) {
+        binding.appBar.tvTitle.text = title
+        binding.appBar.ivBack.hide()
+        binding.appBar.ivInfo.hide()
     }
 }

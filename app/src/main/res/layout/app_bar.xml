@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_50sdp"
+    android:layout_height="wrap_content"
     android:gravity="center_vertical"
     android:orientation="horizontal"
     android:translationZ="5dp">
@@ -13,7 +13,7 @@
         android:layout_height="@dimen/_38sdp"
         android:layout_marginHorizontal="@dimen/_5sdp"
         android:contentDescription="@string/app_bar_button"
-        android:padding="@dimen/_8sdp"
+        android:padding="@dimen/_10sdp"
         android:src="@drawable/ic_back" />
 
     <TextView
@@ -35,6 +35,6 @@
         android:layout_height="@dimen/_38sdp"
         android:layout_marginHorizontal="@dimen/_5sdp"
         android:contentDescription="@string/app_bar_button"
-        android:padding="@dimen/_8sdp"
+        android:padding="@dimen/_10sdp"
         android:src="@drawable/ic_info" />
 </LinearLayout>

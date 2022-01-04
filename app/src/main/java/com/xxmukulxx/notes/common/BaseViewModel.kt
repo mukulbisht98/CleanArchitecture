@@ -1,12 +1,11 @@
 package com.xxmukulxx.notes.common
 
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.xxmukulxx.notes.MyApplication
 import com.xxmukulxx.notes.R
-import com.xxmukulxx.notes.util.Utilities
+import com.xxmukulxx.notes.util.toast
 
 abstract class BaseViewModel() : ViewModel() {
     protected val isLoading = MutableLiveData<Boolean>()
@@ -21,7 +20,7 @@ abstract class BaseViewModel() : ViewModel() {
     }
 
     fun showToast(message: String) {
-        Utilities.showToast(message)
+        toast(message)
     }
 
     protected fun handleNetworkError() {

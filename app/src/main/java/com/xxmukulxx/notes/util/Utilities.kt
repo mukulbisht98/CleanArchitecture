@@ -8,10 +8,6 @@ import com.xxmukulxx.notes.MyApplication
 
 object Utilities {
 
-    fun showToast(message:String){
-        Toast.makeText(MyApplication.context, message, Toast.LENGTH_SHORT).show()
-    }
-
     //Hide Keyboard
     fun hideSoftKeyboard(activity: Activity) {
         val inputMethodManager =

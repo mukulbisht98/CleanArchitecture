@@ -16,7 +16,6 @@ class SplashFragment(override val layoutResId: Int = R.layout.splash_layout) : B
     override fun onCreateView() {
         initBindingsAndViewModel()
         viewModel.initAnimator(b)
-        viewModel.setDarkMode(null)
     }
 
     private fun initBindingsAndViewModel() {

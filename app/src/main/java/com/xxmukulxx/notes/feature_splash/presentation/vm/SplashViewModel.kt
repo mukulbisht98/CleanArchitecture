@@ -1,7 +1,6 @@
 package com.xxmukulxx.notes.feature_splash.presentation.vm
 
 import android.animation.Animator
-import androidx.appcompat.app.AppCompatDelegate
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseViewModel
 import com.xxmukulxx.notes.databinding.SplashLayoutBinding
@@ -34,16 +33,6 @@ class SplashViewModel @Inject constructor(private val userUseCases: UserUseCases
             b.root.navigateWithId(R.id.action_splashFragment_to_mainFragment)
         } ?: run {
             b.root.navigateWithId(R.id.action_splashFragment_to_loginFragment)
-        }
-    }
-
-    fun setDarkMode(active: Boolean?) {
-        active?.let {
-            if (it) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            } else {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            }
         }
     }
 

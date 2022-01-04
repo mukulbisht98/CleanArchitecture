@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Notes</string>
-    <string name="network_error">There is some error in Network, please check...</string>
-    <string name="loading">Loading...</string>
+    <string name="network_error">There is some error in Network, please check…</string>
+    <string name="loading">Loading…</string>
     <string name="enter_email_address">Enter mail address</string>
     <string name="enter_email_password">Enter email password</string>
     <string name="login">Login</string>
@@ -19,4 +19,8 @@
     <string name="enter_your_name">Please enter your name.</string>
     <string name="app_bar_button">appBarButton</string>
     <string name="logout">logout</string>
+    <string name="light">light</string>
+    <string name="dark">dark</string>
+    <string name="system">system</string>
+    <string name="set_app_theme">Set App Theme</string>
 </resources>

@@ -9,6 +9,8 @@ import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.findFragment
 import androidx.navigation.NavDirections
 import androidx.navigation.NavOptions
@@ -71,6 +73,39 @@ fun TextView.spannableString(stringId: Int, startPos: Int, endPos: Int, handleCl
     } catch (e: Exception) {
         e.printStackTrace()
     }
+
+
+fun View.hide() {
+    this.visibility = View.GONE
+}
+
+fun View.show() {
+    this.visibility = View.VISIBLE
+}
+
+fun View.invisible() {
+    this.visibility = View.INVISIBLE
+}
+
+fun toggleDarkMode(active: Boolean?) {
+    active?.let {
+        if (it) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+    } ?: run {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+    }
+}
+
+fun toast(message: String) {
+    Toast.makeText(MyApplication.context, message, Toast.LENGTH_SHORT).show()
+}
+
+fun String.capitalize(): String {
+    return this.first().uppercase() + this.substring(1)
+}
 
 fun getString(id: Int): String {
     return MyApplication.context.getString(id)

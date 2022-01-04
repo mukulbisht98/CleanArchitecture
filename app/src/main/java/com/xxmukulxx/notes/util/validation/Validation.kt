@@ -1,5 +1,7 @@
-package com.template.validations
-import com.xxmukulxx.notes.util.Utilities
+package com.xxmukulxx.notes.util.validation
+
+import com.template.validations.*
+import com.xxmukulxx.notes.util.toast
 
 
 class Validation() {
@@ -8,7 +10,6 @@ class Validation() {
     init {
         validators = ArrayList()
     }
-
 
 
     fun isEmpty(editable: String?, message: String): Validation {
@@ -32,12 +33,11 @@ class Validation() {
     }
 
 
-
     fun isValid(): Boolean {
         validators.let {
             it?.forEach { validator ->
                 if (!validator.isValid()) {
-                    Utilities.showToast(validator.message().toString())
+                    toast(validator.message().toString())
                     return false
                 }
             }
