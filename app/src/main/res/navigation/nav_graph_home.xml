@@ -34,5 +34,18 @@
         <action
             android:id="@+id/action_nav_graph_profile_to_nav_graph_cart"
             app:destination="@id/nav_graph_cart" />
+        <action
+            android:id="@+id/action_nav_graph_profile_to_menuFragment"
+            app:destination="@id/nav_graph_menu" />
     </fragment>
+    <fragment
+        android:id="@+id/nav_graph_menu"
+        android:name="com.xxmukulxx.notes.feature_menu.presentation.fragment.MenuFragment"
+        android:label="MenuFragment"
+        tools:layout="@layout/menu_frag">
+        <action
+            android:id="@+id/action_menuFragment_to_nav_graph_profile"
+            app:destination="@id/nav_graph_profile" />
+    </fragment>
+
 </navigation>

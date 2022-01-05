@@ -4,10 +4,8 @@ import androidx.fragment.app.viewModels
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseFragment
 import com.xxmukulxx.notes.databinding.ProfileFragBinding
-import com.xxmukulxx.notes.feature_login_signup.domain.use_cases.UserUseCases
 import com.xxmukulxx.notes.feature_main.presentation.MainFragment
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 
 @AndroidEntryPoint
@@ -16,9 +14,6 @@ class ProfileFragment(override val layoutResId: Int = R.layout.profile_frag) : B
     private lateinit var binding: ProfileFragBinding
 
     private val viewModel: ProfileViewModel by viewModels()
-
-    @Inject
-    lateinit var userUseCases: UserUseCases
 
     override fun onCreateView() {
         initBindingsAndViewModel()
