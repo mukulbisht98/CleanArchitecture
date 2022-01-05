@@ -9,21 +9,84 @@
             type="com.xxmukulxx.notes.feature_menu.presentation.vm.MenuViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:overScrollMode="never">
 
-
-        <TextView
-            style="@style/textView"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/menu"
-            android:textSize="@dimen/_20ssp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/_12sdp"
+            android:paddingTop="@dimen/_12sdp">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/tvAppTheme"
+                style="@style/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/set_app_theme"
+                android:textSize="@dimen/_12ssp" />
+
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/mbToggle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:checkedButton="@id/mbSystem"
+                app:selectionRequired="true"
+                app:singleSelection="true">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/mbLight"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/light"
+                    android:textSize="@dimen/_8ssp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/mbDark"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/dark"
+                    android:textSize="@dimen/_8ssp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/mbSystem"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/system"
+                    android:textSize="@dimen/_8ssp" />
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|end"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvIsAdmin"
+                    style="@style/textView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/admin_account" />
+
+                <Button
+                    android:id="@+id/bnLogout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{viewModel::handleClicks}"
+                    android:text="@string/logout" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </layout>

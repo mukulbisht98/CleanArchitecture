@@ -79,7 +79,6 @@
             android:onClick="@{viewModel::handleClick}"
             android:text="@string/don_t_have_account_signup_here"
             android:textAlignment="center"
-            android:textColor="@color/text_grey"
             android:textSize="@dimen/_20ssp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

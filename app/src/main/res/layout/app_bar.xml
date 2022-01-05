@@ -19,7 +19,7 @@
 
     <TextView
         android:id="@+id/tvTitle"
-        style="@style/textView"
+        style="@style/headingView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"

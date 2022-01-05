@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="yellow_200">#FFF59D</color>
-    <color name="yellow_700">#FBC02D</color>
-    <color name="teal_200">#80CBC4</color>
-    <color name="teal_700">#00796B</color>
+    <color name="night_theme_200">#FFF59D</color>
+    <color name="night_theme_700">#FBC02D</color>
+    <color name="day_theme_200">#F48FB1</color>
+    <color name="day_theme_700">#C2185B</color>
 
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-
-    <color name="text_grey">#8A8A8A</color>
-
+    <color name="white_100">#FFFFFFFF</color>
+    <color name="white_20">#33FFFFFF</color>
     <color name="white_10">#1AFFFFFF</color>
+    <color name="black_100">#FF000000</color>
+    <color name="black_20">#33000000</color>
     <color name="black_10">#1A000000</color>
 
-    <color name="card_day">#4DB6AC</color>
+
+    <color name="text_day">#3A3A3A</color>
+    <color name="text_night">#8A8A8A</color>
+
+    <color name="card_day">#FFFFFF</color>
     <color name="card_night">#3A3A3A</color>
+
     <color name="light_grey">#2F333333</color>
     <color name="chat_view_bg">#EEEEEE</color>
 </resources>

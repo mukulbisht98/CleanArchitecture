@@ -2,17 +2,18 @@
     <!-- Base application theme. -->
     <style name="Theme.Notes" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/teal_700</item>
-        <item name="colorPrimaryVariant">@color/teal_200</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimary">@color/day_theme_700</item>
+        <item name="colorPrimaryVariant">@color/day_theme_200</item>
+        <item name="colorOnPrimary">@color/white_100</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSecondary">@color/day_theme_200</item>
+        <item name="colorSecondaryVariant">@color/day_theme_200</item>
+        <item name="colorOnSecondary">@color/white_100</item>
 
-        <item name="android:statusBarColor">@color/white</item>
-        <item name="android:windowBackground">@color/white</item>
+        <item name="android:statusBarColor">@color/white_100</item>
+        <item name="android:windowBackground">@color/white_100</item>
         <item name="android:windowLightStatusBar">true</item>
+        <item name="appBarLayoutStyle">@style/imageView</item>
 
         <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.SmallComponent</item>
     </style>
@@ -21,20 +22,33 @@
         <item name="android:background">@color/card_day</item>
     </style>
 
-
     <style name="textView" parent="Widget.AppCompat.TextView">
-        <item name="android:textColor">@color/teal_700</item>
+        <item name="android:textColor">@color/text_day</item>
+    </style>
+
+    <style name="headingView" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/day_theme_700</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="appBarButton" parent="Theme.Notes">
-        <item name="android:tint">@color/teal_700</item>
+        <item name="android:tint">@color/day_theme_700</item>
         <item name="android:background">@drawable/ripple_bg_day</item>
     </style>
 
+    <style name="divider" parent="Theme.Notes">
+        <item name="android:background">@color/black_20</item>
+    </style>
+
     <style name="button" parent="Widget.MaterialComponents.Button">
-        <item name="android:backgroundTint">@color/teal_700</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:backgroundTint">@color/day_theme_700</item>
+        <item name="android:textColor">@color/white_100</item>
+    </style>
+
+    <style name="button_dim" parent="Theme.Notes">
+        <item name="android:backgroundTint">@color/card_night</item>
+        <item name="android:textColor">@color/day_theme_200</item>
+        <item name="cornerRadius">@dimen/_20sdp</item>
     </style>
 
     <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">

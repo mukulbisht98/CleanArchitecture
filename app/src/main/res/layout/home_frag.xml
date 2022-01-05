@@ -11,9 +11,11 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingHorizontal="@dimen/_12sdp"
+        android:paddingTop="@dimen/_12sdp">
 
-        <include layout="@layout/layout_home_toolbar"/>
+        <include layout="@layout/layout_home_toolbar" />
 
         <TextView
             style="@style/textView"

@@ -1,5 +1,6 @@
 package com.xxmukulxx.notes.util
 
+import android.app.Activity
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
@@ -8,6 +9,8 @@ import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.view.View
+import android.view.inputmethod.InputMethodManager
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
@@ -16,10 +19,11 @@ import androidx.navigation.NavDirections
 import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import com.xxmukulxx.notes.MyApplication
+import com.bumptech.glide.Glide
+import com.xxmukulxx.notes.MyApplication.AppContext.appContext
 import com.xxmukulxx.notes.R
 
-
+// NavigationComponents Utils
 fun View.navigateWithId(id: Int, bundle: Bundle? = null) = try {
     this.findNavController().navigate(id, bundle)
 } catch (e: Exception) {
@@ -51,6 +55,7 @@ fun getNavOptions(): NavOptions {
         .build()
 }
 
+// TextView Utils
 fun TextView.spannableString(stringId: Int, startPos: Int, endPos: Int, handleClick: () -> Unit) =
     try {
         val ss = SpannableString(getString(stringId))
@@ -61,7 +66,7 @@ fun TextView.spannableString(stringId: Int, startPos: Int, endPos: Int, handleCl
         }
         ss.setSpan(clickableSpan, startPos, endPos, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         ss.setSpan(
-            ForegroundColorSpan(getColor(R.color.teal_700)),
+            ForegroundColorSpan(getColor(R.color.day_theme_700)),
             startPos,
             endPos,
             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
@@ -74,7 +79,7 @@ fun TextView.spannableString(stringId: Int, startPos: Int, endPos: Int, handleCl
         e.printStackTrace()
     }
 
-
+// Visibility Utils
 fun View.hide() {
     this.visibility = View.GONE
 }
@@ -87,6 +92,7 @@ fun View.invisible() {
     this.visibility = View.INVISIBLE
 }
 
+// DarkMode Utils
 fun toggleDarkMode(active: Boolean?) {
     active?.let {
         if (it) {
@@ -99,18 +105,50 @@ fun toggleDarkMode(active: Boolean?) {
     }
 }
 
-fun toast(message: String) {
-    Toast.makeText(MyApplication.context, message, Toast.LENGTH_SHORT).show()
+// Keyboard Utils
+fun hideSoftKeyboard(activity: Activity) {
+    val inputMethodManager =
+        activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+    var view = activity.currentFocus
+    //If no view currently has focus, create a new one, just so we can grab a window token from it
+    if (view == null) {
+        view = View(activity)
+    }
+    inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
 }
 
+// Toast Utils
+fun toast(message: String) {
+    Toast.makeText(appContext, message, Toast.LENGTH_SHORT).show()
+}
+
+
+// String Utils
 fun String.capitalize(): String {
     return this.first().uppercase() + this.substring(1)
 }
 
+// Resources Utils
 fun getString(id: Int): String {
-    return MyApplication.context.getString(id)
+    return appContext.getString(id)
 }
 
 fun getColor(id: Int): Int {
-    return MyApplication.context.getColor(id)
+    return appContext.getColor(id)
+}
+
+// Glide Utils
+fun ImageView.setImgProfile(url: String?) {
+    if (url.isNullOrEmpty()) {
+        Glide.with(appContext).load(R.drawable.ic_profile)
+            .circleCrop()
+            .into(this)
+    } else {
+        Glide.with(appContext).load(url)
+            .error(R.drawable.ic_profile)
+            .thumbnail(Glide.with(appContext).load(R.drawable.loader_gif).circleCrop())
+            .placeholder(R.drawable.ic_profile)
+            .circleCrop()
+            .into(this)
+    }
 }

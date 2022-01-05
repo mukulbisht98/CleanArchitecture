@@ -25,7 +25,7 @@ abstract class BaseViewModel() : ViewModel() {
 
     protected fun handleNetworkError() {
         isLoading.postValue(false)
-        displayError.postValue(MyApplication.context.resources.getString(R.string.network_error))
+        displayError.postValue(MyApplication.appContext.resources.getString(R.string.network_error))
     }
 
     protected fun handleUnauthorizedError() {

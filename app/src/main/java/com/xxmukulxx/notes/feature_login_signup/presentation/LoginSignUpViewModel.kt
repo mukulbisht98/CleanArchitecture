@@ -89,14 +89,14 @@ class LoginSignUpViewModel @Inject constructor(
     fun handleClick(view: View) {
         when (view.id) {
             R.id.bnLogin -> {
-                if (checkValidation(MyApplication.context)) {
+                if (checkValidation(MyApplication.appContext)) {
                     isLoading.postValue(true)
                     performLogin(view)
                 }
 
             }
             R.id.bnSignup -> {
-                if (checkValidation(MyApplication.context, true)) {
+                if (checkValidation(MyApplication.appContext, true)) {
                     isLoading.postValue(true)
                     performSignUp(view)
                 }

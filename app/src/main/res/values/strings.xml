@@ -24,6 +24,7 @@
     <string name="system">system</string>
     <string name="set_app_theme">Set App Theme</string>
     <string name="menu">Menu</string>
+    <string name="admin_account">Administrator Account</string>
     <string name="shopping_app">Shopping App</string>
     <string name="search">Search</string>
 </resources>

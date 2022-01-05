@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_graph_profile"
-        android:name="com.xxmukulxx.notes.feature_profile.presentation.ProfileFragment"
+        android:name="com.xxmukulxx.notes.feature_profile.presentation.fragment.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/profile_frag">
         <action
