@@ -1,7 +1,6 @@
 package com.xxmukulxx.notes.common.presentation.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.annotation.LayoutRes
@@ -11,27 +10,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.xxmukulxx.notes.BR
 import com.xxmukulxx.notes.R
 
-
 class RecyclerAdapter<T>(
     private val items: MutableList<T>,
     @LayoutRes val layoutId: Int,
     val itemClicked: (position: Int) -> Unit
-) :
-    RecyclerView.Adapter<RecyclerAdapter.VH<T>>() {
+) : RecyclerView.Adapter<RecyclerAdapter.VH<T>>() {
     private val animatedPosition: HashSet<Int> by lazy { HashSet() }
     private var inflater: LayoutInflater? = null
-    private var onItemClick: OnItemClick? = null
-    private var isAnimation = false
-
-    fun setAnimations(boolean: Boolean) {
-        isAnimation = boolean
-    }
-
-    fun getAllItems() = items
-
-    fun setOnItemClick(onItemClick: OnItemClick?) {
-        this.onItemClick = onItemClick
-    }
+    var isAnimation = false
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH<T> {
         val layoutInflater = inflater ?: LayoutInflater.from(parent.context)
@@ -67,16 +53,11 @@ class RecyclerAdapter<T>(
         this.animatedPosition.add(Integer.valueOf(position))
     }
 
-
     class VH<T>(private val binding: ViewDataBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(model: T) {
             binding.setVariable(BR.recyclerData, model)
             binding.executePendingBindings()
         }
-    }
-
-    interface OnItemClick {
-        fun onClick(position: Int, view: View)
     }
 }

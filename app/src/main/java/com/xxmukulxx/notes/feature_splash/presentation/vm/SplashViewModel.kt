@@ -1,6 +1,7 @@
 package com.xxmukulxx.notes.feature_splash.presentation.vm
 
 import android.animation.Animator
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseViewModel
 import com.xxmukulxx.notes.databinding.SplashLayoutBinding
@@ -28,11 +29,15 @@ class SplashViewModel @Inject constructor(private val userUseCases: UserUseCases
     }
 
     fun proceed(b: SplashLayoutBinding) {
+        val extras = FragmentNavigatorExtras(
+            b.anim to "shared_card_loader"
+        )
         val user = userUseCases.getUser()
         user?.run {
-            b.root.navigateWithId(R.id.action_splashFragment_to_mainFragment)
+
+            b.root.navigateWithId(R.id.action_splashFragment_to_mainFragment, null, extras)
         } ?: run {
-            b.root.navigateWithId(R.id.action_splashFragment_to_loginFragment)
+            b.root.navigateWithId(R.id.action_splashFragment_to_loginFragment, null, extras)
         }
     }
 

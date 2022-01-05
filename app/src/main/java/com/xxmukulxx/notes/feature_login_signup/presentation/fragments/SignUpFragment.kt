@@ -19,7 +19,10 @@ class SignUpFragment : BaseFragment() {
     override fun onCreateView() {
         initBindingsAndViewModel()
         observer()
-        viewModel.initAppBarSignUp(binding.layoutAppBar)
+        viewModel.apply {
+            bSignUp = binding
+            initAppBarSignUp()
+        }
     }
 
     private fun observer() {

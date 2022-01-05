@@ -45,7 +45,7 @@
     </style>
 
     <style name="button_dim" parent="Theme.Notes">
-        <item name="android:backgroundTint">@color/text_day</item>
+        <item name="android:backgroundTint">@color/card_night</item>
         <item name="android:textColor">@color/night_theme_200</item>
         <item name="cornerRadius">@dimen/_20sdp</item>
     </style>

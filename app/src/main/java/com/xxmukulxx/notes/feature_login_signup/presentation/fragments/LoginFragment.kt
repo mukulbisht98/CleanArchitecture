@@ -2,6 +2,7 @@ package com.xxmukulxx.notes.feature_login_signup.presentation.fragments
 
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import androidx.transition.TransitionInflater
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseFragment
 import com.xxmukulxx.notes.databinding.LoginFragBinding
@@ -27,7 +28,12 @@ class LoginFragment : BaseFragment() {
         initBindingsAndViewModel()
         observer()
         init()
-        viewModel.initAppBarLogin(binding.layoutAppBar)
+        viewModel.apply {
+            bLogin = binding
+            initAppBarLogin()
+        }
+        sharedElementEnterTransition =
+            TransitionInflater.from(context).inflateTransition(android.R.transition.move)
     }
 
     private fun init() {

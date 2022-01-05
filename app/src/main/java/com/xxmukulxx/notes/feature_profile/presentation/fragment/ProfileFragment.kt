@@ -47,6 +47,8 @@ class ProfileFragment(override val layoutResId: Int = R.layout.profile_frag) : B
                 list, R.layout.item_profile_options
             ) {
                 toast(list[it])
+            }.apply {
+                isAnimation = true
             }
             layoutManager = GridLayoutManager(context, 2)
         }

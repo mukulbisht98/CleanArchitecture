@@ -10,12 +10,14 @@
             android:id="@+id/anim"
             android:layout_width="@dimen/_150sdp"
             android:layout_height="@dimen/_150sdp"
+            android:transitionName="shared_card_loader"
+            android:translationZ="@dimen/_10sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:lottie_autoPlay="true"
             app:lottie_loop="false"
-            app:lottie_rawRes="@raw/splash_icon" />
+            app:lottie_rawRes="@raw/cart_loader" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

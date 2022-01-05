@@ -6,19 +6,17 @@ import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.xxmukulxx.notes.util.validation.Validation
 import com.xxmukulxx.notes.MyApplication
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseViewModel
-import com.xxmukulxx.notes.databinding.AppBarBinding
+import com.xxmukulxx.notes.databinding.LoginFragBinding
+import com.xxmukulxx.notes.databinding.SignupFragBinding
 import com.xxmukulxx.notes.feature_login_signup.domain.use_cases.UserUseCases
 import com.xxmukulxx.notes.feature_login_signup.presentation.fragments.SignUpFragmentDirections
 import com.xxmukulxx.notes.feature_networking.repository.NetworkRepository
 import com.xxmukulxx.notes.feature_networking.util.ApiResponseWrapper
-import com.xxmukulxx.notes.util.getString
-import com.xxmukulxx.notes.util.navigateBack
-import com.xxmukulxx.notes.util.navigateWithAction
-import com.xxmukulxx.notes.util.navigateWithViewModel
+import com.xxmukulxx.notes.util.*
+import com.xxmukulxx.notes.util.validation.Validation
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -31,6 +29,9 @@ class LoginSignUpViewModel @Inject constructor(
 ) : BaseViewModel() {
 
 
+    lateinit var bLogin: LoginFragBinding
+    lateinit var bSignUp: SignupFragBinding
+
     private val email: MutableLiveData<String> =
         MutableLiveData("")
     private val password: MutableLiveData<String> =
@@ -38,17 +39,16 @@ class LoginSignUpViewModel @Inject constructor(
     private val name: MutableLiveData<String> =
         MutableLiveData("")
 
-
-    fun initAppBarSignUp(layoutAppBar: AppBarBinding) {
-        layoutAppBar.tvTitle.text = getString(R.string.signup)
-        layoutAppBar.ivBack.setOnClickListener { handleClick(it) }
-        layoutAppBar.ivInfo.setOnClickListener { handleClick(it) }
+    fun initAppBarSignUp() {
+        bSignUp.layoutAppBar.tvTitle.text = getString(R.string.signup)
+        bSignUp.layoutAppBar.ivBack.setOnClickListener { handleClick(it) }
+        bSignUp.layoutAppBar.ivInfo.hide()
     }
 
-    fun initAppBarLogin(layoutAppBar: AppBarBinding) {
-        layoutAppBar.tvTitle.text = getString(R.string.login)
-        layoutAppBar.ivBack.visibility = View.GONE
-        layoutAppBar.ivInfo.visibility = View.GONE
+    fun initAppBarLogin() {
+        bLogin.layoutAppBar.tvTitle.text = getString(R.string.login)
+        bLogin.layoutAppBar.ivBack.hide()
+        bLogin.layoutAppBar.ivInfo.hide()
     }
 
     fun onEmailChanged(s: CharSequence, start: Int, before: Int, count: Int) {
