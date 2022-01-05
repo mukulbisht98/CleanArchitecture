@@ -13,6 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <include layout="@layout/layout_home_toolbar"/>
+
         <TextView
             style="@style/textView"
             android:layout_width="wrap_content"

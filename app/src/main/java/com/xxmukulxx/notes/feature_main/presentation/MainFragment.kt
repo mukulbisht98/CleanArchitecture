@@ -7,6 +7,7 @@ import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseFragment
 import com.xxmukulxx.notes.databinding.MainFragBinding
 import com.xxmukulxx.notes.util.hide
+import com.xxmukulxx.notes.util.show
 
 class MainFragment(override val layoutResId: Int = R.layout.main_frag) : BaseFragment() {
 
@@ -34,6 +35,10 @@ class MainFragment(override val layoutResId: Int = R.layout.main_frag) : BaseFra
     }
 
     fun setAppBar(title: String) {
+        if (title.isBlank()){
+           return binding.appBar.appBar.hide()
+        }
+        binding.appBar.appBar.show()
         binding.appBar.tvTitle.text = title
         binding.appBar.ivBack.hide()
         binding.appBar.ivInfo.hide()

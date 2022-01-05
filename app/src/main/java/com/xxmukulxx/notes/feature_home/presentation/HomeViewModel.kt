@@ -12,6 +12,6 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
     lateinit var mainFragment: MainFragment
 
     fun setAppBar() {
-        mainFragment.setAppBar(getString(R.string.home))
+        mainFragment.setAppBar("")
     }
 }
