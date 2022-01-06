@@ -5,6 +5,8 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseViewModel
+import com.xxmukulxx.notes.common.data.data_store.DataStore
+import com.xxmukulxx.notes.common.data.data_store.vm.DataStoreViewModel
 import com.xxmukulxx.notes.databinding.MenuFragBinding
 import com.xxmukulxx.notes.feature_login_signup.domain.use_cases.UserUseCases
 import com.xxmukulxx.notes.feature_main.presentation.MainFragment
@@ -15,10 +17,11 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MenuViewModel @Inject constructor(private val userUseCases: UserUseCases) : BaseViewModel() {
+class MenuViewModel @Inject constructor(private val userUseCases: UserUseCases , private  val dataStoreViewModel: DataStoreViewModel) : BaseViewModel() {
 
     lateinit var b: MenuFragBinding
     lateinit var mainFragment: MainFragment
+    private var dataStore: DataStore? = null
 
     fun setAppBar() {
         mainFragment.setAppBar(getString(R.string.menu))
@@ -41,6 +44,9 @@ class MenuViewModel @Inject constructor(private val userUseCases: UserUseCases) 
     }
 
     fun setupToggleListener() {
+        viewModelScope.launch {
+            dataStoreViewModel.saveToLocal("Yes")
+        }
         b.mbToggle.addOnButtonCheckedListener { _, checkedId, isChecked ->
             if (isChecked)
                 when (checkedId) {

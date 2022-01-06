@@ -1,6 +1,7 @@
 package com.xxmukulxx.notes.util
 
 import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
@@ -14,6 +15,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.findFragment
 import androidx.navigation.NavDirections
 import androidx.navigation.NavOptions
@@ -98,6 +100,7 @@ fun View.invisible() {
 fun toggleDarkMode(active: Boolean?) {
     active?.let {
         if (it) {
+
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
@@ -154,3 +157,5 @@ fun ImageView.setImgProfile(url: String?) {
             .into(this)
     }
 }
+
+val Context.dataStore by preferencesDataStore(name = DATA_STORE_NAME)

@@ -108,4 +108,8 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:29.0.3')
     // firebase dynamic link
     implementation 'com.google.firebase:firebase-dynamic-links'
+
+    //data store
+    implementation("androidx.datastore:datastore:1.0.0")
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
 }

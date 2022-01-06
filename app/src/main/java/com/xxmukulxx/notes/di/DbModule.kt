@@ -2,6 +2,8 @@ package com.xxmukulxx.notes.di
 
 import android.app.Application
 import androidx.room.Room
+import com.xxmukulxx.notes.common.data.data_store.DataStore
+import com.xxmukulxx.notes.common.data.data_store.vm.DataStoreViewModel
 import com.xxmukulxx.notes.feature_login_signup.data.data_source.UserDatabase
 import com.xxmukulxx.notes.feature_login_signup.data.repository.UserDataRepositoryImpl
 import com.xxmukulxx.notes.feature_login_signup.domain.repository.UserDataRepository
@@ -76,5 +78,11 @@ object DbModule {
             insertUser = InsertUser(repo),
             deleteUser = DeleteUser(repo),
         )
+    }
+
+    @Provides
+    @Singleton
+    fun provideDataStoreVM(dataStore: DataStore): DataStoreViewModel {
+        return DataStoreViewModel(dataStore)
     }
 }
