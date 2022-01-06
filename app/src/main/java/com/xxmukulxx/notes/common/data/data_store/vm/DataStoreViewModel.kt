@@ -1,19 +1,23 @@
 package com.xxmukulxx.notes.common.data.data_store.vm
 
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.xxmukulxx.notes.common.BaseViewModel
 import com.xxmukulxx.notes.common.data.data_store.DataStore
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class DataStoreViewModel @Inject constructor(private val datastoreSetting: DataStore) : ViewModel() {
+class DataStoreViewModel @Inject constructor(private val datastore: DataStore) :
+    BaseViewModel() {
 
+    val readFromLocal = datastore.readFromLocal
 
-    fun saveToLocal(modeType: Int) = viewModelScope.launch {
-        datastoreSetting.saveToLocal(modeType)
+    fun clearData() = viewModelScope.launch {
+        datastore.clearData()
     }
 
-    val readFromLocal = datastoreSetting.readFromLocal
+    fun saveToLocal(modeType: Int) = viewModelScope.launch {
+        datastore.saveToLocal(modeType)
+    }
 }

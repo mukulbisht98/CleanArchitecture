@@ -10,14 +10,18 @@ import com.xxmukulxx.notes.feature_login_signup.domain.use_cases.UserUseCases
 import com.xxmukulxx.notes.util.navigateWithId
 import com.xxmukulxx.notes.util.toggleDarkMode
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.InternalCoroutinesApi
 import javax.inject.Inject
 
 @HiltViewModel
-class SplashViewModel @Inject constructor(private val userUseCases: UserUseCases, private val dataStoreViewModel: DataStoreViewModel) :
-    BaseViewModel() {
+class SplashViewModel @Inject constructor(
+    private val userUseCases: UserUseCases,
+    dataStoreViewModel: DataStoreViewModel
+) : BaseViewModel() {
 
-    @InternalCoroutinesApi
+    init {
+        toggleDarkMode(dataStoreViewModel)
+    }
+
     fun initAnimator(b: SplashLayoutBinding) {
         b.anim.addAnimatorListener(object : Animator.AnimatorListener {
             override fun onAnimationStart(p0: Animator?) {}
@@ -30,7 +34,6 @@ class SplashViewModel @Inject constructor(private val userUseCases: UserUseCases
 
             override fun onAnimationRepeat(p0: Animator?) {}
         })
-        toggleDarkMode(dataStoreViewModel)
     }
 
     fun proceed(b: SplashLayoutBinding) {
@@ -39,11 +42,9 @@ class SplashViewModel @Inject constructor(private val userUseCases: UserUseCases
         )
         val user = userUseCases.getUser()
         user?.run {
-
             b.root.navigateWithId(R.id.action_splashFragment_to_mainFragment, null, extras)
         } ?: run {
             b.root.navigateWithId(R.id.action_splashFragment_to_loginFragment, null, extras)
         }
     }
-
 }

@@ -19,13 +19,16 @@ constructor(@ApplicationContext private val context: Context) {
         }
     }
 
+    suspend fun clearData() {
+        context.dataStore.edit {
+            it.clear()
+        }
+    }
+
     val readFromLocal: Flow<Int> = context.dataStore.data
         .catch {
-            if (this is Exception) {
-                emit(emptyPreferences())
-            }
+            if (this is Exception) emit(emptyPreferences())
         }.map { preference ->
-            preference[THEME_DATA] ?: 0
+            preference[THEME_DATA] ?: 3
         }
-
 }

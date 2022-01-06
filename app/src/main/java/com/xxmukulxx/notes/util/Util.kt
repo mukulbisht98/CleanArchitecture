@@ -26,9 +26,10 @@ import com.bumptech.glide.Glide
 import com.xxmukulxx.notes.MyApplication.AppContext.appContext
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.data.data_store.vm.DataStoreViewModel
-import com.xxmukulxx.notes.feature_menu.presentation.vm.MenuViewModel
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 // NavigationComponents Utils
 fun View.navigateWithId(id: Int, bundle: Bundle? = null, extras: Navigator.Extras? = null) = try {
@@ -100,22 +101,18 @@ fun View.invisible() {
 }
 
 // DarkMode Utils
-@InternalCoroutinesApi
 fun toggleDarkMode(dataStoreViewModel: DataStoreViewModel) {
     CoroutineScope(Dispatchers.Main).launch {
-        launch {
-            dataStoreViewModel.readFromLocal.collect {
-                when (it) {
-                    1 -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                    2 -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                    else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-                }
+        dataStoreViewModel.readFromLocal.collect {
+            when (it) {
+                1 -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                2 -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                3 -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+                else -> dataStoreViewModel.saveToLocal(3)
             }
         }
     }
-
 }
-
 
 /*~~~~~~~~~Coroutine Run On IO Thread~~~~~~~~~~~~~~~~~~~*/
 fun runOnIO(run: () -> Unit) {

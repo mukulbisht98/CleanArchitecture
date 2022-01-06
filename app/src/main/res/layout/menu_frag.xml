@@ -44,7 +44,6 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:checked="@{viewModel.isLightModeSelected ? true : false}"
                     android:text="@string/light"
                     android:textSize="@dimen/_8ssp" />
 
@@ -53,7 +52,6 @@
                     style="?attr/materialButtonOutlinedStyle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:checked="@{viewModel.isNightModeSelected ? true : false}"
                     android:layout_weight="1"
                     android:text="@string/dark"
                     android:textSize="@dimen/_8ssp" />
@@ -64,7 +62,6 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:checked="@{viewModel.isSystemModeSelected ? true : false}"
                     android:text="@string/system"
                     android:textSize="@dimen/_8ssp" />
             </com.google.android.material.button.MaterialButtonToggleGroup>
