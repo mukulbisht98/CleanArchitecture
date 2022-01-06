@@ -1,6 +1,5 @@
 package com.xxmukulxx.notes.feature_menu.presentation.fragment
 
-import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.xxmukulxx.notes.R
@@ -11,13 +10,17 @@ import com.xxmukulxx.notes.feature_main.presentation.MainFragment
 import com.xxmukulxx.notes.feature_menu.presentation.vm.MenuViewModel
 import com.xxmukulxx.notes.util.toast
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.InternalCoroutinesApi
+import kotlinx.coroutines.flow.collect
 
+@InternalCoroutinesApi
 @AndroidEntryPoint
 class MenuFragment(override val layoutResId: Int = R.layout.menu_frag) : BaseFragment() {
 
     private lateinit var binding: MenuFragBinding
     private val viewModel: MenuViewModel by viewModels()
     private val dataStoreViewModel: DataStoreViewModel by viewModels()
+
 
 
     override fun onCreateView() {
@@ -31,16 +34,18 @@ class MenuFragment(override val layoutResId: Int = R.layout.menu_frag) : BaseFra
         binding.lifecycleOwner = viewLifecycleOwner
     }
 
+
+
+    @InternalCoroutinesApi
     private fun viewModelInit() {
         viewModel.apply {
             b = binding
             mainFragment = (requireParentFragment().requireParentFragment() as MainFragment)
             setAppBar()
             setupToggleListener()
+            setSelectedButton()
         }
-        lifecycleScope.launchWhenStarted {
-            toast(dataStoreViewModel.readFromLocal.toString())
-        }
+
 
 
     }

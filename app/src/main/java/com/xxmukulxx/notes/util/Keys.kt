@@ -1,8 +1,8 @@
 package com.xxmukulxx.notes.util
 
-import androidx.datastore.preferences.core.stringPreferencesKey
+import androidx.datastore.preferences.core.intPreferencesKey
 
 
 const val DATA_STORE_NAME = "data_store"
 //key name
-val THEME_DATA by lazy { stringPreferencesKey("THEME_DATA") }
+val THEME_DATA by lazy { intPreferencesKey("THEME_DATA") }

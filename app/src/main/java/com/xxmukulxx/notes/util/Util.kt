@@ -25,7 +25,10 @@ import androidx.navigation.fragment.NavHostFragment
 import com.bumptech.glide.Glide
 import com.xxmukulxx.notes.MyApplication.AppContext.appContext
 import com.xxmukulxx.notes.R
-import javax.annotation.Nullable
+import com.xxmukulxx.notes.common.data.data_store.vm.DataStoreViewModel
+import com.xxmukulxx.notes.feature_menu.presentation.vm.MenuViewModel
+import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.collect
 
 // NavigationComponents Utils
 fun View.navigateWithId(id: Int, bundle: Bundle? = null, extras: Navigator.Extras? = null) = try {
@@ -97,16 +100,27 @@ fun View.invisible() {
 }
 
 // DarkMode Utils
-fun toggleDarkMode(active: Boolean?) {
-    active?.let {
-        if (it) {
-
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+@InternalCoroutinesApi
+fun toggleDarkMode(dataStoreViewModel: DataStoreViewModel) {
+    CoroutineScope(Dispatchers.Main).launch {
+        launch {
+            dataStoreViewModel.readFromLocal.collect {
+                when (it) {
+                    1 -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                    2 -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                    else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+                }
+            }
         }
-    } ?: run {
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+    }
+
+}
+
+
+/*~~~~~~~~~Coroutine Run On IO Thread~~~~~~~~~~~~~~~~~~~*/
+fun runOnIO(run: () -> Unit) {
+    CoroutineScope(Dispatchers.IO).launch {
+        run()
     }
 }
 
@@ -138,6 +152,7 @@ fun getString(id: Int): String {
     return appContext.getString(id)
 }
 
+//Color Utils
 fun getColor(id: Int): Int {
     return appContext.getColor(id)
 }

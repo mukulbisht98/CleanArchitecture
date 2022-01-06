@@ -4,16 +4,20 @@ import android.animation.Animator
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseViewModel
+import com.xxmukulxx.notes.common.data.data_store.vm.DataStoreViewModel
 import com.xxmukulxx.notes.databinding.SplashLayoutBinding
 import com.xxmukulxx.notes.feature_login_signup.domain.use_cases.UserUseCases
 import com.xxmukulxx.notes.util.navigateWithId
+import com.xxmukulxx.notes.util.toggleDarkMode
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.InternalCoroutinesApi
 import javax.inject.Inject
 
 @HiltViewModel
-class SplashViewModel @Inject constructor(private val userUseCases: UserUseCases) :
+class SplashViewModel @Inject constructor(private val userUseCases: UserUseCases, private val dataStoreViewModel: DataStoreViewModel) :
     BaseViewModel() {
 
+    @InternalCoroutinesApi
     fun initAnimator(b: SplashLayoutBinding) {
         b.anim.addAnimatorListener(object : Animator.AnimatorListener {
             override fun onAnimationStart(p0: Animator?) {}
@@ -26,6 +30,7 @@ class SplashViewModel @Inject constructor(private val userUseCases: UserUseCases
 
             override fun onAnimationRepeat(p0: Animator?) {}
         })
+        toggleDarkMode(dataStoreViewModel)
     }
 
     fun proceed(b: SplashLayoutBinding) {

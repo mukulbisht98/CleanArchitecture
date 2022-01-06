@@ -11,7 +11,7 @@ import javax.inject.Inject
 class DataStoreViewModel @Inject constructor(private val datastoreSetting: DataStore) : ViewModel() {
 
 
-    fun saveToLocal(modeType: String) = viewModelScope.launch {
+    fun saveToLocal(modeType: Int) = viewModelScope.launch {
         datastoreSetting.saveToLocal(modeType)
     }
 
