@@ -9,8 +9,8 @@ import androidx.lifecycle.viewModelScope
 import com.xxmukulxx.notes.MyApplication
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseViewModel
-import com.xxmukulxx.notes.databinding.LoginFragBinding
-import com.xxmukulxx.notes.databinding.SignupFragBinding
+import com.xxmukulxx.notes.databinding.FragLoginBinding
+import com.xxmukulxx.notes.databinding.FragSignupBinding
 import com.xxmukulxx.notes.feature_login_signup.domain.use_cases.UserUseCases
 import com.xxmukulxx.notes.feature_login_signup.presentation.fragments.SignUpFragmentDirections
 import com.xxmukulxx.notes.feature_networking.repository.NetworkRepository
@@ -29,8 +29,8 @@ class LoginSignUpViewModel @Inject constructor(
 ) : BaseViewModel() {
 
 
-    lateinit var bLogin: LoginFragBinding
-    lateinit var bSignUp: SignupFragBinding
+    lateinit var bLogin: FragLoginBinding
+    lateinit var bSignUp: FragSignupBinding
 
     private val email: MutableLiveData<String> =
         MutableLiveData("")

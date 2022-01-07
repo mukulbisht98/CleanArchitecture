@@ -9,16 +9,14 @@
         android:id="@+id/mainFragment"
         android:name="com.xxmukulxx.notes.feature_main.presentation.MainFragment"
         android:label="MainFragment"
-        tools:layout="@layout/main_frag" >
-
-    </fragment>
+        tools:layout="@layout/frag_main" />
 
 
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.xxmukulxx.notes.feature_splash.presentation.fragments.SplashFragment"
         android:label="SplashFragment"
-        tools:layout="@layout/splash_layout">
+        tools:layout="@layout/frag_splash">
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/loginFragment"
@@ -36,7 +34,7 @@
         android:id="@+id/loginFragment"
         android:name="com.xxmukulxx.notes.feature_login_signup.presentation.fragments.LoginFragment"
         android:label="LoginFragment"
-        tools:layout="@layout/login_frag">
+        tools:layout="@layout/frag_login">
         <argument
             android:name="email"
             android:defaultValue=""
@@ -59,7 +57,7 @@
         android:id="@+id/signUpFragment"
         android:name="com.xxmukulxx.notes.feature_login_signup.presentation.fragments.SignUpFragment"
         android:label="SignUpFragment"
-        tools:layout="@layout/signup_frag">
+        tools:layout="@layout/frag_signup">
         <action
             android:id="@+id/action_signUpFragment_to_loginFragment"
             app:destination="@id/loginFragment"
@@ -69,10 +67,5 @@
     <action
         android:id="@+id/action_global_loginFragment"
         app:destination="@id/loginFragment" />
-
-    <action
-        android:id="@+id/action_global_frag1"
-        app:destination="@id/frag1" />
-
 
 </navigation>

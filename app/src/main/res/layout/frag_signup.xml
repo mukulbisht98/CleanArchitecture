@@ -19,7 +19,7 @@
 
         <include
             android:id="@+id/layout_appBar"
-            layout="@layout/app_bar" />
+            layout="@layout/default_app_bar" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/etName"
