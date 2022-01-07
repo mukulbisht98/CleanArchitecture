@@ -23,6 +23,8 @@ import androidx.navigation.Navigator
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.xxmukulxx.notes.MyApplication.AppContext.appContext
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.data.data_store.vm.DataStoreViewModel
@@ -30,6 +32,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+
 
 // NavigationComponents Utils
 fun View.navigateWithId(id: Int, bundle: Bundle? = null, extras: Navigator.Extras? = null) = try {
@@ -176,6 +179,19 @@ fun ImageView.setImg(url: String?) {
             .into(this)
     } else {
         Glide.with(appContext).load(url)
+            .error(R.drawable.ic_image_placeholder)
+            .thumbnail(Glide.with(appContext).load(R.drawable.loader_gif))
+            .placeholder(R.drawable.ic_image_placeholder)
+            .into(this)
+    }
+}
+
+fun ImageView.setImgWithRadius(url: String?, radius: Int) {
+    if (url.isNullOrEmpty()) {
+        Glide.with(appContext).load(R.drawable.ic_image_placeholder)
+            .into(this)
+    } else {
+        Glide.with(appContext).load(url).transform(CenterCrop(), RoundedCorners(radius))
             .error(R.drawable.ic_image_placeholder)
             .thumbnail(Glide.with(appContext).load(R.drawable.loader_gif))
             .placeholder(R.drawable.ic_image_placeholder)

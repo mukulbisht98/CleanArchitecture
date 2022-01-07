@@ -22,6 +22,10 @@
         <item name="android:background">@color/card_day</item>
     </style>
 
+    <style name="searchBox" parent="Theme.Notes">
+        <item name="android:backgroundTint">@color/white_100</item>
+    </style>
+
     <style name="textView" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/text_day</item>
     </style>

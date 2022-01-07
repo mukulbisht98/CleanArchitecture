@@ -12,5 +12,5 @@ data class ProfileContent(
 
 data class Product(
     val title: String,
-    val imgUrl: String = "https://picsum.photos/200/250",
+    val imgUrl: String = "https://picsum.photos/250/200",
 )
