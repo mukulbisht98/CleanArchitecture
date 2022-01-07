@@ -15,7 +15,7 @@
 
         <include
             android:id="@+id/app_bar"
-            layout="@layout/app_bar" />
+            layout="@layout/default_app_bar" />
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/nav_home_fragment"

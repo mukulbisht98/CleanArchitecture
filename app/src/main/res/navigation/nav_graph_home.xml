@@ -9,7 +9,7 @@
         android:id="@+id/nav_graph_home"
         android:name="com.xxmukulxx.notes.feature_home.presentation.HomeFragment"
         android:label="Home"
-        tools:layout="@layout/home_frag">
+        tools:layout="@layout/frag_home">
         <action
             android:id="@+id/action_nav_graph_home_to_nav_graph_cart"
             app:destination="@id/nav_graph_cart" />
@@ -18,7 +18,7 @@
         android:id="@+id/nav_graph_cart"
         android:name="com.xxmukulxx.notes.feature_cart.presentation.CartFragment"
         android:label="Cart"
-        tools:layout="@layout/cart_frag">
+        tools:layout="@layout/frag_cart">
         <action
             android:id="@+id/action_nav_graph_cart_to_nav_graph_profile"
             app:destination="@id/nav_graph_profile" />
@@ -30,7 +30,7 @@
         android:id="@+id/nav_graph_profile"
         android:name="com.xxmukulxx.notes.feature_profile.presentation.fragment.ProfileFragment"
         android:label="Profile"
-        tools:layout="@layout/profile_frag">
+        tools:layout="@layout/frag_profile">
         <action
             android:id="@+id/action_nav_graph_profile_to_nav_graph_cart"
             app:destination="@id/nav_graph_cart" />
@@ -42,7 +42,7 @@
         android:id="@+id/nav_graph_menu"
         android:name="com.xxmukulxx.notes.feature_menu.presentation.fragment.MenuFragment"
         android:label="MenuFragment"
-        tools:layout="@layout/menu_frag">
+        tools:layout="@layout/frag_menu">
         <action
             android:id="@+id/action_menuFragment_to_nav_graph_profile"
             app:destination="@id/nav_graph_profile" />

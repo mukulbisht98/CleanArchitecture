@@ -9,7 +9,7 @@ import com.xxmukulxx.notes.feature_menu.presentation.vm.MenuViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MenuFragment(override val layoutResId: Int = R.layout.menu_frag) : BaseFragment() {
+class MenuFragment(override val layoutResId: Int = R.layout.frag_menu) : BaseFragment() {
 
     private lateinit var binding: MenuFragBinding
     private val viewModel: MenuViewModel by viewModels()

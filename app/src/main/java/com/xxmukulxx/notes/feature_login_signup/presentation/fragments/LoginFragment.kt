@@ -8,7 +8,6 @@ import com.xxmukulxx.notes.common.BaseFragment
 import com.xxmukulxx.notes.databinding.LoginFragBinding
 import com.xxmukulxx.notes.feature_login_signup.domain.use_cases.UserUseCases
 import com.xxmukulxx.notes.feature_login_signup.presentation.LoginSignUpViewModel
-import com.xxmukulxx.notes.util.navigateWithId
 import com.xxmukulxx.notes.util.spannableString
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -22,7 +21,7 @@ class LoginFragment : BaseFragment() {
     lateinit var userUseCases: UserUseCases
     private val args: LoginFragmentArgs by navArgs()
     override val layoutResId: Int
-        get() = R.layout.login_frag
+        get() = R.layout.frag_login
 
     override fun onCreateView() {
         initBindingsAndViewModel()

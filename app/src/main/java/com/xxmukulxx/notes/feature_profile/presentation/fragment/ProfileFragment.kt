@@ -12,7 +12,7 @@ import com.xxmukulxx.notes.util.toast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ProfileFragment(override val layoutResId: Int = R.layout.profile_frag) : BaseFragment() {
+class ProfileFragment(override val layoutResId: Int = R.layout.frag_profile) : BaseFragment() {
 
     private lateinit var binding: ProfileFragBinding
 

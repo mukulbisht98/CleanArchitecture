@@ -2,14 +2,11 @@ package com.xxmukulxx.notes.feature_main.presentation
 
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseFragment
 import com.xxmukulxx.notes.databinding.MainFragBinding
-import com.xxmukulxx.notes.util.hide
-import com.xxmukulxx.notes.util.show
 
-class MainFragment(override val layoutResId: Int = R.layout.main_frag) : BaseFragment() {
+class MainFragment(override val layoutResId: Int = R.layout.frag_main) : BaseFragment() {
 
     private lateinit var binding: MainFragBinding
 

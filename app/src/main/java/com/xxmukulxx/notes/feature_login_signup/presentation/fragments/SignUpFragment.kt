@@ -14,7 +14,7 @@ class SignUpFragment : BaseFragment() {
     private lateinit var binding: SignupFragBinding
 
     override val layoutResId: Int
-        get() = R.layout.signup_frag
+        get() = R.layout.frag_signup
 
     override fun onCreateView() {
         initBindingsAndViewModel()

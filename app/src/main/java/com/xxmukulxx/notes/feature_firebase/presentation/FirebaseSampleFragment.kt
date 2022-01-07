@@ -5,7 +5,7 @@ import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseActivity
 
-class FirebaseSampleFragment(override val layoutResId: Int = R.layout.firebase_frag) :
+class FirebaseSampleFragment(override val layoutResId: Int = R.layout.frag_firebase) :
     BaseActivity() {
 
     private fun firebase() {

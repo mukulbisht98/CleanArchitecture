@@ -8,7 +8,7 @@ import com.xxmukulxx.notes.feature_main.presentation.MainFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class CartFragment(override val layoutResId: Int = R.layout.cart_frag) : BaseFragment() {
+class CartFragment(override val layoutResId: Int = R.layout.frag_cart) : BaseFragment() {
 
     private lateinit var binding: CartFragBinding
 

@@ -8,7 +8,7 @@ import com.xxmukulxx.notes.feature_splash.presentation.vm.SplashViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SplashFragment(override val layoutResId: Int = R.layout.splash_layout) : BaseFragment() {
+class SplashFragment(override val layoutResId: Int = R.layout.frag_splash) : BaseFragment() {
 
     private val viewModel: SplashViewModel by viewModels()
     private lateinit var b: SplashLayoutBinding

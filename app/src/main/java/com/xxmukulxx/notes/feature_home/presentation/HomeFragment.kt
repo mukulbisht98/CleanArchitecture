@@ -8,7 +8,7 @@ import com.xxmukulxx.notes.feature_main.presentation.MainFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment(override val layoutResId: Int = R.layout.home_frag) : BaseFragment() {
+class HomeFragment(override val layoutResId: Int = R.layout.frag_home) : BaseFragment() {
 
     private lateinit var binding: HomeFragBinding
 
