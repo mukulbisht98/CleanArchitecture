@@ -29,6 +29,7 @@ constructor(@ApplicationContext private val context: Context) {
         .catch {
             if (this is Exception) emit(emptyPreferences())
         }.map { preference ->
-            preference[THEME_DATA] ?: 3
+           val data= preference[THEME_DATA] ?: 3
+            data
         }
 }
