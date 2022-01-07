@@ -9,7 +9,9 @@
         android:id="@+id/mainFragment"
         android:name="com.xxmukulxx.notes.feature_main.presentation.MainFragment"
         android:label="MainFragment"
-        tools:layout="@layout/main_frag" />
+        tools:layout="@layout/main_frag" >
+
+    </fragment>
 
 
     <fragment
@@ -67,5 +69,10 @@
     <action
         android:id="@+id/action_global_loginFragment"
         app:destination="@id/loginFragment" />
+
+    <action
+        android:id="@+id/action_global_frag1"
+        app:destination="@id/frag1" />
+
 
 </navigation>

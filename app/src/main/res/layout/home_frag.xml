@@ -17,6 +17,7 @@
         android:paddingTop="@dimen/_12sdp">
 
         <include
+            android:id="@+id/layout"
             bind:viewModel="@{viewModel}"
             layout="@layout/layout_home_toolbar" />
 
