@@ -10,6 +10,7 @@ import com.xxmukulxx.notes.databinding.FragMenuBinding
 import com.xxmukulxx.notes.feature_login_signup.domain.use_cases.UserUseCases
 import com.xxmukulxx.notes.feature_main.presentation.MainFragment
 import com.xxmukulxx.notes.util.getString
+import com.xxmukulxx.notes.util.toast
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -62,6 +63,6 @@ class MenuViewModel @Inject constructor(
 
     private fun logout() {
         mainFragment.findNavController().navigate(R.id.action_global_loginFragment)
-        showToast("Logged out.")
+        toast("Logged out.")
     }
 }

@@ -55,7 +55,7 @@ class ProfileViewModel @Inject constructor(userUseCases: UserUseCases) :
             val list = mutableListOf(
                 ProfileContent(
                     "Your Orders",
-                    mutableListOf(Product("Cube"), Product("computer"), Product("ps5"))
+                    mutableListOf(Product("Cube"), Product("computer"), Product("ps5"), Product("4x4"), Product("rog g15"))
                 ),
                 ProfileContent(
                     "Recently Viewed",

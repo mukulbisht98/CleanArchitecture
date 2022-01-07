@@ -19,10 +19,6 @@ abstract class BaseViewModel() : ViewModel() {
         return displayError
     }
 
-    fun showToast(message: String) {
-        toast(message)
-    }
-
     protected fun handleNetworkError() {
         isLoading.postValue(false)
         displayError.postValue(MyApplication.appContext.resources.getString(R.string.network_error))
