@@ -13,16 +13,15 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:overScrollMode="never">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/_12sdp"
-            app:layout_scrollFlags="scroll|enterAlways">
+            android:paddingTop="@dimen/_12sdp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/clProfileData"
+                android:id="@+id/clProfileInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="@dimen/_12sdp"
@@ -65,71 +64,32 @@
                     app:layout_constraintBottom_toBottomOf="@id/tvEmail"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/tvName" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvProfileOptions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_8sdp"
+                android:nestedScrollingEnabled="false"
                 android:overScrollMode="never"
-                android:paddingHorizontal="@dimen/_12sdp"
-                app:layout_constraintTop_toBottomOf="@id/clProfileData"
-                tools:itemCount="1"
+                android:paddingHorizontal="@dimen/_6sdp"
+                app:layout_constraintTop_toBottomOf="@id/clProfileInfo"
+                tools:itemCount="2"
                 tools:listitem="@layout/item_profile_options" />
 
-            <androidx.constraintlayout.widget.Group
-                android:id="@+id/group_your_order"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:constraint_referenced_ids="tv_YourOrders,rvYourOrders" />
-
-            <TextView
-                android:id="@+id/tv_YourOrders"
-                style="@style/headingView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:paddingHorizontal="@dimen/_12sdp"
-                android:text="Your Orders"
-                android:textSize="@dimen/_15ssp"
-                app:layout_constraintTop_toBottomOf="@id/rvProfileOptions" />
-
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvYourOrders"
+                android:id="@+id/rvProfileContent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
                 android:clipToPadding="false"
+                android:nestedScrollingEnabled="false"
                 android:overScrollMode="never"
-                android:paddingHorizontal="@dimen/_12sdp"
-                app:layout_constraintTop_toBottomOf="@id/tv_YourOrders" />
-
-            <androidx.constraintlayout.widget.Group
-                android:id="@+id/group_your_wishlist"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:constraint_referenced_ids="tv_YourOrders,rvYourOrders" />
-
-            <TextView
-                android:id="@+id/tv_YourWishlist"
-                style="@style/headingView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:paddingHorizontal="@dimen/_12sdp"
-                android:text="Your Wishlist"
-                android:textSize="@dimen/_15ssp"
-                app:layout_constraintTop_toBottomOf="@id/rvYourOrders" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvYourWishlist"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clipToPadding="false"
-                android:overScrollMode="never"
-                android:paddingHorizontal="@dimen/_12sdp"
-                app:layout_constraintTop_toBottomOf="@id/tv_YourWishlist" />
+                app:layout_constraintTop_toBottomOf="@id/rvProfileOptions"
+                tools:itemCount="2"
+                tools:listitem="@layout/item_profile_content" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>

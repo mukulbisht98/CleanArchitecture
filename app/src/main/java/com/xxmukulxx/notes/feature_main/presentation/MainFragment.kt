@@ -2,13 +2,16 @@ package com.xxmukulxx.notes.feature_main.presentation
 
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseFragment
-import com.xxmukulxx.notes.databinding.MainFragBinding
+import com.xxmukulxx.notes.databinding.FragMainBinding
+import com.xxmukulxx.notes.util.hide
+import com.xxmukulxx.notes.util.show
 
 class MainFragment(override val layoutResId: Int = R.layout.frag_main) : BaseFragment() {
 
-    private lateinit var binding: MainFragBinding
+    private lateinit var binding: FragMainBinding
 
     private val viewModel: MainViewModel by viewModels()
 
@@ -18,7 +21,7 @@ class MainFragment(override val layoutResId: Int = R.layout.frag_main) : BaseFra
     }
 
     private fun initBindingsAndViewModel() {
-        binding = getBinding() as MainFragBinding
+        binding = getBinding() as FragMainBinding
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
     }
@@ -32,8 +35,8 @@ class MainFragment(override val layoutResId: Int = R.layout.frag_main) : BaseFra
     }
 
     fun setAppBar(title: String) {
-        if (title.isBlank()){
-           return binding.appBar.appBar.hide()
+        if (title.isBlank()) {
+            return binding.appBar.appBar.hide()
         }
         binding.appBar.appBar.show()
         binding.appBar.tvTitle.text = title

@@ -6,7 +6,7 @@ import androidx.navigation.fragment.findNavController
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseViewModel
 import com.xxmukulxx.notes.common.data.data_store.vm.DataStoreViewModel
-import com.xxmukulxx.notes.databinding.MenuFragBinding
+import com.xxmukulxx.notes.databinding.FragMenuBinding
 import com.xxmukulxx.notes.feature_login_signup.domain.use_cases.UserUseCases
 import com.xxmukulxx.notes.feature_main.presentation.MainFragment
 import com.xxmukulxx.notes.util.getString
@@ -21,7 +21,7 @@ class MenuViewModel @Inject constructor(
     private val dataStoreViewModel: DataStoreViewModel
 ) : BaseViewModel() {
 
-    lateinit var b: MenuFragBinding
+    lateinit var b: FragMenuBinding
     lateinit var mainFragment: MainFragment
 
     fun setAppBar() {

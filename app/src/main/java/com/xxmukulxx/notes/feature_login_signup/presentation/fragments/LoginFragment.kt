@@ -5,9 +5,10 @@ import androidx.navigation.fragment.navArgs
 import androidx.transition.TransitionInflater
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseFragment
-import com.xxmukulxx.notes.databinding.LoginFragBinding
+import com.xxmukulxx.notes.databinding.FragLoginBinding
 import com.xxmukulxx.notes.feature_login_signup.domain.use_cases.UserUseCases
 import com.xxmukulxx.notes.feature_login_signup.presentation.LoginSignUpViewModel
+import com.xxmukulxx.notes.util.navigateWithId
 import com.xxmukulxx.notes.util.spannableString
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -15,7 +16,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class LoginFragment : BaseFragment() {
     private val viewModel: LoginSignUpViewModel by viewModels()
-    private lateinit var binding: LoginFragBinding
+    private lateinit var binding: FragLoginBinding
 
     @Inject
     lateinit var userUseCases: UserUseCases
@@ -61,7 +62,7 @@ class LoginFragment : BaseFragment() {
     }
 
     private fun initBindingsAndViewModel() {
-        binding = getBinding() as LoginFragBinding
+        binding = getBinding() as FragLoginBinding
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
     }

@@ -3,7 +3,7 @@ package com.xxmukulxx.notes.feature_login_signup.presentation.fragments
 import androidx.fragment.app.viewModels
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseFragment
-import com.xxmukulxx.notes.databinding.SignupFragBinding
+import com.xxmukulxx.notes.databinding.FragSignupBinding
 import com.xxmukulxx.notes.feature_login_signup.presentation.LoginSignUpViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -11,7 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class SignUpFragment : BaseFragment() {
 
     private val viewModel: LoginSignUpViewModel by viewModels()
-    private lateinit var binding: SignupFragBinding
+    private lateinit var binding: FragSignupBinding
 
     override val layoutResId: Int
         get() = R.layout.frag_signup
@@ -36,7 +36,7 @@ class SignUpFragment : BaseFragment() {
     }
 
     private fun initBindingsAndViewModel() {
-        binding = getBinding() as SignupFragBinding
+        binding = getBinding() as FragSignupBinding
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
     }

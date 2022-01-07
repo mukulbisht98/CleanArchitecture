@@ -170,4 +170,17 @@ fun ImageView.setImgProfile(url: String?) {
     }
 }
 
+fun ImageView.setImg(url: String?) {
+    if (url.isNullOrEmpty()) {
+        Glide.with(appContext).load(R.drawable.ic_image_placeholder)
+            .into(this)
+    } else {
+        Glide.with(appContext).load(url)
+            .error(R.drawable.ic_image_placeholder)
+            .thumbnail(Glide.with(appContext).load(R.drawable.loader_gif))
+            .placeholder(R.drawable.ic_image_placeholder)
+            .into(this)
+    }
+}
+
 val Context.dataStore by preferencesDataStore(name = DATA_STORE_NAME)

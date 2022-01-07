@@ -5,7 +5,7 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseViewModel
 import com.xxmukulxx.notes.common.data.data_store.vm.DataStoreViewModel
-import com.xxmukulxx.notes.databinding.SplashLayoutBinding
+import com.xxmukulxx.notes.databinding.FragSplashBinding
 import com.xxmukulxx.notes.feature_login_signup.domain.use_cases.UserUseCases
 import com.xxmukulxx.notes.util.navigateWithId
 import com.xxmukulxx.notes.util.toggleDarkMode
@@ -22,7 +22,7 @@ class SplashViewModel @Inject constructor(
         toggleDarkMode(dataStoreViewModel)
     }
 
-    fun initAnimator(b: SplashLayoutBinding) {
+    fun initAnimator(b: FragSplashBinding) {
         b.anim.addAnimatorListener(object : Animator.AnimatorListener {
             override fun onAnimationStart(p0: Animator?) {}
 
@@ -36,7 +36,7 @@ class SplashViewModel @Inject constructor(
         })
     }
 
-    fun proceed(b: SplashLayoutBinding) {
+    fun proceed(b: FragSplashBinding) {
         val extras = FragmentNavigatorExtras(
             b.anim to "shared_card_loader"
         )
