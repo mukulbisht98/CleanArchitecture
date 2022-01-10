@@ -47,6 +47,14 @@ fun View.navigateWithId(id: Int, bundle: Bundle? = null, extras: Navigator.Extra
     e.printStackTrace()
 }
 
+fun View.navigateFromSplash(id: Int, bundle: Bundle? = null, extras: Navigator.Extras? = null) = try {
+    this.findNavController().navigate(id, bundle, NavOptions.Builder()
+        .setPopUpTo(R.id.splashFragment,
+            true).build(), extras)
+} catch (e: Exception) {
+    e.printStackTrace()
+}
+
 fun View.navigateWithAction(action: NavDirections) = try {
     this.findNavController().navigate(action)
 } catch (e: Exception) {

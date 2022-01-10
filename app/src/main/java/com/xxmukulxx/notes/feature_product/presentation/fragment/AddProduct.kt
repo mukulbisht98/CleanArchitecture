@@ -21,6 +21,7 @@ class AddProduct(override val layoutResId: Int = R.layout.frag_add_product) : Ba
             b = binding
             setAppBar()
         }
+
     }
 
     private fun initBindingsAndViewModel() {

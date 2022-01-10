@@ -4,11 +4,9 @@ import android.animation.Animator
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseViewModel
-import com.xxmukulxx.notes.common.data.data_store.vm.DataStoreViewModel
 import com.xxmukulxx.notes.databinding.FragSplashBinding
 import com.xxmukulxx.notes.feature_login_signup.domain.use_cases.UserUseCases
-import com.xxmukulxx.notes.util.navigateWithId
-import com.xxmukulxx.notes.util.toggleDarkMode
+import com.xxmukulxx.notes.util.navigateFromSplash
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -37,9 +35,9 @@ class SplashViewModel @Inject constructor(
         )
         val user = userUseCases.getUser()
         user?.run {
-            b.root.navigateWithId(R.id.action_splashFragment_to_mainFragment, null, extras)
+            b.root.navigateFromSplash(R.id.action_splashFragment_to_mainFragment, null, extras)
         } ?: run {
-            b.root.navigateWithId(R.id.action_splashFragment_to_loginFragment, null, extras)
+            b.root.navigateFromSplash(R.id.action_splashFragment_to_loginFragment, null, extras)
         }
     }
 }

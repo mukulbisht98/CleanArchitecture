@@ -7,7 +7,6 @@ import androidx.navigation.fragment.findNavController
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseViewModel
 import com.xxmukulxx.notes.feature_main.presentation.MainFragment
-import com.xxmukulxx.notes.util.navigateWithId
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
