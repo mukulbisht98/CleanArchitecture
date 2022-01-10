@@ -134,28 +134,28 @@ class LoginSignUpViewModel @Inject constructor(
                 is ApiResponseWrapper.Success -> {
                     isLoading.postValue(false)
                     Log.e("API RES --->", response.value.toString())
-                    showToast("Logged in Successfully...")
+                    toast("Logged in Successfully...")
                     userUseCases.insertUser(response.value)
                     view.navigateWithViewModel(R.id.action_loginFragment_to_mainFragment)
                 }
                 is ApiResponseWrapper.GenericError -> {
                     isLoading.postValue(false)
-                    showToast("API GenericError ---> ${response.errorMessage}")
+                    toast("API GenericError ---> ${response.errorMessage}")
                     Log.e("API GenericError --->", response.errorMessage.toString())
                 }
                 is ApiResponseWrapper.UnauthorizedError -> {
                     isLoading.postValue(false)
-                    showToast("API UnauthorizedError ---> $response")
+                    toast("API UnauthorizedError ---> $response")
                     Log.e("API UnauthorizedError --->", response.toString())
                 }
                 is ApiResponseWrapper.NetworkError -> {
                     isLoading.postValue(false)
-                    showToast("API NetworkError ---> $response")
+                    toast("API NetworkError ---> $response")
                     Log.e("API NetworkError --->", response.toString())
                 }
                 is ApiResponseWrapper.UserInvalid -> {
                     isLoading.postValue(false)
-                    showToast("API UserInvalid ---> $response")
+                    toast("API UserInvalid ---> $response")
                     Log.e("API UserInvalid --->", response.toString())
                 }
             }
@@ -172,7 +172,7 @@ class LoginSignUpViewModel @Inject constructor(
                 is ApiResponseWrapper.Success -> {
                     isLoading.postValue(false)
                     Log.e("API RES --->", response.value.toString())
-                    showToast("SignUp Successfully. Please Login Now.")
+                    toast("SignUp Successfully. Please Login Now.")
                     val action = SignUpFragmentDirections.actionSignUpFragmentToLoginFragment(
                         getEmail().value.toString(),
                         getPassword().value.toString()
@@ -181,22 +181,22 @@ class LoginSignUpViewModel @Inject constructor(
                 }
                 is ApiResponseWrapper.GenericError -> {
                     isLoading.postValue(false)
-                    showToast("API GenericError ---> ${response.errorMessage}")
+                    toast("API GenericError ---> ${response.errorMessage}")
                     Log.e("API GenericError --->", response.errorMessage.toString())
                 }
                 is ApiResponseWrapper.UnauthorizedError -> {
                     isLoading.postValue(false)
-                    showToast("API UnauthorizedError ---> $response")
+                    toast("API UnauthorizedError ---> $response")
                     Log.e("API UnauthorizedError --->", response.toString())
                 }
                 is ApiResponseWrapper.NetworkError -> {
                     isLoading.postValue(false)
-                    showToast("API NetworkError ---> $response")
+                    toast("API NetworkError ---> $response")
                     Log.e("API NetworkError --->", response.toString())
                 }
                 is ApiResponseWrapper.UserInvalid -> {
                     isLoading.postValue(false)
-                    showToast("API UserInvalid ---> $response")
+                    toast("API UserInvalid ---> $response")
                     Log.e("API UserInvalid --->", response.toString())
                 }
             }

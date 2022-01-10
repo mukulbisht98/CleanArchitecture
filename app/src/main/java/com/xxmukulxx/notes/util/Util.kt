@@ -2,6 +2,7 @@ package com.xxmukulxx.notes.util
 
 import android.app.Activity
 import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
@@ -10,11 +11,14 @@ import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.view.View
+import android.view.Window
+import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.ContextCompat
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.findFragment
 import androidx.navigation.NavDirections
@@ -23,6 +27,8 @@ import androidx.navigation.Navigator
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.xxmukulxx.notes.MyApplication.AppContext.appContext
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.data.data_store.vm.DataStoreViewModel
@@ -30,6 +36,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+
 
 // NavigationComponents Utils
 fun View.navigateWithId(id: Int, bundle: Bundle? = null, extras: Navigator.Extras? = null) = try {
@@ -101,7 +108,7 @@ fun View.invisible() {
 }
 
 // DarkMode Utils
-fun toggleDarkMode(dataStoreViewModel: DataStoreViewModel) {
+fun toggleDarkMode(dataStoreViewModel: DataStoreViewModel, activity: Activity) {
     CoroutineScope(Dispatchers.Main).launch {
         dataStoreViewModel.readFromLocal.collect {
             when (it) {
@@ -110,6 +117,7 @@ fun toggleDarkMode(dataStoreViewModel: DataStoreViewModel) {
                 3 -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
                 else -> dataStoreViewModel.saveToLocal(3)
             }
+//            activity.setStatusBarGradiant(it)
         }
     }
 }
@@ -183,4 +191,39 @@ fun ImageView.setImg(url: String?) {
     }
 }
 
+fun ImageView.setImgWithRadius(url: String?, radius: Int) {
+    if (url.isNullOrEmpty()) {
+        Glide.with(appContext).load(R.drawable.ic_image_placeholder)
+            .into(this)
+    } else {
+        Glide.with(appContext).load(url).transform(CenterCrop(), RoundedCorners(radius))
+            .error(R.drawable.ic_image_placeholder)
+            .thumbnail(Glide.with(appContext).load(R.drawable.loader_gif))
+            .placeholder(R.drawable.ic_image_placeholder)
+            .into(this)
+    }
+}
+
 val Context.dataStore by preferencesDataStore(name = DATA_STORE_NAME)
+
+// status bar
+fun Activity.setStatusBarGradiant(i: Int) {
+    val window: Window = this.window
+    var ui: Int = -1
+    ui = when (i) {
+        1 -> R.drawable.bg_toolbar
+        2 -> R.drawable.bg_toolbar_night
+        else -> {
+            when (resources.configuration.uiMode) {
+                Configuration.UI_MODE_NIGHT_YES -> R.drawable.bg_toolbar_night
+                Configuration.UI_MODE_NIGHT_NO -> R.drawable.bg_toolbar
+                else -> R.drawable.bg_toolbar_night
+            }
+        }
+    }
+    val background = ContextCompat.getDrawable(appContext, ui)
+    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+    window.statusBarColor = getColor(android.R.color.transparent)
+    window.navigationBarColor = getColor(android.R.color.transparent)
+    window.setBackgroundDrawable(background)
+}

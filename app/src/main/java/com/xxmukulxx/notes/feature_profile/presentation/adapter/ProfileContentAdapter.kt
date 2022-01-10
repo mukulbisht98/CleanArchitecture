@@ -26,6 +26,8 @@ class ProfileContentAdapter(private val arr: MutableList<ProfileContent>) :
                     model.productsList, R.layout.item_profile_content_data
                 ) {
                     toast(model.productsList[it].title)
+                }.apply {
+                    isAnimation = true
                 }
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             }
