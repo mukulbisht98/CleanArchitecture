@@ -19,6 +19,7 @@ class AddProduct(override val layoutResId: Int = R.layout.frag_add_product) : Ba
     private fun initViewModel() {
         viewModel.apply {
             b = binding
+            setupItems()
             setAppBar()
         }
     }

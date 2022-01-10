@@ -28,10 +28,14 @@
     <string name="shopping_app">Shopping App</string>
     <string name="search">Search</string>
     <string name="add_product">Add Product</string>
-    <string name="product_price">Product Price</string>
-    <string name="product_name">Product Name</string>
-    <string name="select_type">Select Product Type</string>
+    <string name="price">Price</string>
+    <string name="title">Title</string>
+    <string name="type">Type</string>
     <string name="electronics">Electronics</string>
     <string name="clothes">Clothes</string>
     <string name="food">Food</string>
+    <string name="quantity">Quantity</string>
+    <string name="password">Password</string>
+    <string name="email_address">Email Address</string>
+    <string name="user_name">User Name</string>
 </resources>
