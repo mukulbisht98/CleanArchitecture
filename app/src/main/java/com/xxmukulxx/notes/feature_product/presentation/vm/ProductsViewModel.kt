@@ -1,7 +1,6 @@
 package com.xxmukulxx.notes.feature_product.presentation.vm
 
 import android.view.View
-import android.widget.AutoCompleteTextView
 import androidx.appcompat.widget.PopupMenu
 import androidx.lifecycle.MutableLiveData
 import com.xxmukulxx.notes.R
@@ -22,7 +21,18 @@ class ProductsViewModel @Inject constructor() : BaseViewModel() {
     private var tempProductDescription: MutableLiveData<String> = MutableLiveData("")
     private var tempProductPrice: MutableLiveData<String> = MutableLiveData("")
     private var tempProductType: MutableLiveData<String> = MutableLiveData("")
+    private var tempProductQuantity: MutableLiveData<String> = MutableLiveData("")
     private var tempImgUrl: MutableLiveData<String> = MutableLiveData("")
+
+    private val menu: PopupMenu by lazy {
+        PopupMenu(b.tilSelectProductType.context, b.etSelectProductType).apply {
+            menuInflater.inflate(R.menu.add_product_type, menu)
+            setOnMenuItemClickListener { item ->
+                b.etSelectProductType.setText(item.title)
+                true
+            }
+        }
+    }
 
     fun setAppBar() {
         b.appBar.tvTitle.text = getString(R.string.add_product)
@@ -31,6 +41,12 @@ class ProductsViewModel @Inject constructor() : BaseViewModel() {
         }
         b.appBar.ivInfo.setOnClickListener {
             toast("You can add products here, these products will show up in the home page.")
+        }
+    }
+
+    fun setupItems() {
+        b.tilSelectProductType.setEndIconOnClickListener {
+            menu.show()
         }
     }
 
@@ -49,17 +65,15 @@ class ProductsViewModel @Inject constructor() : BaseViewModel() {
             tempProductType.postValue(s.trim().toString())
     }
 
+    fun onProductQuantityChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+        if (s.toString().isNotBlank())
+            tempProductQuantity.postValue(s.trim().toString())
+    }
+
     fun handleClicks(v: View) {
         when (v.id) {
             R.id.etSelectProductType -> {
-                PopupMenu(v.context, v).apply {
-                    menuInflater.inflate(R.menu.add_product_type, menu)
-                    setOnMenuItemClickListener { item ->
-                        (v as AutoCompleteTextView).setText(item.title)
-                        true
-                    }
-                    show()
-                }
+                menu.show()
             }
             R.id.ivAddProductImage -> {
                 getPhotoFromGallery()
