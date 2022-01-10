@@ -24,6 +24,16 @@ class ProductsViewModel @Inject constructor() : BaseViewModel() {
     private var tempProductQuantity: MutableLiveData<String> = MutableLiveData("")
     private var tempImgUrl: MutableLiveData<String> = MutableLiveData("")
 
+    private val menu: PopupMenu by lazy {
+        PopupMenu(b.tilSelectProductType.context, b.etSelectProductType).apply {
+            menuInflater.inflate(R.menu.add_product_type, menu)
+            setOnMenuItemClickListener { item ->
+                b.etSelectProductType.setText(item.title)
+                true
+            }
+        }
+    }
+
     fun setAppBar() {
         b.appBar.tvTitle.text = getString(R.string.add_product)
         b.appBar.ivBack.setOnClickListener {
@@ -35,16 +45,8 @@ class ProductsViewModel @Inject constructor() : BaseViewModel() {
     }
 
     fun setupItems() {
-        val menu = PopupMenu(b.tilSelectProductType.context, b.etSelectProductType).apply {
-            menuInflater.inflate(R.menu.add_product_type, menu)
-            setOnMenuItemClickListener { item ->
-                b.etSelectProductType.setText(item.title)
-                true
-            }
-        }
         b.tilSelectProductType.setEndIconOnClickListener {
             menu.show()
-            it.isEnabled = true
         }
     }
 
@@ -70,6 +72,9 @@ class ProductsViewModel @Inject constructor() : BaseViewModel() {
 
     fun handleClicks(v: View) {
         when (v.id) {
+            R.id.etSelectProductType -> {
+                menu.show()
+            }
             R.id.ivAddProductImage -> {
                 getPhotoFromGallery()
             }
