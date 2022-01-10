@@ -9,7 +9,11 @@
         android:id="@+id/mainFragment"
         android:name="com.xxmukulxx.notes.feature_main.presentation.MainFragment"
         android:label="MainFragment"
-        tools:layout="@layout/frag_main" />
+        tools:layout="@layout/frag_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_addProduct"
+            app:destination="@id/addProduct" />
+    </fragment>
 
 
     <fragment
@@ -67,5 +71,10 @@
     <action
         android:id="@+id/action_global_loginFragment"
         app:destination="@id/loginFragment" />
+    <fragment
+        android:id="@+id/addProduct"
+        android:name="com.xxmukulxx.notes.feature_product.presentation.fragment.AddProduct"
+        android:label="AddProduct"
+        tools:layout="@layout/frag_add_product" />
 
 </navigation>

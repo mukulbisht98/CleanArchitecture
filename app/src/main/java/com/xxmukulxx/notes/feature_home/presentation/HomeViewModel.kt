@@ -3,10 +3,11 @@ package com.xxmukulxx.notes.feature_home.presentation
 import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.navigation.fragment.findNavController
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseViewModel
 import com.xxmukulxx.notes.feature_main.presentation.MainFragment
-import com.xxmukulxx.notes.util.toast
+import com.xxmukulxx.notes.util.navigateWithId
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -16,11 +17,12 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
 
     private val searchBar: MutableLiveData<Boolean> =
         MutableLiveData(false)
-    fun isSearchBarVisible (): LiveData<Boolean> {
+
+    fun isSearchBarVisible(): LiveData<Boolean> {
         return searchBar
     }
 
-    fun setSearchBarVisibility(value:Boolean){
+    fun setSearchBarVisibility(value: Boolean) {
         searchBar.postValue(value)
     }
 
@@ -28,10 +30,13 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
         mainFragment.setAppBar("")
     }
 
-    fun handleClick(view:View){
-        when(view.id){
-            R.id.iv_search ->{
+    fun handleClick(view: View) {
+        when (view.id) {
+            R.id.iv_search -> {
                 setSearchBarVisibility(!searchBar.value!!)
+            }
+            R.id.ivAddProduct -> {
+                mainFragment.findNavController().navigate(R.id.action_mainFragment_to_addProduct)
             }
         }
     }
