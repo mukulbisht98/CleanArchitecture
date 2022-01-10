@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Notes</string>
+    <string name="app_name">Shopping Points</string>
     <string name="network_error">There is some error in Network, please check…</string>
     <string name="loading">Loading…</string>
     <string name="enter_email_address">Enter mail address</string>

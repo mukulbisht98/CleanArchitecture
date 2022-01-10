@@ -32,10 +32,12 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.xxmukulxx.notes.MyApplication.AppContext.appContext
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.data.data_store.vm.DataStoreViewModel
+import com.xxmukulxx.notes.feature_product.domain.model.ProductData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import java.util.*
 
 
 // NavigationComponents Utils
@@ -226,4 +228,22 @@ fun Activity.setStatusBarGradiant(i: Int) {
     window.statusBarColor = getColor(android.R.color.transparent)
     window.navigationBarColor = getColor(android.R.color.transparent)
     window.setBackgroundDrawable(background)
+}
+
+/*
+    * Local Search
+    *
+    * */
+fun filter(models: ArrayList<Any>, query: String): ArrayList<Any> {
+    val lowerCaseQuery = query.lowercase(Locale.getDefault())
+    val filteredModelList = ArrayList<Any>()
+    for (i in 0 until models.size) {
+        if (models[i] is ProductData) {
+            val text = (models[i] as ProductData).title.lowercase(Locale.getDefault())
+            if (text.contains(lowerCaseQuery)) {
+                filteredModelList.add(models[i])
+            }
+        }
+    }
+    return filteredModelList
 }
