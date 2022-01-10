@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.14835526315789474" />
+        <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/drawable/bg_toolbar.xml" value="0.11381578947368422" />
+        <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/drawable/bg_toolbar_night.xml" value="0.2546052631578947" />
         <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/drawable/button_cut_edge.xml" value="0.2521172638436482" />
         <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/drawable/ic_add_a_photo.xml" value="0.2521172638436482" />
         <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.14835526315789474" />
@@ -20,6 +22,7 @@
         <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/layout/cart_frag.xml" value="0.2444078947368421" />
         <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/layout/dialog_loader.xml" value="0.22" />
         <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/layout/firebase_frag.xml" value="0.2444078947368421" />
+        <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/layout/frag_home.xml" value="0.2444078947368421" />
         <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/layout/frag_main.xml" value="0.2444078947368421" />
         <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/layout/frag_profile.xml" value="0.24201954397394138" />
         <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/layout/home_frag.xml" value="0.2444078947368421" />

@@ -2,6 +2,7 @@ package com.xxmukulxx.notes.util
 
 import android.app.Activity
 import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
@@ -10,11 +11,14 @@ import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.view.View
+import android.view.Window
+import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.ContextCompat
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.findFragment
 import androidx.navigation.NavDirections
@@ -104,7 +108,7 @@ fun View.invisible() {
 }
 
 // DarkMode Utils
-fun toggleDarkMode(dataStoreViewModel: DataStoreViewModel) {
+fun toggleDarkMode(dataStoreViewModel: DataStoreViewModel, activity: Activity) {
     CoroutineScope(Dispatchers.Main).launch {
         dataStoreViewModel.readFromLocal.collect {
             when (it) {
@@ -113,6 +117,7 @@ fun toggleDarkMode(dataStoreViewModel: DataStoreViewModel) {
                 3 -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
                 else -> dataStoreViewModel.saveToLocal(3)
             }
+            activity.setStatusBarGradiant(it)
         }
     }
 }
@@ -200,3 +205,24 @@ fun ImageView.setImgWithRadius(url: String?, radius: Int) {
 }
 
 val Context.dataStore by preferencesDataStore(name = DATA_STORE_NAME)
+
+// status bar
+fun Activity.setStatusBarGradiant(i: Int) {
+    val window: Window = this.window
+    var ui: Int = -1
+    when (i) {
+        1 -> ui = R.drawable.bg_toolbar
+        2 -> ui = R.drawable.bg_toolbar_night
+        else -> {
+            when (resources.configuration.uiMode) {
+                Configuration.UI_MODE_NIGHT_YES -> ui = R.drawable.bg_toolbar_night
+                Configuration.UI_MODE_NIGHT_NO -> ui = R.drawable.bg_toolbar
+            }
+        }
+    }
+    val background = ContextCompat.getDrawable(appContext, ui)
+    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+    window.statusBarColor = getColor(android.R.color.transparent)
+    window.navigationBarColor = getColor(android.R.color.transparent)
+    window.setBackgroundDrawable(background)
+}

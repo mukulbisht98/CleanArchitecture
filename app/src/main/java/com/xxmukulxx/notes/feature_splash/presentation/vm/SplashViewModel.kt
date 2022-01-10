@@ -14,13 +14,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SplashViewModel @Inject constructor(
-    private val userUseCases: UserUseCases,
-    dataStoreViewModel: DataStoreViewModel
+    private val userUseCases: UserUseCases
 ) : BaseViewModel() {
-
-    init {
-        toggleDarkMode(dataStoreViewModel)
-    }
 
     fun initAnimator(b: FragSplashBinding) {
         b.anim.addAnimatorListener(object : Animator.AnimatorListener {
