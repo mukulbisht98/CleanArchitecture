@@ -80,7 +80,7 @@ class ProductsViewModel @Inject constructor() : BaseViewModel() {
             }
             R.id.bnAddProduct -> {
                 // product adding not implemented yet
-                toast("Product added: ${tempProductTitle.value} ${tempProductPrice.value} ${tempProductType.value} ${tempImgUrl.value}")
+                toast("${tempProductTitle.value} ${tempProductPrice.value} ${tempProductType.value} ${tempProductQuantity.value} ")
             }
         }
     }
