@@ -117,7 +117,7 @@ fun toggleDarkMode(dataStoreViewModel: DataStoreViewModel, activity: Activity) {
                 3 -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
                 else -> dataStoreViewModel.saveToLocal(3)
             }
-            activity.setStatusBarGradiant(it)
+//            activity.setStatusBarGradiant(it)
         }
     }
 }
@@ -210,13 +210,14 @@ val Context.dataStore by preferencesDataStore(name = DATA_STORE_NAME)
 fun Activity.setStatusBarGradiant(i: Int) {
     val window: Window = this.window
     var ui: Int = -1
-    when (i) {
-        1 -> ui = R.drawable.bg_toolbar
-        2 -> ui = R.drawable.bg_toolbar_night
+    ui = when (i) {
+        1 -> R.drawable.bg_toolbar
+        2 -> R.drawable.bg_toolbar_night
         else -> {
             when (resources.configuration.uiMode) {
-                Configuration.UI_MODE_NIGHT_YES -> ui = R.drawable.bg_toolbar_night
-                Configuration.UI_MODE_NIGHT_NO -> ui = R.drawable.bg_toolbar
+                Configuration.UI_MODE_NIGHT_YES -> R.drawable.bg_toolbar_night
+                Configuration.UI_MODE_NIGHT_NO -> R.drawable.bg_toolbar
+                else -> R.drawable.bg_toolbar_night
             }
         }
     }
