@@ -6,12 +6,12 @@ import androidx.room.PrimaryKey
 @Entity
 data class ProductData(
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
-    val title: String,
-    val type: String,
-    val description: String,
+    val id: Int =0 ,
+    val title: String?,
+    val type: String?,
+    val description: String?,
     val quantity: Int = 0,
-    val price: Float,
+    val price: Float = 0f,
     var rating: Float = 0f,
     val imgUrl: String = "https://picsum.photos/250/200",
 )

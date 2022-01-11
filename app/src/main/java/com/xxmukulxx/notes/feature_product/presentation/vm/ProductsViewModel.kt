@@ -50,6 +50,7 @@ class ProductsViewModel @Inject constructor(private val productUseCases: Product
         b.appBar.ivInfo.setOnClickListener {
 //            viewModelScope.launch {
                 productList  = productUseCases.getProduct()?.asLiveData()
+                toast(productList?.value?.get(0)?.title.toString())
 
 
 
@@ -94,9 +95,12 @@ class ProductsViewModel @Inject constructor(private val productUseCases: Product
             }
             R.id.bnAddProduct -> {
                 if (checkValidation(MyApplication.appContext)){
+                    val data = ProductData(title = tempProductTitle.value.toString(), type = tempProductType.value.toString(),
+                            quantity = tempProductQuantity.value!!.toInt(), price = tempProductPrice.value!!.toFloat(), description = null, rating = 1f)
+
+                    Log.e("TAG", "handleClicks: $data", )
                     viewModelScope.launch {
-//                        productUseCases.insertProduct(ProductData(title = tempProductTitle.value.toString(), type = tempProductType.value.toString(),
-//                            quantity = tempProductQuantity.value!!.toInt(), price = tempProductPrice.value!!.toFloat()))
+                        productUseCases.insertProduct(data)
                     }
 
                 }

@@ -88,7 +88,7 @@ object DbModule {
     @Singleton
     fun provideAppCache(app: Application): AppDb {
         return Room.databaseBuilder(app, AppDb::class.java, "app.db").allowMainThreadQueries()
-            .fallbackToDestructiveMigration().build()
+            .build()
     }
 
     @Provides
