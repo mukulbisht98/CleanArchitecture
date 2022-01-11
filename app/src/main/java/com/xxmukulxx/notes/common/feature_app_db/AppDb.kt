@@ -11,7 +11,6 @@ import com.xxmukulxx.notes.feature_product.domain.model.ProductData
  */
 const val SCHEMA_VERSION = 1
 
-
 @Database(
     entities = [
         ProductData::class,
@@ -20,5 +19,9 @@ const val SCHEMA_VERSION = 1
 )
 
 abstract class AppDb : RoomDatabase() {
-    abstract fun productCache(): ProductDao
+    abstract fun productDao(): ProductDao
+
+    companion object {
+        const val DATABASE_NAME = "app_db"
+    }
 }

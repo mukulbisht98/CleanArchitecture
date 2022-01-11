@@ -1,16 +1,30 @@
 package com.xxmukulxx.notes.feature_product.presentation.vm
 
 import android.widget.RatingBar
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
 import com.xxmukulxx.notes.common.BaseViewModel
 import com.xxmukulxx.notes.databinding.FragProductDisplayBinding
 import com.xxmukulxx.notes.feature_product.domain.model.ProductData
+import com.xxmukulxx.notes.feature_product.domain.use_cases.ProductUseCases
 import com.xxmukulxx.notes.util.navigateBack
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ProductDisplayViewModel @Inject constructor() : BaseViewModel() {
+class ProductDisplayViewModel @Inject constructor(productUseCases: ProductUseCases) :
+    BaseViewModel() {
+
+    lateinit var productList: LiveData<List<ProductData>>
+
+    init {
+        viewModelScope.launch {
+            productList = productUseCases.getProducts().asLiveData(this.coroutineContext)
+        }
+    }
 
     lateinit var b: FragProductDisplayBinding
     val product: ProductData = ProductData(

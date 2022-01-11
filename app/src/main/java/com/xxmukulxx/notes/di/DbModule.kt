@@ -16,6 +16,7 @@ import com.xxmukulxx.notes.feature_note.data.data_source.NoteDatabase
 import com.xxmukulxx.notes.feature_note.data.repository.NoteRepositoryImpl
 import com.xxmukulxx.notes.feature_note.domain.repository.NoteRepository
 import com.xxmukulxx.notes.feature_note.domain.use_cases.*
+import com.xxmukulxx.notes.feature_product.data.data_cource.ProductDao
 import com.xxmukulxx.notes.feature_product.data.data_cource.repository.ProductDataRepositoryImpl
 import com.xxmukulxx.notes.feature_product.domain.repository.ProductRepository
 import com.xxmukulxx.notes.feature_product.domain.use_cases.*
@@ -28,6 +29,14 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object DbModule {
+
+
+    @Provides
+    @Singleton
+    fun provideAppDatabase(app: Application): AppDb =
+        Room.databaseBuilder(app, AppDb::class.java, AppDb.DATABASE_NAME)
+            .allowMainThreadQueries()
+            .fallbackToDestructiveMigration().build()
 
 
     @Provides
@@ -86,31 +95,21 @@ object DbModule {
 
     @Provides
     @Singleton
-    fun provideAppCache(app: Application): AppDb {
-        return Room.databaseBuilder(app, AppDb::class.java, "app.db").allowMainThreadQueries()
-            .build()
-    }
+    fun provideProductDao(appDb: AppDb): ProductDao = appDb.productDao()
 
     @Provides
     @Singleton
-    fun provideProductCache(appDb: AppDb) = appDb.productCache()
+    fun providesProductRepository(dao: ProductDao): ProductRepository =
+        ProductDataRepositoryImpl(dao)
 
     @Provides
     @Singleton
-    fun providesProductRepository(db: AppDb): ProductRepository {
-        return ProductDataRepositoryImpl(db.productCache())
-    }
-
-    @Provides
-    @Singleton
-    fun providesProductUseCases(repo: ProductRepository): ProductUseCases {
-        return ProductUseCases(
-            getProduct = GetProduct(repo),
-            insertProduct = InsertProduct(repo),
-            deleteProduct = DeleteProduct(repo),
-            updateProduct = UpdateProduct(repo)
-        )
-    }
+    fun providesProductUseCases(repo: ProductRepository): ProductUseCases = ProductUseCases(
+        getProducts = GetProducts(repo),
+        insertProduct = InsertProduct(repo),
+        deleteProduct = DeleteProduct(repo),
+        updateProduct = UpdateProduct(repo)
+    )
 
     @Provides
     @Singleton
