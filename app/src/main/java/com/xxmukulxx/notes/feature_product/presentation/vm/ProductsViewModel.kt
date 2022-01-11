@@ -95,8 +95,8 @@ class ProductsViewModel @Inject constructor(private val productUseCases: Product
             R.id.bnAddProduct -> {
                 if (checkValidation(MyApplication.appContext)){
                     viewModelScope.launch {
-                        productUseCases.insertProduct(ProductData(title = tempProductTitle.value.toString(), type = tempProductType.value.toString(),
-                            quantity = tempProductQuantity.value!!.toInt(), price = tempProductPrice.value!!.toFloat(), description = null))
+//                        productUseCases.insertProduct(ProductData(title = tempProductTitle.value.toString(), type = tempProductType.value.toString(),
+//                            quantity = tempProductQuantity.value!!.toInt(), price = tempProductPrice.value!!.toFloat()))
                     }
 
                 }
