@@ -1,20 +1,27 @@
 package com.xxmukulxx.notes.feature_product.presentation.vm
 
+import android.app.Activity
+import android.content.Context
+import android.os.Handler
+import android.util.Log
 import android.view.View
 import androidx.appcompat.widget.PopupMenu
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.*
+import com.xxmukulxx.notes.MyApplication
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseViewModel
 import com.xxmukulxx.notes.databinding.FragAddProductBinding
-import com.xxmukulxx.notes.util.getString
-import com.xxmukulxx.notes.util.navigateBack
-import com.xxmukulxx.notes.util.setImg
-import com.xxmukulxx.notes.util.toast
+import com.xxmukulxx.notes.feature_product.domain.model.ProductData
+import com.xxmukulxx.notes.feature_product.domain.use_cases.ProductUseCases
+import com.xxmukulxx.notes.util.*
+import com.xxmukulxx.notes.util.validation.Validation
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ProductsViewModel @Inject constructor() : BaseViewModel() {
+class ProductsViewModel @Inject constructor(private val productUseCases: ProductUseCases,) : BaseViewModel() {
     lateinit var b: FragAddProductBinding
 
     private var tempProductTitle: MutableLiveData<String> = MutableLiveData("")
@@ -23,6 +30,7 @@ class ProductsViewModel @Inject constructor() : BaseViewModel() {
     private var tempProductType: MutableLiveData<String> = MutableLiveData("")
     private var tempProductQuantity: MutableLiveData<String> = MutableLiveData("")
     private var tempImgUrl: MutableLiveData<String> = MutableLiveData("")
+    public var productList: LiveData<List<ProductData>>?=null
 
     private val menu: PopupMenu by lazy {
         PopupMenu(b.tilSelectProductType.context, b.etSelectProductType).apply {
@@ -40,7 +48,13 @@ class ProductsViewModel @Inject constructor() : BaseViewModel() {
             it.navigateBack()
         }
         b.appBar.ivInfo.setOnClickListener {
-            toast("You can add products here, these products will show up in the home page.")
+//            viewModelScope.launch {
+                productList  = productUseCases.getProduct()?.asLiveData()
+
+
+
+
+//            toast("You can add products here, these products will show up in the home page.")
         }
     }
 
@@ -70,7 +84,7 @@ class ProductsViewModel @Inject constructor() : BaseViewModel() {
             tempProductQuantity.postValue(s.trim().toString())
     }
 
-    fun handleClicks(v: View) {
+     fun handleClicks(v: View) {
         when (v.id) {
             R.id.etSelectProductType -> {
                 menu.show()
@@ -79,8 +93,13 @@ class ProductsViewModel @Inject constructor() : BaseViewModel() {
                 getPhotoFromGallery()
             }
             R.id.bnAddProduct -> {
-                // product adding not implemented yet
-                toast("${tempProductTitle.value} ${tempProductPrice.value} ${tempProductType.value} ${tempProductQuantity.value} ")
+                if (checkValidation(MyApplication.appContext)){
+                    viewModelScope.launch {
+                        productUseCases.insertProduct(ProductData(title = tempProductTitle.value.toString(), type = tempProductType.value.toString(),
+                            quantity = tempProductQuantity.value!!.toInt(), price = tempProductPrice.value!!.toFloat(), description = null))
+                    }
+
+                }
             }
         }
     }
@@ -90,5 +109,15 @@ class ProductsViewModel @Inject constructor() : BaseViewModel() {
         toast("Get photo from gallery not implemented, getting image from glide.")
         tempImgUrl.postValue("https://picsum.photos/300/300")
         b.ivAddProductImage.setImg(tempImgUrl.value)
+    }
+    private fun checkValidation(context: Context): Boolean {
+        val validation = Validation().apply {
+            isEmpty(tempProductType.value?.trim(), context.getString(R.string.select_product_type))
+            isEmpty(tempProductTitle.value?.trim(), context.getString(R.string.enter_product_title))
+            isEmpty(tempProductPrice.value?.trim(), context.getString(R.string.enter_product_price))
+            isEmpty(tempProductQuantity.value?.trim(), context.getString(R.string.enter_product_quantity))
+        }
+
+        return validation.isValid()
     }
 }

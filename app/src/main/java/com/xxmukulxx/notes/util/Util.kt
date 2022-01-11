@@ -247,8 +247,8 @@ fun filter(models: ArrayList<Any>, query: String): ArrayList<Any> {
     val filteredModelList = ArrayList<Any>()
     for (i in 0 until models.size) {
         if (models[i] is ProductData) {
-            val text = (models[i] as ProductData).title.lowercase(Locale.getDefault())
-            if (text.contains(lowerCaseQuery)) {
+            val text = (models[i] as ProductData).title?.lowercase(Locale.getDefault())
+            if (text!!.contains(lowerCaseQuery)) {
                 filteredModelList.add(models[i])
             }
         }

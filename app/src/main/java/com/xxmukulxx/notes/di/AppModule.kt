@@ -7,12 +7,14 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
-@Module
+@Module (includes = [DbModule::class])
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
     @Singleton
     @Provides
     fun provideBaseURL() = BuildConfig.BASE_URL
+
+
 
 }

@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.room.Room
 import com.xxmukulxx.notes.common.data.data_store.DataStore
 import com.xxmukulxx.notes.common.data.data_store.vm.DataStoreViewModel
+import com.xxmukulxx.notes.common.feature_app_db.AppDb
 import com.xxmukulxx.notes.feature_login_signup.data.data_source.UserDatabase
 import com.xxmukulxx.notes.feature_login_signup.data.repository.UserDataRepositoryImpl
 import com.xxmukulxx.notes.feature_login_signup.domain.repository.UserDataRepository
@@ -15,6 +16,9 @@ import com.xxmukulxx.notes.feature_note.data.data_source.NoteDatabase
 import com.xxmukulxx.notes.feature_note.data.repository.NoteRepositoryImpl
 import com.xxmukulxx.notes.feature_note.domain.repository.NoteRepository
 import com.xxmukulxx.notes.feature_note.domain.use_cases.*
+import com.xxmukulxx.notes.feature_product.data.data_cource.repository.ProductDataRepositoryImpl
+import com.xxmukulxx.notes.feature_product.domain.repository.ProductRepository
+import com.xxmukulxx.notes.feature_product.domain.use_cases.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -77,6 +81,34 @@ object DbModule {
             getUser = GetUser(repo),
             insertUser = InsertUser(repo),
             deleteUser = DeleteUser(repo),
+        )
+    }
+
+    @Provides
+    @Singleton
+    fun provideAppCache(app: Application): AppDb {
+        return Room.databaseBuilder(app, AppDb::class.java, "app.db").allowMainThreadQueries()
+            .fallbackToDestructiveMigration().build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideProductCache(appDb: AppDb) = appDb.productCache()
+
+    @Provides
+    @Singleton
+    fun providesProductRepository(db: AppDb): ProductRepository {
+        return ProductDataRepositoryImpl(db.productCache())
+    }
+
+    @Provides
+    @Singleton
+    fun providesProductUseCases(repo: ProductRepository): ProductUseCases {
+        return ProductUseCases(
+            getProduct = GetProduct(repo),
+            insertProduct = InsertProduct(repo),
+            deleteProduct = DeleteProduct(repo),
+            updateProduct = UpdateProduct(repo)
         )
     }
 
