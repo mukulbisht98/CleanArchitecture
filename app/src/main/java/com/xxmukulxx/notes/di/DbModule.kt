@@ -5,7 +5,7 @@ import androidx.room.Room
 import com.xxmukulxx.notes.common.data.data_store.DataStore
 import com.xxmukulxx.notes.common.data.data_store.vm.DataStoreViewModel
 import com.xxmukulxx.notes.common.feature_app_db.AppDb
-import com.xxmukulxx.notes.feature_login_signup.data.data_source.UserDatabase
+import com.xxmukulxx.notes.feature_login_signup.data.data_source.UserDao
 import com.xxmukulxx.notes.feature_login_signup.data.repository.UserDataRepositoryImpl
 import com.xxmukulxx.notes.feature_login_signup.domain.repository.UserDataRepository
 import com.xxmukulxx.notes.feature_login_signup.domain.use_cases.DeleteUser
@@ -69,19 +69,33 @@ object DbModule {
 
     @Provides
     @Singleton
-    fun providesUserDatabase(app: Application): UserDatabase {
-        return Room.databaseBuilder(
-            app,
-            UserDatabase::class.java,
-            UserDatabase.DATABASE_NAME
-        ).allowMainThreadQueries().build()
-    }
+    fun provideProductDao(appDb: AppDb): ProductDao = appDb.productDao()
+
 
     @Provides
     @Singleton
-    fun providesUserRepository(db: UserDatabase): UserDataRepository {
-        return UserDataRepositoryImpl(db.userDao)
-    }
+    fun providesProductUseCases(repo: ProductRepository): ProductUseCases = ProductUseCases(
+        getProducts = GetProducts(repo),
+        insertProduct = InsertProduct(repo),
+        deleteProduct = DeleteProduct(repo),
+        updateProduct = UpdateProduct(repo)
+    )
+
+
+    @Provides
+    @Singleton
+    fun providesProductRepository(dao: ProductDao): ProductRepository =
+        ProductDataRepositoryImpl(dao)
+
+    @Provides
+    @Singleton
+    fun provideUserDao(appDb: AppDb): UserDao = appDb.userDao()
+
+    @Provides
+    @Singleton
+    fun providesUserRepository(dao: UserDao): UserDataRepository =
+        UserDataRepositoryImpl(dao)
+
 
     @Provides
     @Singleton
@@ -93,23 +107,6 @@ object DbModule {
         )
     }
 
-    @Provides
-    @Singleton
-    fun provideProductDao(appDb: AppDb): ProductDao = appDb.productDao()
-
-    @Provides
-    @Singleton
-    fun providesProductRepository(dao: ProductDao): ProductRepository =
-        ProductDataRepositoryImpl(dao)
-
-    @Provides
-    @Singleton
-    fun providesProductUseCases(repo: ProductRepository): ProductUseCases = ProductUseCases(
-        getProducts = GetProducts(repo),
-        insertProduct = InsertProduct(repo),
-        deleteProduct = DeleteProduct(repo),
-        updateProduct = UpdateProduct(repo)
-    )
 
     @Provides
     @Singleton
