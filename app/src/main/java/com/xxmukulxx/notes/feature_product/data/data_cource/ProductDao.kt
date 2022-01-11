@@ -15,9 +15,14 @@ interface ProductDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertProduct(product: ProductData)
 
-
     @Query("Update Productdata set title =:title,description=:description,type =:type,price =:price where id=:productId")
-    suspend fun updateProduct(title:String,description:Int,type:String,price:String,productId:Int)
+    suspend fun updateProduct(
+        title: String,
+        description: Int,
+        type: String,
+        price: String,
+        productId: Int
+    )
 
     @Update
     suspend fun update(productData: ProductData)

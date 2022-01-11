@@ -1,7 +1,6 @@
 package com.xxmukulxx.notes.feature_product.presentation.fragment
 
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseFragment
 import com.xxmukulxx.notes.databinding.FragAddProductBinding
@@ -26,11 +25,6 @@ class AddProduct(override val layoutResId: Int = R.layout.frag_add_product) : Ba
             setupItems()
             setAppBar()
         }
-
-        viewModel.productList?.observe(requireActivity(), Observer {
-            toast(it[0].title.toString())
-        })
-
     }
 
     private fun initBindingsAndViewModel() {

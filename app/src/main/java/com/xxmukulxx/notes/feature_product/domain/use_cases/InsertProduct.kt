@@ -1,14 +1,10 @@
 package com.xxmukulxx.notes.feature_product.domain.use_cases
 
-import com.xxmukulxx.notes.feature_login_signup.domain.model.InvalidUserException
 import com.xxmukulxx.notes.feature_product.domain.model.ProductData
 import com.xxmukulxx.notes.feature_product.domain.repository.ProductRepository
 
-class InsertProduct (private val repository: ProductRepository) {
-    @Throws(InvalidUserException::class)
+class InsertProduct(private val repository: ProductRepository) {
     suspend operator fun invoke(res: ProductData) {
-        res.let {
-            repository.insertProduct(res)
-        }
+        repository.insertProduct(res)
     }
 }
