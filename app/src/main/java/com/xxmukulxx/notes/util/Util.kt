@@ -193,7 +193,7 @@ fun ImageView.setImg(url: String?) {
         Glide.with(appContext).load(R.drawable.ic_image_placeholder)
             .into(this)
     } else {
-        Glide.with(appContext).load(url)
+        Glide.with(appContext).load(url).transform(CenterCrop())
             .error(R.drawable.ic_image_placeholder)
             .thumbnail(Glide.with(appContext).load(R.drawable.loader_gif))
             .placeholder(R.drawable.ic_image_placeholder)

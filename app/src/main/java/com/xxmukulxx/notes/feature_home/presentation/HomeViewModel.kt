@@ -37,6 +37,9 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
             R.id.ivAddProduct -> {
                 mainFragment.findNavController().navigate(R.id.action_mainFragment_to_addProduct)
             }
+            R.id.tempOpenProductDisplay -> {
+                mainFragment.findNavController().navigate(R.id.action_mainFragment_to_productDetails)
+            }
         }
     }
 

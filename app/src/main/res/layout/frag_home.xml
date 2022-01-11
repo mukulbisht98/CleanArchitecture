@@ -26,16 +26,20 @@
                 bind:viewModel="@{viewModel}" />
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cvProductDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_5sdp"
                 app:cardCornerRadius="@dimen/_12sdp"
                 app:layout_constraintTop_toBottomOf="@+id/layout">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/tempOpenProductDisplay"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_12sdp"/>
+                    android:onClick="@{viewModel::handleClick}"
+                    android:text="open Product display"
+                    android:textSize="@dimen/_20ssp" />
             </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

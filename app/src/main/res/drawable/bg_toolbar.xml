@@ -5,12 +5,4 @@
             <solid android:color="@color/white_100" />
         </shape>
     </item>
-    <item android:height="@dimen/_50sdp">
-        <shape>
-            <gradient
-                android:angle="270"
-                android:startColor="@color/off_white"
-                android:type="linear" />
-        </shape>
-    </item>
 </layer-list>
