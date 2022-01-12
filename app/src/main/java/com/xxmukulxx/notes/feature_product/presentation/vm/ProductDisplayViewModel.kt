@@ -18,14 +18,6 @@ import javax.inject.Inject
 class ProductDisplayViewModel @Inject constructor(productUseCases: ProductUseCases) :
     BaseViewModel() {
 
-    lateinit var productList: LiveData<List<ProductData>>
-
-    init {
-        viewModelScope.launch {
-            productList = productUseCases.getProducts().asLiveData(this.coroutineContext)
-        }
-    }
-
     lateinit var b: FragProductDisplayBinding
     val product: ProductData = ProductData(
         1,

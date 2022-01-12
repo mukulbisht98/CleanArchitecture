@@ -12,7 +12,8 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:overScrollMode="never">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -30,16 +31,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_5sdp"
-                app:cardCornerRadius="@dimen/_12sdp"
+                app:cardCornerRadius="@dimen/_5sdp"
                 app:layout_constraintTop_toBottomOf="@+id/layout">
 
-                <TextView
-                    android:id="@+id/tempOpenProductDisplay"
-                    android:layout_width="wrap_content"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvProductList"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="@{viewModel::handleClick}"
-                    android:text="open Product display"
-                    android:textSize="@dimen/_20ssp" />
+                    android:nestedScrollingEnabled="false"
+                    bind:listitem="@layout/item_product_list"
+                    bind:itemCount="2"
+                    android:overScrollMode="never" />
             </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

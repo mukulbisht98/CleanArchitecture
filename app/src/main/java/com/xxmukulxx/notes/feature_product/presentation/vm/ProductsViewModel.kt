@@ -96,7 +96,7 @@ class ProductsViewModel @Inject constructor(private val productUseCases: Product
                             quantity = tempProductQuantity.value!!.toInt(),
                             price = tempProductPrice.value!!.toFloat()
                         )
-//                        toast(productData.toString())
+                        toast(productData.toString())
                         productUseCases.insertProduct(productData)
                     }
                 }

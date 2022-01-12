@@ -6,7 +6,6 @@
     app:startDestination="@id/splashFragment">
 
 
-
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.xxmukulxx.notes.feature_splash.presentation.fragments.SplashFragment"
@@ -21,8 +20,8 @@
         <action
             android:id="@+id/action_splashFragment_to_mainFragment"
             app:destination="@id/mainFragment"
-            app:popUpTo="@id/mainFragment"
             app:launchSingleTop="true"
+            app:popUpTo="@id/mainFragment"
             app:popUpToInclusive="true" />
     </fragment>
 
@@ -68,7 +67,7 @@
         android:id="@+id/mainFragment"
         android:name="com.xxmukulxx.notes.feature_main.presentation.MainFragment"
         android:label="MainFragment"
-        tools:layout="@layout/frag_main" >
+        tools:layout="@layout/frag_main">
         <action
             android:id="@+id/action_mainFragment_to_addProduct"
             app:destination="@id/addProduct" />
@@ -84,8 +83,13 @@
         tools:layout="@layout/frag_add_product" />
     <fragment
         android:id="@+id/productDetails"
-        tools:layout="@layout/frag_product_display"
         android:name="com.xxmukulxx.notes.feature_product.presentation.fragment.ProductDetails"
-        android:label="ProductDetails" />
+        android:label="ProductDetails"
+        tools:layout="@layout/frag_product_display">
+        <argument
+            android:name="id"
+            android:defaultValue="0"
+            app:argType="string" />
+    </fragment>
 
 </navigation>
