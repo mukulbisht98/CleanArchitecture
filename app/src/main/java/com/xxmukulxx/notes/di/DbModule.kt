@@ -76,6 +76,7 @@ object DbModule {
     @Singleton
     fun providesProductUseCases(repo: ProductRepository): ProductUseCases = ProductUseCases(
         getProducts = GetProducts(repo),
+        getSingleProduct = GetSingleProduct(repo),
         insertProduct = InsertProduct(repo),
         deleteProduct = DeleteProduct(repo),
         updateProduct = UpdateProduct(repo)

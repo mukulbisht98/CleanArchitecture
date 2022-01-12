@@ -98,6 +98,7 @@ class ProductsViewModel @Inject constructor(private val productUseCases: Product
                         )
                         toast(productData.toString())
                         productUseCases.insertProduct(productData)
+                        v.navigateBack()
                     }
                 }
             }

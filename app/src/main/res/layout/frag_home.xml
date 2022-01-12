@@ -39,6 +39,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:nestedScrollingEnabled="false"
+                    android:layout_marginBottom="@dimen/_10sdp"
                     bind:listitem="@layout/item_product_list"
                     bind:itemCount="2"
                     android:overScrollMode="never" />

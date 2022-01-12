@@ -10,15 +10,21 @@ import com.xxmukulxx.notes.databinding.FragProductDisplayBinding
 import com.xxmukulxx.notes.feature_product.domain.model.ProductData
 import com.xxmukulxx.notes.feature_product.domain.use_cases.ProductUseCases
 import com.xxmukulxx.notes.util.navigateBack
+import com.xxmukulxx.notes.util.toast
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ProductDisplayViewModel @Inject constructor(productUseCases: ProductUseCases) :
+class ProductDisplayViewModel @Inject constructor(private val productUseCases: ProductUseCases) :
     BaseViewModel() {
 
     lateinit var b: FragProductDisplayBinding
+    var title : MutableLiveData<String> = MutableLiveData("")
+    var type : MutableLiveData<String> = MutableLiveData("")
+    var price : MutableLiveData<String> = MutableLiveData("")
+    var description : MutableLiveData<String> = MutableLiveData("new I-Mac pro 2022 offers latest ai neural engine M2 Pro Max chip with 8k display.")
+    var quantity : MutableLiveData<String> = MutableLiveData("")
     val product: ProductData = ProductData(
         1,
         "I-Mac Pro 2022",
@@ -42,4 +48,15 @@ class ProductDisplayViewModel @Inject constructor(productUseCases: ProductUseCas
             b.root.navigateBack()
         }
     }
+
+    fun setData (id:Int){
+        viewModelScope.launch {
+            val productData = productUseCases.getSingleProduct(id)
+            title.postValue(productData?.title)
+            type.postValue(productData?.type)
+            quantity.postValue(productData?.quantity.toString())
+            price.postValue(productData?.price.toString())
+        }
+    }
+
 }

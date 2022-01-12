@@ -8,6 +8,8 @@ interface ProductRepository {
 
     fun getProducts(): Flow<List<ProductData>>
 
+    suspend fun getSingleProduct(id: Int): ProductData?
+
     suspend fun insertProduct(data: ProductData)
 
     suspend fun deleteProduct(id: Int)

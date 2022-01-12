@@ -10,6 +10,10 @@ class ProductDataRepositoryImpl (private  val productDao: ProductDao) : ProductR
         return productDao.getProducts()
     }
 
+    override suspend fun getSingleProduct(id: Int): ProductData? {
+        return productDao.getProductById(id)
+    }
+
     override suspend fun insertProduct(data: ProductData) {
         productDao.insertProduct(data)
     }
