@@ -3,16 +3,17 @@ package com.xxmukulxx.notes.feature_product.presentation.vm
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.appcompat.widget.PopupMenu
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.xxmukulxx.notes.MyApplication
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseViewModel
 import com.xxmukulxx.notes.databinding.FragAddProductBinding
+import com.xxmukulxx.notes.feature_firebase.utils.FirebaseStorageImpl
 import com.xxmukulxx.notes.feature_product.domain.model.ProductData
 import com.xxmukulxx.notes.feature_product.domain.use_cases.ProductUseCases
 import com.xxmukulxx.notes.util.getString
@@ -33,7 +34,7 @@ class ProductsViewModel @Inject constructor(private val productUseCases: Product
     private var tempProductPrice: MutableLiveData<String> = MutableLiveData("")
     private var tempProductType: MutableLiveData<String> = MutableLiveData("")
     private var tempProductQuantity: MutableLiveData<String> = MutableLiveData("")
-    private var tempImgUrl: MutableLiveData<String> = MutableLiveData("")
+    var tempProductImageUri: Uri? = null
 
     @SuppressLint("StaticFieldLeak")
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
@@ -95,17 +96,24 @@ class ProductsViewModel @Inject constructor(private val productUseCases: Product
             }
             R.id.bnAddProduct -> {
                 if (checkValidation(MyApplication.appContext)) {
-                    viewModelScope.launch {
-                        val productData = ProductData(
-                            title = tempProductTitle.value.toString(),
-                            description = tempProductDescription.value.toString(),
-                            type = tempProductType.value.toString(),
-                            quantity = tempProductQuantity.value!!.toInt(),
-                            price = tempProductPrice.value!!.toFloat()
-                        )
-                        toast(productData.toString())
-                        productUseCases.insertProduct(productData)
-                        v.navigateBack()
+                    isLoading.postValue(true)
+                    tempProductImageUri?.let {
+                        FirebaseStorageImpl().uploadImageToFirebase(it) { url ->
+                            viewModelScope.launch {
+                                val productData = ProductData(
+                                    title = tempProductTitle.value.toString(),
+                                    description = tempProductDescription.value.toString(),
+                                    type = tempProductType.value.toString(),
+                                    quantity = tempProductQuantity.value!!.toInt(),
+                                    price = tempProductPrice.value!!.toFloat(),
+                                    imgUrl = url
+                                )
+                                toast(productData.toString())
+                                productUseCases.insertProduct(productData)
+                                isLoading.postValue(false)
+                                v.navigateBack()
+                            }
+                        }
                     }
                 }
             }
@@ -122,8 +130,6 @@ class ProductsViewModel @Inject constructor(private val productUseCases: Product
         resultLauncher.launch(intent)
 //        tempImgUrl.postValue("https://picsum.photos/300/300")
 //        b.ivAddProductImage.setImg(tempImgUrl.value)
-
-
     }
 
 

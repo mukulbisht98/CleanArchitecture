@@ -7,9 +7,8 @@ import androidx.fragment.app.viewModels
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseFragment
 import com.xxmukulxx.notes.databinding.FragAddProductBinding
-import com.xxmukulxx.notes.feature_firebase.utils.FirebaseStorageImpl
 import com.xxmukulxx.notes.feature_product.presentation.vm.ProductsViewModel
-import com.xxmukulxx.notes.util.getPathFromURI
+import com.xxmukulxx.notes.util.setImgFromUri
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -23,15 +22,19 @@ class AddProduct(override val layoutResId: Int = R.layout.frag_add_product) : Ba
             if (result.resultCode == Activity.RESULT_OK) {
                 // There are no request codes
                 val data: Intent? = result.data
-                data?.data?.let { FirebaseStorageImpl().uploadImageToFirebase(it) }
-//                getPathFromURI(requireActivity(),data?.data)
-
+                data?.data?.let {
+                    binding.ivAddProductImage.setImgFromUri(it)
+                    viewModel.tempProductImageUri = it
+//                    FirebaseStorageImpl().uploadImageToFirebase(it)
+                }
+//                val path = getPathFromURI(requireActivity(),data?.data)
             }
         }
 
     override fun onCreateView() {
         initBindingsAndViewModel()
         initViewModel()
+        observer()
     }
 
     private fun initViewModel() {
@@ -48,6 +51,14 @@ class AddProduct(override val layoutResId: Int = R.layout.frag_add_product) : Ba
         binding.lifecycleOwner = viewLifecycleOwner
     }
 
-
+    private fun observer() {
+        viewModel.getIsLoadingLiveData().observe(viewLifecycleOwner, {
+            if (it) {
+                showLoading()
+            } else {
+                hideLoading()
+            }
+        })
+    }
 
 }

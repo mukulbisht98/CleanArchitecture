@@ -211,6 +211,13 @@ fun ImageView.setImg(url: String?) {
             .into(this)
     }
 }
+fun ImageView.setImgFromUri(uri: Uri) {
+        Glide.with(appContext).load(uri)
+            .error(R.drawable.ic_image_placeholder)
+            .thumbnail(Glide.with(appContext).load(R.drawable.loader_gif))
+            .placeholder(R.drawable.ic_image_placeholder)
+            .into(this)
+}
 
 fun ImageView.setImgWithRadius(url: String?, radius: Int) {
     if (url.isNullOrEmpty()) {
