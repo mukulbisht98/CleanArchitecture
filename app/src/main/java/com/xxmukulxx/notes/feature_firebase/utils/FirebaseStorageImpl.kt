@@ -21,6 +21,7 @@ class FirebaseStorageImpl {
         }.addOnFailureListener {
             Log.e(TAG, "uploadImageToFirebase: ${it.message}")
         }.addOnProgressListener {
+
         }
     }
 }

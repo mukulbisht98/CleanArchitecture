@@ -7,6 +7,7 @@ import androidx.fragment.app.viewModels
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseFragment
 import com.xxmukulxx.notes.databinding.FragAddProductBinding
+import com.xxmukulxx.notes.feature_firebase.utils.FirebaseStorageImpl
 import com.xxmukulxx.notes.feature_product.presentation.vm.ProductsViewModel
 import com.xxmukulxx.notes.util.getPathFromURI
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,7 +23,8 @@ class AddProduct(override val layoutResId: Int = R.layout.frag_add_product) : Ba
             if (result.resultCode == Activity.RESULT_OK) {
                 // There are no request codes
                 val data: Intent? = result.data
-                getPathFromURI(requireActivity(),data?.data)
+                data?.data?.let { FirebaseStorageImpl().uploadImageToFirebase(it) }
+//                getPathFromURI(requireActivity(),data?.data)
 
             }
         }
