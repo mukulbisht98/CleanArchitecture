@@ -1,11 +1,14 @@
 package com.xxmukulxx.notes.feature_product.presentation.fragment
 
+import android.app.Activity
+import android.content.Intent
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import com.xxmukulxx.notes.R
 import com.xxmukulxx.notes.common.BaseFragment
 import com.xxmukulxx.notes.databinding.FragAddProductBinding
 import com.xxmukulxx.notes.feature_product.presentation.vm.ProductsViewModel
-import com.xxmukulxx.notes.util.toast
+import com.xxmukulxx.notes.util.getPathFromURI
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -13,6 +16,16 @@ class AddProduct(override val layoutResId: Int = R.layout.frag_add_product) : Ba
 
     private lateinit var binding: FragAddProductBinding
     private val viewModel: ProductsViewModel by viewModels()
+
+    val resultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                // There are no request codes
+                val data: Intent? = result.data
+                getPathFromURI(requireActivity(),data?.data)
+
+            }
+        }
 
     override fun onCreateView() {
         initBindingsAndViewModel()
@@ -23,7 +36,7 @@ class AddProduct(override val layoutResId: Int = R.layout.frag_add_product) : Ba
         viewModel.apply {
             b = binding
             setupItems()
-            setAppBar()
+            setAppBar(resultLauncher)
         }
     }
 
@@ -32,4 +45,7 @@ class AddProduct(override val layoutResId: Int = R.layout.frag_add_product) : Ba
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
     }
+
+
+
 }

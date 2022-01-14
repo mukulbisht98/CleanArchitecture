@@ -113,5 +113,9 @@ dependencies {
     implementation("androidx.datastore:datastore:1.0.0")
     implementation("androidx.datastore:datastore-preferences:1.0.0")
 
-    implementation 'androidx.appcompat:appcompat:1.4.0'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    
+    //for image compress
+    implementation 'id.zelory:compressor:3.0.1'
+
 }

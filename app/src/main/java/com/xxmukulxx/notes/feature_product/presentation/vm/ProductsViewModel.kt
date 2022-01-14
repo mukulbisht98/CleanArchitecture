@@ -1,8 +1,12 @@
 package com.xxmukulxx.notes.feature_product.presentation.vm
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.view.View
+import androidx.activity.result.ActivityResultLauncher
 import androidx.appcompat.widget.PopupMenu
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.xxmukulxx.notes.MyApplication
@@ -13,7 +17,6 @@ import com.xxmukulxx.notes.feature_product.domain.model.ProductData
 import com.xxmukulxx.notes.feature_product.domain.use_cases.ProductUseCases
 import com.xxmukulxx.notes.util.getString
 import com.xxmukulxx.notes.util.navigateBack
-import com.xxmukulxx.notes.util.setImg
 import com.xxmukulxx.notes.util.toast
 import com.xxmukulxx.notes.util.validation.Validation
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -32,6 +35,9 @@ class ProductsViewModel @Inject constructor(private val productUseCases: Product
     private var tempProductQuantity: MutableLiveData<String> = MutableLiveData("")
     private var tempImgUrl: MutableLiveData<String> = MutableLiveData("")
 
+    @SuppressLint("StaticFieldLeak")
+    private lateinit var resultLauncher: ActivityResultLauncher<Intent>
+
     private val menu: PopupMenu by lazy {
         PopupMenu(b.tilSelectProductType.context, b.etSelectProductType).apply {
             menuInflater.inflate(R.menu.add_product_type, menu)
@@ -42,7 +48,8 @@ class ProductsViewModel @Inject constructor(private val productUseCases: Product
         }
     }
 
-    fun setAppBar() {
+    fun setAppBar(resultLauncher: ActivityResultLauncher<Intent>) {
+        this.resultLauncher = resultLauncher
         b.appBar.tvTitle.text = getString(R.string.add_product)
         b.appBar.ivBack.setOnClickListener {
             it.navigateBack()
@@ -106,11 +113,19 @@ class ProductsViewModel @Inject constructor(private val productUseCases: Product
     }
 
     private fun getPhotoFromGallery() {
+
         // get photo from gallery -> upload to server -> upload to database -> Show here
-        toast("Get photo from gallery not implemented, getting image from glide.")
-        tempImgUrl.postValue("https://picsum.photos/300/300")
-        b.ivAddProductImage.setImg(tempImgUrl.value)
+//        toast("Get photo from gallery not implemented, getting image from glide.")
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+//        context?.startActivityForResult(intent,101)
+        resultLauncher.launch(intent)
+//        tempImgUrl.postValue("https://picsum.photos/300/300")
+//        b.ivAddProductImage.setImg(tempImgUrl.value)
+
+
     }
+
 
     private fun checkValidation(context: Context): Boolean {
         val validation = Validation().apply {

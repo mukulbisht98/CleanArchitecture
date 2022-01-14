@@ -3,6 +3,8 @@ package com.xxmukulxx.notes.util
 import android.app.Activity
 import android.content.Context
 import android.content.res.Configuration
+import android.database.Cursor
+import android.net.Uri
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
@@ -37,7 +39,16 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import java.io.File
 import java.util.*
+import android.provider.MediaStore
+
+
+
 
 
 // NavigationComponents Utils
@@ -254,4 +265,35 @@ fun filter(models: ArrayList<Any>, query: String): ArrayList<Any> {
         }
     }
     return filteredModelList
+}
+
+/*
+    *
+    * To get image in multipart body
+    * */
+fun convertImageInMultipart(imagePath: String, thumbImage: String): Pair<MultipartBody.Part, MultipartBody.Part> {
+    val file = File(imagePath)
+    val requestBody = RequestBody.create("*/*".toMediaTypeOrNull(), file);
+    val fileToUpload = MultipartBody.Part.createFormData("image", file.getName(), requestBody);
+    val thumbFile = File(thumbImage)
+    val requestBodyThumb = RequestBody.create("*/*".toMediaTypeOrNull(), thumbFile);
+    val fileToUploadThumb = MultipartBody.Part.createFormData(
+        "image_thumb",
+        thumbFile.getName(),
+        requestBodyThumb
+    );
+    return  Pair(fileToUpload, fileToUploadThumb)
+}
+
+fun getPathFromURI(context: Context,contentUri: Uri?): String? {
+    var res: String? = null
+    val proj = arrayOf(MediaStore.Images.Media.DATA)
+    val cursor: Cursor =
+        contentUri?.let { context.contentResolver.query(it, proj, null, null, null) }!!
+    if (cursor.moveToFirst()) {
+        val column_index: Int = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+        res = cursor.getString(column_index)
+    }
+    cursor.close()
+    return res
 }
