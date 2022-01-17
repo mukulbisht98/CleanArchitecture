@@ -16,7 +16,10 @@ class FirebaseStorageImpl {
 
     fun uploadImageToFirebase(uri: Uri, onSuccess: (it: String) -> Unit) {
         storageRef.putFile(uri).addOnSuccessListener {
-            onSuccess(it.storage.downloadUrl.toString())
+            it.storage.downloadUrl.addOnSuccessListener { uri ->
+                onSuccess(uri.toString())
+            }
+//            onSuccess(it.storage.downloadUrl.toString())
         }.addOnFailureListener {
             Log.e(TAG, "uploadImageToFirebase: ${it.message}")
         }
