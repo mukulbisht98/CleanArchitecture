@@ -121,15 +121,9 @@ class ProductsViewModel @Inject constructor(private val productUseCases: Product
     }
 
     private fun getPhotoFromGallery() {
-
-        // get photo from gallery -> upload to server -> upload to database -> Show here
-//        toast("Get photo from gallery not implemented, getting image from glide.")
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
-//        context?.startActivityForResult(intent,101)
         resultLauncher.launch(intent)
-//        tempImgUrl.postValue("https://picsum.photos/300/300")
-//        b.ivAddProductImage.setImg(tempImgUrl.value)
     }
 
 

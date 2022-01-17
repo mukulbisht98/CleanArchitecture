@@ -6,4 +6,5 @@ data class ProductUseCases(
     val insertProduct: InsertProduct,
     val deleteProduct: DeleteProduct,
     val updateProduct: UpdateProduct,
+    val searchProductFromDb : SearchProductFromDb
 )

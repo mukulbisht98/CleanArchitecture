@@ -25,4 +25,8 @@ class ProductDataRepositoryImpl (private  val productDao: ProductDao) : ProductR
     override suspend fun updateProduct(data: ProductData) {
         productDao.update(data)
     }
+
+    override fun searchProductFromDb(query: String): Flow<List<ProductData>> {
+      return  productDao.searchDatabase(query)
+    }
 }

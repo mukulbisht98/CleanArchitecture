@@ -19,7 +19,6 @@ class FirebaseStorageImpl {
             it.storage.downloadUrl.addOnSuccessListener { uri ->
                 onSuccess(uri.toString())
             }
-//            onSuccess(it.storage.downloadUrl.toString())
         }.addOnFailureListener {
             Log.e(TAG, "uploadImageToFirebase: ${it.message}")
         }

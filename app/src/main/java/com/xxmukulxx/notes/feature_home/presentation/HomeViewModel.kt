@@ -1,5 +1,6 @@
 package com.xxmukulxx.notes.feature_home.presentation
 
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -18,7 +19,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(productUseCases: ProductUseCases) : BaseViewModel() {
+class HomeViewModel @Inject constructor(val productUseCases: ProductUseCases) : BaseViewModel() {
     lateinit var mainFragment: MainFragment
     lateinit var productListLiveData: LiveData<List<ProductData>>
 
@@ -35,7 +36,7 @@ class HomeViewModel @Inject constructor(productUseCases: ProductUseCases) : Base
         return searchBar
     }
 
-    fun setSearchBarVisibility(value: Boolean) {
+    private fun setSearchBarVisibility(value: Boolean) {
         searchBar.postValue(value)
     }
 
@@ -43,6 +44,15 @@ class HomeViewModel @Inject constructor(productUseCases: ProductUseCases) : Base
         mainFragment.setAppBar("")
     }
 
+    fun onSearchQuery(s: CharSequence, start: Int, before: Int, count: Int) {
+        if (s.toString().isNotBlank())
+            viewModelScope.launch {
+                val searchList = productUseCases.searchProductFromDb(s.toString().trim().lowercase()).asLiveData(this.coroutineContext)
+                Log.e("SearchData", "onSearchQuery: ${searchList.value?.size}", )
+
+            }
+
+    }
     fun handleClick(view: View) {
         when (view.id) {
             R.id.iv_search -> {

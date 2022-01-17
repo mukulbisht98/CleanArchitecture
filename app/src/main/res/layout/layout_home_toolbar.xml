@@ -49,18 +49,33 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_toolbar_logo">
 
-            <androidx.appcompat.widget.SearchView
+            <EditText
                 android:id="@+id/search_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_8ssp"
-                android:background="@android:color/transparent"
-                android:focusable="false"
-                android:visibility="visible"
-                app:iconifiedByDefault="false"
-                app:queryBackground="@android:color/transparent"
-                app:queryHint="@string/search"
-                app:searchIcon="@drawable/ic_search" />
+                android:hint="@string/search"
+                android:maxLines="1"
+                android:drawableLeft="@drawable/ic_search"
+                android:background="@null"
+                android:onTextChanged="@{viewModel::onSearchQuery}"
+                />
+
+<!--            <EditText-->
+<!--                android:id="@+id/search_view"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin="@dimen/_8ssp"-->
+<!--                android:focusable="false"-->
+<!--                android:hint="@string/search"-->
+<!--                android:drawableLeft="@drawable/ic_search"-->
+<!--                android:background="@null"-->
+<!--                android:visibility="visible"-->
+<!--                app:iconifiedByDefault="false"-->
+<!--                android:onTextChanged="@{viewModel::onSearchQuery}"-->
+<!--                app:queryBackground="@android:color/transparent"-->
+<!--                app:queryHint="@string/search"-->
+<!--                app:searchIcon="@drawable/ic_search" />-->
         </androidx.cardview.widget.CardView>
 
         <LinearLayout

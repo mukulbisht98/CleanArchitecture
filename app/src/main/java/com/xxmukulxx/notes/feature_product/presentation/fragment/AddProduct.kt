@@ -25,9 +25,7 @@ class AddProduct(override val layoutResId: Int = R.layout.frag_add_product) : Ba
                 data?.data?.let {
                     binding.ivAddProductImage.setImgFromUri(it)
                     viewModel.tempProductImageUri = it
-//                    FirebaseStorageImpl().uploadImageToFirebase(it)
                 }
-//                val path = getPathFromURI(requireActivity(),data?.data)
             }
         }
 

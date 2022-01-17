@@ -79,7 +79,8 @@ object DbModule {
         getSingleProduct = GetSingleProduct(repo),
         insertProduct = InsertProduct(repo),
         deleteProduct = DeleteProduct(repo),
-        updateProduct = UpdateProduct(repo)
+        updateProduct = UpdateProduct(repo),
+        searchProductFromDb = SearchProductFromDb(repo)
     )
 
 

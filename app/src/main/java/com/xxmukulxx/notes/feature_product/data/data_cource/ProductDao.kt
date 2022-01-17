@@ -15,6 +15,9 @@ interface ProductDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertProduct(product: ProductData)
 
+    @Query("SELECT * FROM ProductData WHERE title LIKE :searchQuery")
+    fun searchDatabase(searchQuery: String): Flow<List<ProductData>>
+
     @Query("Update Productdata set title =:title,description=:description,type =:type,price =:price where id=:productId")
     suspend fun updateProduct(
         title: String,

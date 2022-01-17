@@ -13,6 +13,5 @@ fun loadImage(view: ImageView, imageUrl: String?) {
 
 @BindingAdapter("setRoundImgFromURL")
 fun setRoundImgFromURL(view: ImageView, imageUrl: String?) {
-    val radius = appContext.resources.getDimension(R.dimen._12sdp)
     view.setImg(imageUrl)
 }

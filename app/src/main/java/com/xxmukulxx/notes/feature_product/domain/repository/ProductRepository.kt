@@ -15,4 +15,6 @@ interface ProductRepository {
     suspend fun deleteProduct(id: Int)
 
     suspend fun updateProduct(data: ProductData)
+
+    fun searchProductFromDb(query:String) : Flow<List<ProductData>>
 }
