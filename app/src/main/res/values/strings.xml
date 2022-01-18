@@ -43,4 +43,8 @@
     <string name="enter_product_title">Enter Product Title.</string>
     <string name="enter_product_price">Enter Product Price.</string>
     <string name="enter_product_quantity">Enter Product Quantity.</string>
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="cart_is_empty">cart is empty</string>
+    <string name="items_in_cart">Items in cart</string>
+    <string name="no_products_to_display">No Products to Display</string>
 </resources>

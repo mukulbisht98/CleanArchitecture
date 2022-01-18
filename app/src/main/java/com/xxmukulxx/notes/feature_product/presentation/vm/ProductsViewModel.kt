@@ -30,10 +30,12 @@ class ProductsViewModel @Inject constructor(private val productUseCases: Product
     lateinit var b: FragAddProductBinding
 
     private var tempProductTitle: MutableLiveData<String> = MutableLiveData("")
-    private var tempProductDescription: MutableLiveData<String> = MutableLiveData("")
+    private var tempProductDescription: MutableLiveData<String> =
+        MutableLiveData("This is a sample description.")
     private var tempProductPrice: MutableLiveData<String> = MutableLiveData("")
     private var tempProductType: MutableLiveData<String> = MutableLiveData("")
-    private var tempProductQuantity: MutableLiveData<String> = MutableLiveData("")
+    private var tempProductQuantity: MutableLiveData<String> =
+        MutableLiveData("https://picsum.photos/100/100")
     var tempProductImageUri: Uri? = null
 
     @SuppressLint("StaticFieldLeak")
@@ -106,7 +108,8 @@ class ProductsViewModel @Inject constructor(private val productUseCases: Product
                                     type = tempProductType.value.toString(),
                                     quantity = tempProductQuantity.value!!.toInt(),
                                     price = tempProductPrice.value!!.toFloat(),
-                                    imgUrl = url
+                                    imgUrl = url,
+                                    rating = 4f
                                 )
                                 toast(productData.toString())
                                 productUseCases.insertProduct(productData)

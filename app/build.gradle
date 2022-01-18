@@ -45,6 +45,21 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+//    flavorDimensions "icecream"
+//    productFlavors {
+//        strawberry {
+//            dimension "icecream"
+//            applicationIdSuffix ".strawberry"
+//        }
+//        chocolate {
+//            dimension "icecream"
+//            applicationIdSuffix ".chocolate"
+//        }
+//        vanilla {
+//            dimension "icecream"
+//            applicationIdSuffix ".vanilla"
+//        }
+//    }
 }
 
 dependencies {

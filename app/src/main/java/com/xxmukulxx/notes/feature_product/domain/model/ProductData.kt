@@ -10,8 +10,8 @@ data class ProductData(
     val title: String,
     val type: String,
     val description: String,
-    val quantity: Int = 0,
+    val quantity: Int,
     val price: Float,
-    var rating: Float = 0f,
-    val imgUrl: String = "https://picsum.photos/100/100",
+    var rating: Float,
+    val imgUrl: String,
 )

@@ -21,16 +21,20 @@
         <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/layout/app_bar.xml" value="0.2444078947368421" />
         <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/layout/cart_frag.xml" value="0.2444078947368421" />
         <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/layout/default_app_bar.xml" value="0.17335526315789473" />
+        <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/layout/default_search_bar.xml" value="0.264" />
         <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/layout/dialog_loader.xml" value="0.22" />
         <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/layout/firebase_frag.xml" value="0.2444078947368421" />
         <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/layout/frag_add_product.xml" value="0.17335526315789473" />
-        <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/layout/frag_home.xml" value="0.2444078947368421" />
-        <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/layout/frag_login.xml" value="0.18322368421052632" />
+        <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/layout/frag_cart.xml" value="0.28055555555555556" />
+        <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/layout/frag_home.xml" value="0.2" />
+        <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/layout/frag_login.xml" value="0.3135021097046414" />
         <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/layout/frag_main.xml" value="0.2444078947368421" />
+        <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/layout/frag_product_display.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/layout/frag_profile.xml" value="0.24201954397394138" />
         <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/layout/frag_signup.xml" value="0.18322368421052632" />
         <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/layout/home_frag.xml" value="0.2444078947368421" />
         <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/layout/item_add_product_type.xml" value="0.17335526315789473" />
+        <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/layout/item_product_list.xml" value="0.3135021097046414" />
         <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/layout/item_profile_content.xml" value="0.2444078947368421" />
         <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/layout/item_profile_content_data.xml" value="0.33" />
         <entry key="..\:/Users/mukul/AndroidStudioProjects/Notes/app/src/main/res/layout/item_profile_options.xml" value="0.25" />

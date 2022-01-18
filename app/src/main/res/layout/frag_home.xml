@@ -26,24 +26,29 @@
                 layout="@layout/layout_home_toolbar"
                 bind:viewModel="@{viewModel}" />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cvProductDetails"
+
+            <TextView
+                android:id="@+id/tvNoProductsToDisplay"
+                style="@style/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="@string/no_products_to_display"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvProductList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_5sdp"
-                app:cardCornerRadius="@dimen/_5sdp"
-                app:layout_constraintTop_toBottomOf="@+id/layout">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvProductList"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:nestedScrollingEnabled="false"
-                    android:layout_marginBottom="@dimen/_10sdp"
-                    bind:listitem="@layout/item_product_list"
-                    bind:itemCount="2"
-                    android:overScrollMode="never" />
-            </androidx.cardview.widget.CardView>
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never"
+                app:layout_constraintTop_toBottomOf="@id/layout"
+                bind:itemCount="2"
+                bind:listitem="@layout/item_product_list" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>

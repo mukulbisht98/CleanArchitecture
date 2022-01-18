@@ -17,7 +17,7 @@ class AddProduct(override val layoutResId: Int = R.layout.frag_add_product) : Ba
     private lateinit var binding: FragAddProductBinding
     private val viewModel: ProductsViewModel by viewModels()
 
-    val resultLauncher =
+    private val resultLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
                 // There are no request codes

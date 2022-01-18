@@ -9,6 +9,7 @@ import com.xxmukulxx.notes.common.presentation.adapter.RecyclerAdapter
 import com.xxmukulxx.notes.databinding.FragHomeBinding
 import com.xxmukulxx.notes.feature_main.presentation.MainFragment
 import com.xxmukulxx.notes.feature_main.presentation.MainFragmentDirections
+import com.xxmukulxx.notes.util.hide
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -33,6 +34,7 @@ class HomeFragment(override val layoutResId: Int = R.layout.frag_home) : BaseFra
         viewModel.apply {
             mainFragment = (requireParentFragment().requireParentFragment() as MainFragment)
             productListLiveData.observe(requireActivity(), { list ->
+                if (list.isNotEmpty()) binding.tvNoProductsToDisplay.hide()
                 binding.rvProductList.adapter =
                     RecyclerAdapter(list.toMutableList(), R.layout.item_product_list) {
                         val action = MainFragmentDirections.actionMainFragmentToProductDetails(

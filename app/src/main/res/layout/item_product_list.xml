@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -8,92 +9,102 @@
             type="com.xxmukulxx.notes.feature_product.domain.model.ProductData" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvProductDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/_12sdp">
+        android:layout_margin="@dimen/_5sdp"
+        app:cardCornerRadius="@dimen/_5sdp"
+        app:layout_constraintTop_toBottomOf="@+id/layout">
 
-        <ImageView
-            android:id="@+id/ivProductImage"
-            style="@style/imageView"
-            setRoundImgFromURL="@{recyclerData.imgUrl}"
-            android:layout_width="@dimen/_80sdp"
-            android:layout_height="0dp"
-            android:contentDescription="@string/add_product"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tvProductTitle"
-            style="@style/headingView"
-            android:layout_width="0dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_12sdp"
-            android:text="@{recyclerData.title}"
-            android:textSize="@dimen/_10ssp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/ivProductImage"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:padding="@dimen/_12sdp">
 
-        <TextView
-            android:id="@+id/tvProductDescription"
-            style="@style/textView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_12sdp"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:text="@{recyclerData.description}"
-            android:textSize="@dimen/_8ssp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/ivProductImage"
-            app:layout_constraintTop_toBottomOf="@id/tvProductTitle" />
+            <ImageView
+                android:id="@+id/ivProductImage"
+                style="@style/imageView"
+                setRoundImgFromURL="@{recyclerData.imgUrl}"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="0dp"
+                android:contentDescription="@string/add_product"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <RatingBar
-            android:id="@+id/rbRating"
-            style="?android:ratingBarStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_12sdp"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:numStars="5"
-            android:rating="@{recyclerData.rating}"
-            app:layout_constraintStart_toEndOf="@+id/ivProductImage"
-            app:layout_constraintTop_toBottomOf="@id/tvProductDescription" />
+            <TextView
+                android:id="@+id/tvProductTitle"
+                style="@style/headingView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:text="@{recyclerData.title}"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivProductImage"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            style="@style/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_5sdp"
-            android:text="@{Float.toString(recyclerData.rating)}"
-            app:layout_constraintBottom_toBottomOf="@id/rbRating"
-            app:layout_constraintStart_toEndOf="@id/rbRating"
-            app:layout_constraintTop_toTopOf="@id/rbRating" />
+            <TextView
+                android:id="@+id/tvProductDescription"
+                style="@style/textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="@{recyclerData.description}"
+                android:textSize="@dimen/_8ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivProductImage"
+                app:layout_constraintTop_toBottomOf="@id/tvProductTitle" />
 
-        <TextView
-            android:id="@+id/tvProductPrice"
-            style="@style/headingView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_12sdp"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:text="@{`₹`+ Float.toString(recyclerData.price)}"
-            android:textSize="@dimen/_10ssp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/ivProductImage"
-            app:layout_constraintTop_toBottomOf="@id/rbRating" />
+            <RatingBar
+                android:id="@+id/rbRating"
+                style="?android:ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:numStars="5"
+                android:rating="@{recyclerData.rating}"
+                app:layout_constraintStart_toEndOf="@+id/ivProductImage"
+                app:layout_constraintTop_toBottomOf="@id/tvProductDescription" />
 
-        <TextView
-            style="@style/textView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_12sdp"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:text="@{Integer.toString(recyclerData.quantity) + ` left in stock.`}"
-            android:textSize="@dimen/_8ssp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/ivProductImage"
-            app:layout_constraintTop_toBottomOf="@id/tvProductPrice" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                style="@style/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:text="@{Float.toString(recyclerData.rating)}"
+                app:layout_constraintBottom_toBottomOf="@id/rbRating"
+                app:layout_constraintStart_toEndOf="@id/rbRating"
+                app:layout_constraintTop_toTopOf="@id/rbRating" />
+
+            <TextView
+                android:id="@+id/tvProductPrice"
+                style="@style/headingView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="@{`₹`+ Float.toString(recyclerData.price)}"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivProductImage"
+                app:layout_constraintTop_toBottomOf="@id/rbRating" />
+
+            <TextView
+                style="@style/textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="@{Integer.toString(recyclerData.quantity) + ` left in stock.`}"
+                android:textSize="@dimen/_8ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivProductImage"
+                app:layout_constraintTop_toBottomOf="@id/tvProductPrice" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 </layout>
