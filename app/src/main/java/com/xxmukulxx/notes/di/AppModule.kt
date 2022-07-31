@@ -14,7 +14,4 @@ object AppModule {
     @Singleton
     @Provides
     fun provideBaseURL() = BuildConfig.BASE_URL
-
-
-
 }

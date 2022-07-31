@@ -50,13 +50,9 @@ class AddProduct(override val layoutResId: Int = R.layout.frag_add_product) : Ba
     }
 
     private fun observer() {
-        viewModel.getIsLoadingLiveData().observe(viewLifecycleOwner, {
-            if (it) {
-                showLoading()
-            } else {
-                hideLoading()
-            }
-        })
+        viewModel.getIsLoadingLiveData().observe(viewLifecycleOwner) {
+            if (it) showLoading() else hideLoading()
+        }
     }
 
 }

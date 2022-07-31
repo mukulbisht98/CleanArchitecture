@@ -33,7 +33,7 @@ class LoginFragment : BaseFragment() {
             initAppBarLogin()
         }
         sharedElementEnterTransition =
-            TransitionInflater.from(context).inflateTransition(android.R.transition.move)
+            TransitionInflater.from(requireContext()).inflateTransition(android.R.transition.move)
     }
 
     private fun init() {
@@ -52,13 +52,9 @@ class LoginFragment : BaseFragment() {
     }
 
     private fun observer() {
-        viewModel.getIsLoadingLiveData().observe(viewLifecycleOwner, {
-            if (it) {
-                showLoading()
-            } else {
-                hideLoading()
-            }
-        })
+        viewModel.getIsLoadingLiveData().observe(viewLifecycleOwner) {
+            if (it) showLoading() else hideLoading()
+        }
     }
 
     private fun initBindingsAndViewModel() {
@@ -66,5 +62,4 @@ class LoginFragment : BaseFragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
     }
-
 }

@@ -33,7 +33,7 @@ class HomeFragment(override val layoutResId: Int = R.layout.frag_home) : BaseFra
     private fun viewModelInit() {
         viewModel.apply {
             mainFragment = (requireParentFragment().requireParentFragment() as MainFragment)
-            productListLiveData.observe(requireActivity(), { list ->
+            productListLiveData.observe(requireActivity()) { list ->
                 if (list.isNotEmpty()) binding.tvNoProductsToDisplay.hide()
                 binding.rvProductList.adapter =
                     RecyclerAdapter(list.toMutableList(), R.layout.item_product_list) {
@@ -43,7 +43,7 @@ class HomeFragment(override val layoutResId: Int = R.layout.frag_home) : BaseFra
                         mainFragment.findNavController()
                             .navigate(action)
                     }
-            })
+            }
             binding.rvProductList.layoutManager = LinearLayoutManager(context)
             setAppBar()
         }
